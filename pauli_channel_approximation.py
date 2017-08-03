@@ -31,15 +31,8 @@ def off_diagonal_projection(sop):
     """
     Computes a quantity proportional to the sum of the magnitudes of terms corresponding to non-stochastic evolution.
 
-    :param probs:
-    :param controlset:
-    :param ambient_hamiltonian:
-    :param control_hamiltonians:
-    :param detunings:
-    :param dim:
-    :param dt:
-    :param target_operator:
-    :return:
+    :param numpy.ndarry sop: Representation our operator as a superoperator, e.g. operating on vectorized density
+     matrices.
     """
     basis = PAULIS
     for _ in xrange(int(np.log2(sop.shape[0]) - 2)):
@@ -53,15 +46,22 @@ def off_diagonal_projection(sop):
 
 
 class PCA(object):
+    """Class to perform Pauli Channel Approximations- i.e. pick out weights for families of controls that make them look
+     most like Pauli Channels."""
     def __init__(self, num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
                  num_steps, time, threshold, detunings):
+        import time as t
+        start = t.time()
         controlset = []
-        np.random.seed(123)
         dt = time/num_steps
-        for _ in xrange(num_controls):
+        for i in xrange(num_controls):
+            print "CONTROL {}".format(i)
             result = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator,
                                   num_steps, time, threshold, detunings)
             controlset.append(result.reshape(-1, len(control_hamiltonians)))
+            # controlset.append(np.array([1] * num_steps).reshape(-1, 1))
+
+
         # Initialize random probabilities
         probs = np.random.rand(1, num_controls)
         probs /= np.sum(probs)
@@ -93,28 +93,34 @@ class PCA(object):
 
         func = lambda x: off_diagonal_error(x, controlset, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator)
         probs = minimize(func, probs, method='SLSQP', bounds=[constraint for _ in probs[0]], constraints=constraints, options=options)
-
         self.probs = probs.x
         self.controlset = controlset
+
         self.detunings = detunings
         self.target_operator = target_operator
         self.dt = dt
         self.ambient_hamiltonian = ambient_hamiltonian
         self.control_hamiltonians = control_hamiltonians
+        stop = t.time()
+        self.time = stop-start
         self.plot_control_fidelity(0)
         self.plot_dpn(0)
 
     def plot_control_fidelity(self, cnum):
         # Vary over ith parameter
-        values = np.arange(-self.detunings[cnum+1], self.detunings[cnum+1], self.detunings[cnum+1]/50.0)
+        values = np.arange(-self.detunings[cnum+1] * 3, self.detunings[cnum+1] * 3, self.detunings[cnum+1]/25.0)
         control_fidelities = []
         for value in values:
             fidelities = []
             controlset_unitaries = []
             for controls in self.controlset:
-                newcontrols = controls
-                newcontrols[cnum, :] = newcontrols[cnum, :] * (1 + value)
-                step_unitaries = control_unitaries(self.ambient_hamiltonian, self.control_hamiltonians, controls, self.dt)
+                newcontrols = deepcopy(controls)
+                ambient_hamiltonian = deepcopy(self.ambient_hamiltonian)
+                if cnum >= 0:
+                    newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
+                if cnum == -1:
+                    ambient_hamiltonian *= (1 + value)
+                step_unitaries = control_unitaries(ambient_hamiltonian, self.control_hamiltonians, newcontrols, self.dt)
                 unitary = reduce(lambda a, b: a.dot(b), step_unitaries)
                 fidelity = np.trace(adjoint(self.target_operator).dot(unitary))
                 fidelity *= np.conj(fidelity)
@@ -138,7 +144,7 @@ class PCA(object):
         dim = self.target_operator.shape[0]
         for _ in xrange(int(np.log2(dim) - 1)):
             basis = [np.kron(base, pauli) for pauli in PAULIS for base in basis]
-        values = np.arange(-self.detunings[cnum+1], self.detunings[cnum+1], self.detunings[cnum+1]/50.0)
+        values = np.arange(-self.detunings[cnum+1]*3, self.detunings[cnum+1]*3, self.detunings[cnum+1]/25.0)
         control_fidelities = []
         for value in values:
             fidelities = []
@@ -146,8 +152,12 @@ class PCA(object):
             sops = []
             for controls in self.controlset:
                 newcontrols = deepcopy(controls)
-                newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
-                step_unitaries = control_unitaries(self.ambient_hamiltonian, self.control_hamiltonians, newcontrols, self.dt)
+                ambient_hamiltonian = deepcopy(self.ambient_hamiltonian)
+                if cnum >= 0:
+                    newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
+                if cnum == -1:
+                    ambient_hamiltonian *= (1 + value)
+                step_unitaries = control_unitaries(ambient_hamiltonian, self.control_hamiltonians, newcontrols, self.dt)
                 unitary = reduce(lambda a, b: a.dot(b), step_unitaries)
                 sop = error_unitary(unitary, self.target_operator)
                 sops.append(sop)
@@ -161,22 +171,30 @@ class PCA(object):
             plt.plot(values, row, label=i)
         plt.plot(values, control_fidelities[-1, :], label="min", color='k', linewidth=2)
         plt.legend()
+        plt.semilogy()
         print self.probs
         plt.show()
 
 if __name__ == "__main__":
+    np.random.seed(1000)
     I = np.eye(2)
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
-    ambient_hamiltonian = 0 * I
+    ambient_hamiltonian = .0001 * Z
     control_hamiltonians = [X]
     target_operator = X
     time = 7 * np.pi
     num_steps = 10
     threshold = 1 - 1E-3
-    num_controls = 2
-
+    num_controls = 15
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
-        [.001 for _ in control_hamiltonians] + [.001])
-    dill.dump(pca, open('pickled_controls', 'wb'))
+        [.00001] + [.01 for _ in control_hamiltonians])
+    print "TOOK {}".format(pca.time)
+    import os
+    i = 0
+    while os.path.exists("pickled_controls%s.pkl" % i):
+        i += 1
+    fh = open("pickled_controls%s.pkl" % i, "wb")
+    dill.dump(pca, fh)
+    fh.close()
