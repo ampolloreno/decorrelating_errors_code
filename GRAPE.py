@@ -1,5 +1,6 @@
 from __future__ import division
 
+from functools import reduce
 import itertools
 import numpy as np
 import scipy
@@ -197,11 +198,11 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                               target_operator)
 
     while (-perf_at_zero)/dimension**2 < threshold:
-        print "RETRYING GRAPE FOR BETTER CONTROLS"
+        print("RETRYING GRAPE FOR BETTER CONTROLS")
         controls = 2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0
         result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc',
                                    bounds=[constraint for _ in controls[0]], options=options)
-        print "minimize finished, performance is  {}".format(-result.fun/dimension**2)
+        print("minimize finished, performance is  {}".format(-result.fun/dimension**2))
     return result.x
 
 if __name__ == "__main__":
@@ -216,7 +217,7 @@ if __name__ == "__main__":
     num_steps = 10
     x = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, detunings=[.001, .001])
     controls = x.reshape(-1, len(control_hamiltonians))
-    print reduce(lambda a, b: a.dot(b), control_unitaries(ambient_hamiltonian, control_hamiltonians, controls, time/num_steps))
+    print(reduce(lambda a, b: a.dot(b), control_unitaries(ambient_hamiltonian, control_hamiltonians, controls, time/num_steps)))
     plt.step(range(len(controls.flatten())), controls.flatten())
     plt.show()
     from scipy.integrate import ode

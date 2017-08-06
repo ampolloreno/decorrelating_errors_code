@@ -1,0 +1,14 @@
+qutip
+qutip/_mkl
+qutip/control
+qutip/cy
+qutip/cy/openmp
+qutip/cy/openmp/src
+qutip/cy/src
+qutip/legacy
+qutip/nonmarkov
+qutip/qip
+qutip/qip/algorithms
+qutip/qip/models
+qutip/tests
+qutip/ui

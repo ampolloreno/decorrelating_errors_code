@@ -2,6 +2,7 @@ from GRAPE import GRAPE, control_unitaries, adjoint, average_over_noise
 import numpy as np
 from scipy.optimize import minimize
 import dill
+from functools import reduce
 import matplotlib.pyplot as plt
 from copy import deepcopy
 
@@ -35,7 +36,7 @@ def off_diagonal_projection(sop):
      matrices.
     """
     basis = PAULIS
-    for _ in xrange(int(np.log2(sop.shape[0]) - 2)):
+    for _ in range(int(np.log2(sop.shape[0]) - 2)):
         basis = [np.kron(base, pauli) for pauli in PAULIS for base in basis]
     off_diagonal = 0
     for i, base1 in enumerate(basis):
@@ -54,8 +55,8 @@ class PCA(object):
         start = t.time()
         controlset = []
         dt = time/num_steps
-        for i in xrange(num_controls):
-            print "CONTROL {}".format(i)
+        for i in range(num_controls):
+            print("CONTROL {}".format(i))
             result = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator,
                                   num_steps, time, threshold, detunings)
             controlset.append(result.reshape(-1, len(control_hamiltonians)))
@@ -135,14 +136,14 @@ class PCA(object):
             plt.plot(values, row, label=i)
         plt.plot(values, -control_fidelities[-1], label="min", color='k', linewidth=2)
         plt.legend()
-        print self.probs
+        print(self.probs)
         plt.show()
 
     def plot_dpn(self, cnum):
         # Assume we vary the first free parameter
         basis = PAULIS
         dim = self.target_operator.shape[0]
-        for _ in xrange(int(np.log2(dim) - 1)):
+        for _ in range(int(np.log2(dim) - 1)):
             basis = [np.kron(base, pauli) for pauli in PAULIS for base in basis]
         values = np.arange(-self.detunings[cnum+1]*3, self.detunings[cnum+1]*3, self.detunings[cnum+1]/25.0)
         control_fidelities = []
@@ -172,7 +173,7 @@ class PCA(object):
         plt.plot(values, control_fidelities[-1, :], label="min", color='k', linewidth=2)
         plt.legend()
         plt.semilogy()
-        print self.probs
+        print(self.probs)
         plt.show()
 
 if __name__ == "__main__":
@@ -187,10 +188,10 @@ if __name__ == "__main__":
     time = 7 * np.pi
     num_steps = 10
     threshold = 1 - 1E-3
-    num_controls = 20
+    num_controls = 1
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
         [.01] + [.01 for _ in control_hamiltonians])
-    print "TOOK {}".format(pca.time)
+    print("TOOK {}".format(pca.time))
     import os
     i = 0
     while os.path.exists("pickled_controls%s.pkl" % i):

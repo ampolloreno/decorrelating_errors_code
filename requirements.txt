@@ -1,0 +1,6 @@
+numpy
+scipy
+dill
+matplotlib
+cython
+qutip
