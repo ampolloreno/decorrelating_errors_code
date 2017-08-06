@@ -181,15 +181,15 @@ if __name__ == "__main__":
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
-    ambient_hamiltonian = .0001 * Z
+    ambient_hamiltonian = .001 * Z
     control_hamiltonians = [X]
     target_operator = X
     time = 7 * np.pi
     num_steps = 10
     threshold = 1 - 1E-3
-    num_controls = 15
+    num_controls = 20
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
-        [.00001] + [.01 for _ in control_hamiltonians])
+        [.01] + [.01 for _ in control_hamiltonians])
     print "TOOK {}".format(pca.time)
     import os
     i = 0
