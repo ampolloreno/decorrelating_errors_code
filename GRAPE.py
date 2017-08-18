@@ -5,9 +5,11 @@ import numpy as np
 import scipy
 import scipy.optimize as optimize
 import matplotlib.pyplot as plt
-
+from mpi4py import MPI
 from numpy.polynomial.hermite import hermgauss
 
+# comm = MPI.COMM_WORLD
+# rank = comm.Get_rank()
 
 def adjoint(operator):
     """
@@ -113,7 +115,7 @@ def grape_gradient(ambient_hamiltonian, control_hamiltonians, controls, dt, targ
 
 
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=10):
+                       controls, detunings, dt, target_operator, deg=1):
     """
     Average the given func over noise using gaussian quadrature.
 
@@ -182,25 +184,26 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                                                dt, target_operator)
     dimension = np.shape(ambient_hamiltonian)[0]
     disp = True
-    ftol = (1-threshold) * 0.1
+    ftol = (1-threshold)
     options = {"ftol": ftol,
                "disp": disp}
     constraint = (-1, 1)
-    controls = 2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0
-    result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc',
-                               bounds=[constraint for _ in controls[0]], options=options)
+    controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0) * .1
+    result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc', options=options)
+                               #bounds=[constraint for _ in controls[0]],
 
     # Verify that the controls meet requirements at zero.
     perf_at_zero = grape_perf(ambient_hamiltonian,
                               control_hamiltonians,
                               result.x, dt,
                               target_operator)
-
+    print "PERFORMANCE IS: ", (-perf_at_zero)/dimension**2
     while (-perf_at_zero)/dimension**2 < threshold:
+        print "PERFORMANCE IS: ",  (-perf_at_zero)/dimension**2
         print "RETRYING GRAPE FOR BETTER CONTROLS"
-        controls = 2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0
-        result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc',
-                                   bounds=[constraint for _ in controls[0]], options=options)
+        controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0) * .1
+        result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc', options=options)
+                                   #bounds=[constraint for _ in controls[0]], options=options)
         print "minimize finished, performance is  {}".format(-result.fun/dimension**2)
     return result.x
 
@@ -210,11 +213,12 @@ if __name__ == "__main__":
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
     ambient_hamiltonian = 0 * Z
-    control_hamiltonians = [X]
-    target_operator = X
-    time = 2 * np.pi
-    num_steps = 10
-    x = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, detunings=[.001, .001])
+    control_hamiltonians = [X, Y, Z]
+    target_operator = (X + Z)/np.sqrt(2)
+    assert np.isclose(target_operator.dot(adjoint(target_operator)), np.eye(target_operator.shape[0])).all()
+    time = 6 * np.pi
+    num_steps = 500
+    x = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, detunings=[.1] * (len(control_hamiltonians) + 1), threshold=.999)
     controls = x.reshape(-1, len(control_hamiltonians))
     print reduce(lambda a, b: a.dot(b), control_unitaries(ambient_hamiltonian, control_hamiltonians, controls, time/num_steps))
     plt.step(range(len(controls.flatten())), controls.flatten())
