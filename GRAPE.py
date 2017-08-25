@@ -5,11 +5,10 @@ import numpy as np
 import scipy
 import scipy.optimize as optimize
 import matplotlib.pyplot as plt
-from mpi4py import MPI
 from numpy.polynomial.hermite import hermgauss
+import multiprocessing
 
-# comm = MPI.COMM_WORLD
-# rank = comm.Get_rank()
+
 
 def adjoint(operator):
     """
@@ -115,7 +114,7 @@ def grape_gradient(ambient_hamiltonian, control_hamiltonians, controls, dt, targ
 
 
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=1):
+                       controls, detunings, dt, target_operator, deg=2):
     """
     Average the given func over noise using gaussian quadrature.
 
@@ -137,12 +136,14 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
     controls = controls.reshape(-1, len(control_hamiltonians))
     average_perf = 0
     combinations = itertools.product(*pairs)
+    pool = multiprocessing.Pool(7)
+ 
     for combination in combinations:
         new_controls = [[control * (1 + combination[i+1][0]) for i, control in enumerate(row)]
                         for row in controls]
         new_controls = np.array(new_controls).flatten()
         average_perf += reduce(lambda a, b: a * b, [comb[1] for comb in combination]) * \
-                        func(ambient_hamiltonian * (1 + combination[0][0]), control_hamiltonians, new_controls, dt,
+                        func(ambient_hamiltonian * (combination[0][0]), control_hamiltonians, new_controls, dt,
                              target_operator) / reduce(lambda a, b: a * b, detunings)
     return average_perf
 
@@ -174,9 +175,10 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
     :rtype: numpy.array
     """
     dt = time/num_steps
+    #deg = 1
     if detunings is not None:
-        perf = lambda controls: average_over_noise(grape_perf, ambient_hamiltonian, control_hamiltonians, controls, detunings, dt, target_operator)
-        grad = lambda controls: average_over_noise(grape_gradient, ambient_hamiltonian, control_hamiltonians, controls, detunings, dt, target_operator)
+        perf = lambda controls: average_over_noise(grape_perf, ambient_hamiltonian, control_hamiltonians, controls, detunings, dt, target_operator)#, deg=deg)
+        grad = lambda controls: average_over_noise(grape_gradient, ambient_hamiltonian, control_hamiltonians, controls, detunings, dt, target_operator)#, deg=deg)
     else:
         perf = lambda controls: grape_perf(ambient_hamiltonian, control_hamiltonians, controls, dt,
                                            target_operator)
@@ -193,7 +195,7 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                                #bounds=[constraint for _ in controls[0]],
 
     # Verify that the controls meet requirements at zero.
-    perf_at_zero = grape_perf(ambient_hamiltonian,
+    perf_at_zero = grape_perf(ambient_hamiltonian * 0,
                               control_hamiltonians,
                               result.x, dt,
                               target_operator)
@@ -205,6 +207,10 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
         result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc', options=options)
                                    #bounds=[constraint for _ in controls[0]], options=options)
         print "minimize finished, performance is  {}".format(-result.fun/dimension**2)
+        perf_at_zero = grape_perf(ambient_hamiltonian * 0,
+                                  control_hamiltonians,
+                                  result.x, dt,
+                                  target_operator)
     return result.x
 
 if __name__ == "__main__":
@@ -212,13 +218,13 @@ if __name__ == "__main__":
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
-    ambient_hamiltonian = 0 * Z
+    ambient_hamiltonian = Z
     control_hamiltonians = [X, Y, Z]
     target_operator = (X + Z)/np.sqrt(2)
     assert np.isclose(target_operator.dot(adjoint(target_operator)), np.eye(target_operator.shape[0])).all()
-    time = 6 * np.pi
-    num_steps = 500
-    x = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, detunings=[.1] * (len(control_hamiltonians) + 1), threshold=.999)
+    time = 2 * np.pi
+    num_steps = 200
+    x = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, detunings=[.001] * (len(control_hamiltonians) + 1), threshold=.999)
     controls = x.reshape(-1, len(control_hamiltonians))
     print reduce(lambda a, b: a.dot(b), control_unitaries(ambient_hamiltonian, control_hamiltonians, controls, time/num_steps))
     plt.step(range(len(controls.flatten())), controls.flatten())
@@ -235,7 +241,7 @@ if __name__ == "__main__":
     def ham(t):
         dt = time/num_steps
         x = controls
-        return ambient_hamiltonian + np.sum([control * control_hamiltonians[i] for i, control in enumerate(x[int(t/dt)])], axis=0)
+        return ambient_hamiltonian * 0 + np.sum([control * control_hamiltonians[i] for i, control in enumerate(x[int(t/dt)])], axis=0)
 
 
     def schrodinger(t, y):

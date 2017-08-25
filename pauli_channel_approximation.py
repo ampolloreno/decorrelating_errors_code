@@ -35,7 +35,7 @@ def off_diagonal_projection(sop):
      matrices.
     """
     basis = PAULIS
-    for _ in xrange(int(np.log2(sop.shape[0]) - 2)):
+    for _ in xrange(int(np.log2(sop.shape[0])/2.0) - 1):
         basis = [np.kron(base, pauli) for pauli in PAULIS for base in basis]
     off_diagonal = 0
     for i, base1 in enumerate(basis):
@@ -69,7 +69,7 @@ class PCA(object):
         constraint = (0, 1)
         disp = True
         options = {"disp": disp}
-        constraints = {"type": "eq", "fun": lambda probs: 1 - sum(probs)}
+        constraints = {"type": "eq", "fun": lambda x: 1 - sum(x)}
 
         def off_diagonal_error(probs, controlset, ambient_hamiltonian, control_hamiltonians,
                                detunings, dt, target_operator):
@@ -90,10 +90,13 @@ class PCA(object):
             avg_error = reduce(lambda a, b: a + b,
                                [avg_errors[i] * prob for i, prob in enumerate(probs)])
             return off_diagonal_projection(avg_error)
-
         func = lambda x: off_diagonal_error(x, controlset, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator)
-        probs = minimize(func, probs, method='SLSQP', bounds=[constraint for _ in probs[0]], constraints=constraints, options=options)
-        self.probs = probs.x
+        #probs = minimize(func, probs, method='SLSQP', bounds=[constraint for _ in probs[0]], constraints=constraints, options=options, iprint=2)
+        import scipy
+        probs = scipy.optimize.fmin_slsqp(func, probs, eqcons=[lambda x: 1 - sum(probs)],
+                                          bounds=[constraint for _ in probs[0]],
+                                          iprint=2)
+        self.probs = probs
         self.controlset = controlset
 
         self.detunings = detunings
@@ -103,8 +106,8 @@ class PCA(object):
         self.control_hamiltonians = control_hamiltonians
         stop = t.time()
         self.time = stop-start
-        self.plot_control_fidelity(0)
-        self.plot_dpn(0)
+        #self.plot_control_fidelity(-1)
+        #self.plot_dpn(-1)
 
     def plot_control_fidelity(self, cnum):
         # Vary over ith parameter
@@ -115,11 +118,11 @@ class PCA(object):
             controlset_unitaries = []
             for controls in self.controlset:
                 newcontrols = deepcopy(controls)
-                ambient_hamiltonian = deepcopy(self.ambient_hamiltonian)
+                ambient_hamiltonian = deepcopy(self.ambient_hamiltonian).astype("float")
                 if cnum >= 0:
                     newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
                 if cnum == -1:
-                    ambient_hamiltonian *= (1 + value)
+                    ambient_hamiltonian *= float(value)
                 step_unitaries = control_unitaries(ambient_hamiltonian, self.control_hamiltonians, newcontrols, self.dt)
                 unitary = reduce(lambda a, b: a.dot(b), step_unitaries)
                 fidelity = np.trace(adjoint(self.target_operator).dot(unitary))
@@ -152,11 +155,11 @@ class PCA(object):
             sops = []
             for controls in self.controlset:
                 newcontrols = deepcopy(controls)
-                ambient_hamiltonian = deepcopy(self.ambient_hamiltonian)
+                ambient_hamiltonian = deepcopy(self.ambient_hamiltonian).astype("float")
                 if cnum >= 0:
                     newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
                 if cnum == -1:
-                    ambient_hamiltonian *= (1 + value)
+                    ambient_hamiltonian *= float(value)
                 step_unitaries = control_unitaries(ambient_hamiltonian, self.control_hamiltonians, newcontrols, self.dt)
                 unitary = reduce(lambda a, b: a.dot(b), step_unitaries)
                 sop = error_unitary(unitary, self.target_operator)
@@ -178,19 +181,29 @@ class PCA(object):
 if __name__ == "__main__":
     np.random.seed(1000)
     I = np.eye(2)
+    II = np.kron(I, I)
     X = np.array([[0, 1], [1, 0]])
+    IX = np.kron(I, X)
+    XI = np.kron(X, I)
     Y = np.array([[0, -1.j], [1.j, 0]])
+    IY = np.kron(I, Y)
+    YI = np.kron(Y, I)
     Z = np.array([[1, 0], [0, -1]])
-    H = (Z + X)/np.sqrt(2)
-    ambient_hamiltonian = .000 * Z
-    control_hamiltonians = [X, Y, Z]
-    target_operator = H
-    time = 4 * np.pi
-    num_steps = 20
-    threshold = 1 - .1
-    num_controls = 1
-    pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
-        [.01] + [.001 for _ in control_hamiltonians])
+    IZ = np.kron(I, Z)
+    ZI = np.kron(Z, I)
+    XXYY = np.kron(X, X) + np.kron(Y, Y)
+    ISWAP = np.array([[1, 0, 0, 0], [0, 0, -1.j, 0], [0, -1.j, 0, 0], [0, 0, 0, 1]])
+    #H = (Z + X) / np.sqrt(2)
+    # applied multiplicatively
+    ambient_hamiltonian = IZ
+    control_hamiltonians = [IX, XI, IY, YI, IZ, ZI, XXYY]
+    target_operator = ISWAP
+    time = 2 * np.pi
+    num_steps = 1000
+    threshold = 1 - .001
+    num_controls = 20
+    pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time,
+              threshold, [.001] + [.001 for _ in control_hamiltonians])
     print "TOOK {}".format(pca.time)
     import os
     i = 0
@@ -199,3 +212,56 @@ if __name__ == "__main__":
     fh = open("pickled_controls%s.pkl" % i, "wb")
     dill.dump(pca, fh)
     fh.close()
+
+
+
+            # if __name__ == "__main__":
+#     np.random.seed(1000)
+#     I = np.eye(2)
+#     X = np.array([[0, 1], [1, 0]])
+#     Y = np.array([[0, -1.j], [1.j, 0]])
+#     Z = np.array([[1, 0], [0, -1]])
+#     H = (Z + X)/np.sqrt(2)
+#     # applied multiplicatively
+#     ambient_hamiltonian = Z
+#     control_hamiltonians = [X, Y, Z]
+#     target_operator = X
+#     time = 2 * np.pi
+#     num_steps = 50
+#     threshold = 1 - .001
+#     num_controls = 20
+#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
+#               [.001] + [.001 for _ in control_hamiltonians])
+#     print "TOOK {}".format(pca.time)
+#     import os
+#     i = 0
+#     while os.path.exists("pickled_controls%s.pkl" % i):
+#         i += 1
+#     fh = open("pickled_controls%s.pkl" % i, "wb")
+#     dill.dump(pca, fh)
+#     fh.close()
+
+# if __name__ == "__main__":
+#     np.random.seed(1000)
+#     I = np.eye(2)
+#     X = np.array([[0, 1], [1, 0]])
+#     Y = np.array([[0, -1.j], [1.j, 0]])
+#     Z = np.array([[1, 0], [0, -1]])
+#     H = (Z + X)/np.sqrt(2)
+#     ambient_hamiltonian = .01 * Z
+#     control_hamiltonians = [X, Y, Z]
+#     target_operator = H
+#     time = 6 * np.pi
+#     num_steps = 500
+#     threshold = 1 - .001
+#     num_controls = 10
+#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
+#               [.001] + [.01 for _ in control_hamiltonians])
+#     print "TOOK {}".format(pca.time)
+#     import os
+#     i = 0
+#     while os.path.exists("pickled_controls%s.pkl" % i):
+#         i += 1
+#     fh = open("pickled_controls%s.pkl" % i, "wb")
+#     dill.dump(pca, fh)
+#     fh.close()
