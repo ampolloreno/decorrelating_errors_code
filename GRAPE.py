@@ -1,5 +1,3 @@
-from __future__ import division
-
 import itertools
 import numpy as np
 import scipy
@@ -7,6 +5,7 @@ import scipy.optimize as optimize
 import matplotlib.pyplot as plt
 from numpy.polynomial.hermite import hermgauss
 import multiprocessing
+from functools import reduce
 
 
 def adjoint(operator):
@@ -117,14 +116,15 @@ def comp_avg_perf(pair):
     new_controls = [[control * (1 + combination[i+1][0]) for i, control in enumerate(row)]
                     for row in controls]
     new_controls = np.array(new_controls).flatten()
+    nonzero_detunings = np.array(detunings)[np.where(np.array(detunings) != 0)[0]]
     average_perf = reduce(lambda a, b: a * b, [comb[1] for comb in combination]) * \
                     func(ambient_hamiltonian * (combination[0][0]), control_hamiltonians, new_controls, dt,
-                         target_operator) / reduce(lambda a, b: a * b, detunings)
+                         target_operator) / reduce(lambda a, b: a * b, nonzero_detunings)
     return average_perf
 
 
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=3):
+                       controls, detunings, dt, target_operator, deg=2):
     """
     Average the given func over noise using gaussian quadrature.
 
@@ -142,10 +142,15 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
     :rtype: rtype of func
     """
     points, weights = hermgauss(deg)
-    pairs = [zip(detuning * points, weights) for i, detuning in enumerate(detunings)]
+    nonzero_detunings = np.where(np.array(detunings) != 0)[0]
+    zero_detunings = np.where(np.array(detunings) == 0)[0]
+    pairs = [list(zip(detuning * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
+    for index in zero_detunings:
+        pairs.insert(index, [(0, 1)])
+
     controls = controls.reshape(-1, len(control_hamiltonians))
     combinations = itertools.product(*pairs)
-    pool = multiprocessing.Pool(6)
+    pool = multiprocessing.Pool(7)
 
     lst = [(combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator) for
      combination in combinations]
@@ -205,14 +210,14 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                               control_hamiltonians,
                               result.x, dt,
                               target_operator)
-    print "PERFORMANCE IS: ", (-perf_at_zero)/dimension**2
+    print("PERFORMANCE IS: ", (-perf_at_zero)/dimension**2)
     while (-perf_at_zero)/dimension**2 < threshold:
-        print "PERFORMANCE IS: ",  (-perf_at_zero)/dimension**2
-        print "RETRYING GRAPE FOR BETTER CONTROLS"
+        print("PERFORMANCE IS: ",  (-perf_at_zero)/dimension**2)
+        print("RETRYING GRAPE FOR BETTER CONTROLS")
         controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0) * .1
         result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc', options=options)
                                    #bounds=[constraint for _ in controls[0]], options=options)
-        print "minimize finished, performance is  {}".format(-result.fun/dimension**2)
+        print("minimize finished, performance is  {}".format(-result.fun/dimension**2))
         perf_at_zero = grape_perf(ambient_hamiltonian * 0,
                                   control_hamiltonians,
                                   result.x, dt,
@@ -232,8 +237,8 @@ if __name__ == "__main__":
     num_steps = 200
     x = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, detunings=[.001] * (len(control_hamiltonians) + 1), threshold=.999)
     controls = x.reshape(-1, len(control_hamiltonians))
-    print reduce(lambda a, b: a.dot(b), control_unitaries(ambient_hamiltonian, control_hamiltonians, controls, time/num_steps))
-    plt.step(range(len(controls.flatten())), controls.flatten())
+    print(reduce(lambda a, b: a.dot(b), control_unitaries(ambient_hamiltonian, control_hamiltonians, controls, time/num_steps)))
+    plt.step(list(range(len(controls.flatten()))), controls.flatten())
     plt.show()
     from scipy.integrate import ode
     from numpy import real, array, pi, dot, reshape, conjugate
@@ -274,12 +279,12 @@ if __name__ == "__main__":
     while r.successful() and r.t < t1:
         try:
             r.integrate(r.t + dt)
-            expectations += [map(lambda op: expect(op, r.y), [sigX, sigY, sigZ])]
+            expectations += [[expect(op, r.y) for op in [sigX, sigY, sigZ]]]
         except:
             pass
 
     from qutip import Bloch
 
     bloch = Bloch()
-    bloch.add_points(real(zip(*expectations)), 'l')
+    bloch.add_points(real(list(zip(*expectations))), 'l')
     bloch.show()
