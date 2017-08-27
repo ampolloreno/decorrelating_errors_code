@@ -9,7 +9,6 @@ from numpy.polynomial.hermite import hermgauss
 import multiprocessing
 
 
-
 def adjoint(operator):
     """
     Computes the adjoint of a given matrix.
@@ -113,8 +112,19 @@ def grape_gradient(ambient_hamiltonian, control_hamiltonians, controls, dt, targ
     return grad.flatten()
 
 
+def comp_avg_perf(pair):
+    combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator = pair
+    new_controls = [[control * (1 + combination[i+1][0]) for i, control in enumerate(row)]
+                    for row in controls]
+    new_controls = np.array(new_controls).flatten()
+    average_perf = reduce(lambda a, b: a * b, [comb[1] for comb in combination]) * \
+                    func(ambient_hamiltonian * (combination[0][0]), control_hamiltonians, new_controls, dt,
+                         target_operator) / reduce(lambda a, b: a * b, detunings)
+    return average_perf
+
+
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=2):
+                       controls, detunings, dt, target_operator, deg=3):
     """
     Average the given func over noise using gaussian quadrature.
 
@@ -134,18 +144,14 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
     points, weights = hermgauss(deg)
     pairs = [zip(detuning * points, weights) for i, detuning in enumerate(detunings)]
     controls = controls.reshape(-1, len(control_hamiltonians))
-    average_perf = 0
     combinations = itertools.product(*pairs)
-    pool = multiprocessing.Pool(7)
- 
-    for combination in combinations:
-        new_controls = [[control * (1 + combination[i+1][0]) for i, control in enumerate(row)]
-                        for row in controls]
-        new_controls = np.array(new_controls).flatten()
-        average_perf += reduce(lambda a, b: a * b, [comb[1] for comb in combination]) * \
-                        func(ambient_hamiltonian * (combination[0][0]), control_hamiltonians, new_controls, dt,
-                             target_operator) / reduce(lambda a, b: a * b, detunings)
-    return average_perf
+    pool = multiprocessing.Pool(6)
+
+    lst = [(combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator) for
+     combination in combinations]
+    results = pool.map(comp_avg_perf, lst)
+    pool.close()
+    return np.sum(results, axis=0)
 
 
 def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time,
