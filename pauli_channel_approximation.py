@@ -161,7 +161,7 @@ class PCA(object):
         dim = self.target_operator.shape[0]
         for _ in range(int(np.log2(dim) - 1)):
             basis = [np.kron(base, pauli) for pauli in PAULIS for base in basis]
-        values = np.arange(-self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] / 25.0)
+        values = np.arange(-self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] / 10.0)
         control_fidelities = []
         for value in values:
             fidelities = []
