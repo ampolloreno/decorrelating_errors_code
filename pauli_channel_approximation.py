@@ -2,11 +2,13 @@ from GRAPE import GRAPE, control_unitaries, adjoint, average_over_noise
 import numpy as np
 from scipy.optimize import minimize
 import dill
+import itertools
 import matplotlib.pyplot as plt
 from copy import deepcopy
 from functools import reduce
 import subprocess
 import os.path
+import multiprocessing
 
 
 
@@ -120,7 +122,7 @@ class PCA(object):
         # Vary over ith parameter
         if self.detunings[cnum + 1] == 0:
             return
-        values = np.arange(-self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] / 25.0)
+        values = np.linspace(-self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] * 3, 25)
         control_fidelities = []
         for value in values:
             fidelities = []
@@ -168,7 +170,7 @@ class PCA(object):
         dim = self.target_operator.shape[0]
         for _ in range(int(np.log2(dim) - 1)):
             basis = [np.kron(base, pauli) for pauli in PAULIS for base in basis]
-        values = np.arange(-self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] / 10.0)
+        values = np.linspace(-self.detunings[cnum + 1], self.detunings[cnum + 1], 11)
         control_fidelities = []
         for value in values:
             fidelities = []
@@ -209,6 +211,62 @@ class PCA(object):
         # plt.clf()
         #
 
+    def plot_everything(self, num_processors=7):
+        """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
+         provided by itertools."""
+        pairs = []
+        values_to_plot = []
+        for detuning in self.detunings:
+            # TODO make params
+            values = np.linspace(-detuning, detuning, 3)
+            values_to_plot.append(values)
+        combinations = itertools.product(*values_to_plot)
+        control_fidelities = []
+
+        pool = multiprocessing.Pool(num_processors)
+        lst = [(self.controlset, self.ambient_hamiltonian, combo, self.dt,
+                self.control_hamiltonians, self.target_operator, self.probs)
+               for combo in combinations]
+        projs = pool.map(compute_dpn_and_fid, lst)
+        pool.close()
+        projs = np.vstack(projs).T
+        for i, row in enumerate(projs[:-1, :]):
+            plt.plot(range(len(row)), row)
+        plt.plot(range(len(projs[-1, :])), projs[-1, :], label="min", color='k', linewidth=2)
+        plt.legend()
+        plt.semilogy()
+        plt.tight_layout()
+
+
+def compute_dpn_and_fid(data):
+    controlset, ambient_hamiltonian, combo, dt, control_hamiltonians, target_operator, probs = data
+    fidelities = []
+    projs = []
+    sops = []
+    controlset_unitaries = []
+    for controls in controlset:
+        newcontrols = deepcopy(controls)
+        ambient_hamiltonian = deepcopy(ambient_hamiltonian).astype("float")
+        for cnum, value in enumerate(combo):
+            cnum -= 1
+            if cnum >= 0:
+                newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
+            if cnum == -1:
+                ambient_hamiltonian *= float(value)
+        step_unitaries = control_unitaries(ambient_hamiltonian,
+                                           control_hamiltonians, newcontrols,
+                                           dt)
+        unitary = reduce(lambda a, b: a.dot(b), step_unitaries)
+        sop = error_unitary(unitary, target_operator)
+        sops.append(sop)
+        projs.append(off_diagonal_projection(sop))
+        controlset_unitaries.append(unitary)
+
+    avg_sop = reduce(lambda a, b: a + b, [prob * sops[i] for i, prob in enumerate(probs)])
+    projs.append(off_diagonal_projection(avg_sop))
+    projs = np.array(projs).T
+    return projs
+
 
 def load_pca(filename):
     try:
@@ -245,6 +303,11 @@ def generate_report(filename):
     except AttributeError:
         pass
     image_locs = []
+    pca.plot_everything()
+    image_locs.append(report_dir + "/control_dpn_all")
+    plt.savefig(report_dir + "/control_dpn_all")
+    plt.clf()
+
     for i in range(len(pca.control_hamiltonians) + 1):
         pca.plot_control_fidelity(i - 1)
         control_fid_loc = report_dir + "/control_fid_{}".format(i)
