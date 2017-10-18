@@ -124,7 +124,7 @@ def comp_avg_perf(pair):
 
 
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=2):
+                       controls, detunings, dt, target_operator, deg=2, num_processors=7):
     """
     Average the given func over noise using gaussian quadrature.
 
@@ -150,7 +150,7 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
 
     controls = controls.reshape(-1, len(control_hamiltonians))
     combinations = itertools.product(*pairs)
-    pool = multiprocessing.Pool(7)
+    pool = multiprocessing.Pool(num_processors)
 
     lst = [(combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator) for
      combination in combinations]

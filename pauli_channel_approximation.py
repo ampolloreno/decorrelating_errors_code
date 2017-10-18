@@ -5,6 +5,10 @@ import dill
 import matplotlib.pyplot as plt
 from copy import deepcopy
 from functools import reduce
+import subprocess
+import os.path
+
+
 
 I = np.eye(2)
 X = np.array([[0, 1], [1, 0]])
@@ -142,18 +146,21 @@ class PCA(object):
             control_fidelities.append(fidelities)
         control_fidelities = np.array(control_fidelities).T
         for i, row in enumerate(control_fidelities[:-1]):
-            plt.plot(values, row, label=i)
-        plt.plot(values, -control_fidelities[-1], label="min", color='k', linewidth=2)
+            plt.plot(values, row)
+        plt.xlabel("Detuning for {}th controllable parameter in the Hamiltonian with mean 1.\n (-1 is uncontrollable, mean 0)".format(cnum))
+        plt.ylabel("Fidelity of the control.")
+        plt.title("Control Fidelity versus Detuning for the {}th control".format(cnum))
         plt.legend()
-        print(self.probs)
-        import os
-        i = 0
-        while os.path.exists("image%s.png" % i):
-            i += 1
-        plt.savefig("image%s.png" % i)
-        plt.clf()
+        plt.plot(values, -control_fidelities[-1], label="min", color='k', linewidth=2)
+        plt.tight_layout()
+        # import os
+        # i = 0
+        # while os.path.exists("image%s.png" % i):
+        #     i += 1
+        # plt.savefig("image%s.png" % i)
+        # plt.clf()
 
-    def plot_dpn(self, cnum):
+    def plot_dpn(self, cnum, num_processors=7):
         # Assume we vary the first free parameter
         if self.detunings[cnum + 1] == 0:
             return
@@ -185,60 +192,146 @@ class PCA(object):
             control_fidelities.append(fidelities)
         control_fidelities = np.array(control_fidelities).T
         for i, row in enumerate(control_fidelities[:-1, :]):
-            plt.plot(values, row, label=i)
+            plt.plot(values, row)
+        plt.xlabel("Detuning for {}th controllable parameter in the Hamiltonian with mean 1.\n (-1 is uncontrollable, mean 0)".format(cnum))
+        plt.ylabel("Projection onto off diagonal elements of the PTM")
+        plt.title("Off diagonal contribution versus detuning for the {}th control".format(cnum))
         plt.plot(values, control_fidelities[-1, :], label="min", color='k', linewidth=2)
         plt.legend()
         plt.semilogy()
-        print(self.probs)
-        import os
-        i = 0
-        while os.path.exists("imageaws%s.png" % i):
-            i += 1
-        plt.savefig("imageaws%s.png" % i)
+        plt.tight_layout()
+        # print self.probs
+        # import os
+        # i = 0
+        # while os.path.exists("image%s.png" % i):
+        #     i += 1
+        # plt.savefig("image%s.png" % i)
+        # plt.clf()
+        #
+
+
+def load_pca(filename):
+    try:
+        with open(filename, 'rb') as fileh:
+            pca = dill.load(fileh)
+    except ValueError:
+        subprocess.Popen(["python3", "repickle.py", filename])
+        import time
+        time.sleep(2)
+        with open("python2" + filename, 'r') as fileh:
+            data = fileh.read()
+            pca = dill.loads(data)
+    return pca
+
+
+def generate_report(filename):
+    import subprocess
+    import time
+    report_dir = "report_{}".format(filename.split('.')[0])
+    if os.path.isfile(report_dir + "/report.tex"):
+        print("We already made this one, moving on!")
+        return
+    subprocess.Popen(["mkdir", report_dir])
+    pca = load_pca(filename)
+    try:
+        ambient_hamiltonian = pca.ambient_hamiltonian
+        control_hamiltonians = pca.control_hamiltonians
+        target_operator = pca.target_operator
+        detunings = pca.detunings
+        dt = pca.dt
+        probs = pca.probs
+        time = pca.time
+        controlset = pca.controlset
+    except AttributeError:
+        pass
+    image_locs = []
+    for i in range(len(pca.control_hamiltonians) + 1):
+        pca.plot_control_fidelity(i - 1)
+        control_fid_loc = report_dir + "/control_fid_{}".format(i)
+        image_locs.append("control_fid_{}".format(i))
+        plt.savefig(control_fid_loc)
         plt.clf()
+        pca.plot_dpn(i - 1)
+        off_diag_loc = report_dir + "/off_diag_{}".format(i)
+        image_locs.append("off_diag_{}".format(i))
+        plt.savefig(off_diag_loc)
+        plt.clf()
+
+    latex = r"""
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=1mm]{geometry}
+\graphicspath{ {images/} }
+     
+\begin{document}
+    """
+    latex += "\n\n\\newpage"
+    latex += "\n\nAmbient Hamiltonian: " + str(ambient_hamiltonian)
+    latex += "\n\nControl Hamiltonians:" + str(control_hamiltonians)
+    latex += "\n\nDetunings: " + str(detunings)
+    latex += "\n\n dt: " + str(dt)
+    latex += "\n\nProbs: " + str(probs)
+    latex += "\n\nTarget Operator: " + str(target_operator)
+    latex += "\n\nTime: " + str(time)
+    latex += "\n\nControlset: " + str(controlset)
+    latex += "\n\\begin{center}"
+    for image_loc in image_locs:
+        latex += """\n\\includegraphics[scale=.9]{{{}}}""".format(image_loc)
+    latex += "\n\n\end{center}"
+    latex += "\n" + r"\end{document}"
+    with open(report_dir + "/report.tex", 'w') as fileh:
+        fileh.write(latex)
+
+
+def generate_all_reports():
+    import os
+    for filename in os.listdir(os.getcwd()):
+        if filename.split('.')[-1] == "pkl":
+            generate_report(filename)
 
 
 if __name__ == "__main__":
-    np.random.seed(1000)
-    I = np.eye(2)
-    II = np.kron(I, I)
-    X = np.array([[0, 1], [1, 0]])
-    IX = np.kron(I, X)
-    XI = np.kron(X, I)
-    Y = np.array([[0, -1.j], [1.j, 0]])
-    IY = np.kron(I, Y)
-    YI = np.kron(Y, I)
-    Z = np.array([[1, 0], [0, -1]])
-    IZ = np.kron(I, Z)
-    ZI = np.kron(Z, I)
-    XXYY = np.kron(X, X) + np.kron(Y, Y)
-    ISWAP = np.array([[1, 0, 0, 0], [0, 0, -1.j, 0], [0, -1.j, 0, 0], [0, 0, 0, 1]])
-    # H = (Z + X) / np.sqrt(2)
-    # applied multiplicatively
-    unisup = 1 / 2.0 * np.array([1, 1, 1, 1])
-    unisup = 2 * np.outer(unisup, unisup)
-    unisup -= np.eye(4)
-    assert np.isclose(adjoint(unisup).dot(unisup), np.eye(4)).all()
-
-    ambient_hamiltonian = IZ
-    control_hamiltonians = [IX, XI, IY, YI, IZ, ZI, XXYY]
-    target_operator = unisup
-    time = 2 * np.pi
-    num_steps = 1000
-    threshold = 1 - .001
-    num_controls = 100
-    pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time,
-              threshold, [.001] + [.001, .001, .001, .001, 0, 0, .001])
-    print("TOOK {}".format(pca.time))
-    import os
-
-    i = 0
-    while os.path.exists("pickled_controlsaws%s.pkl" % i):
-        i += 1
-    fh = open("pickled_controlsaws%s.pkl" % i, "wb")
-    dill.dump(pca, fh)
-    fh.close()
-
+    generate_report("pickled_controls42.pkl")
+    # np.random.seed(1000)
+    # I = np.eye(2)
+    # II = np.kron(I, I)
+    # X = np.array([[0, 1], [1, 0]])
+    # IX = np.kron(I, X)
+    # XI = np.kron(X, I)
+    # Y = np.array([[0, -1.j], [1.j, 0]])
+    # IY = np.kron(I, Y)
+    # YI = np.kron(Y, I)
+    # Z = np.array([[1, 0], [0, -1]])
+    # IZ = np.kron(I, Z)
+    # ZI = np.kron(Z, I)
+    # XXYY = np.kron(X, X) + np.kron(Y, Y)
+    # ISWAP = np.array([[1, 0, 0, 0], [0, 0, -1.j, 0], [0, -1.j, 0, 0], [0, 0, 0, 1]])
+    # # H = (Z + X) / np.sqrt(2)
+    # # applied multiplicatively
+    # unisup = 1 / 2.0 * np.array([1, 1, 1, 1])
+    # unisup = 2 * np.outer(unisup, unisup)
+    # unisup -= np.eye(4)
+    # assert np.isclose(adjoint(unisup).dot(unisup), np.eye(4)).all()
+    #
+    # ambient_hamiltonian = IZ
+    # control_hamiltonians = [IX, XI, IY, YI, IZ, ZI, XXYY]
+    # target_operator = unisup
+    # time = 2 * np.pi
+    # num_steps = 1000
+    # threshold = 1 - .001
+    # num_controls = 100
+    # pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time,
+    #           threshold, [.001] + [.001, .001, .001, .001, 0, 0, .001])
+    # print("TOOK {}".format(pca.time))
+    # import os
+    #
+    # i = 0
+    # while os.path.exists("pickled_controlsaws%s.pkl" % i):
+    #     i += 1
+    # fh = open("pickled_controlsaws%s.pkl" % i, "wb")
+    # dill.dump(pca, fh)
+    # fh.close()
+    #
 
 # if __name__ == "__main__":
 #     np.random.seed(1000)
