@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="735a76bb-a5a5-4167-be56-d62d3baf2b17" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls0/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls0/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls0/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls0/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls0/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls0/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls13/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls13/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls13/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls13/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls13/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls13/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls13/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls13/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls15/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls16/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls16/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls16/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls16/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls16/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls16/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls16/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls16/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls17/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls17/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls17/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls17/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls18/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls18/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls18/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls18/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls19/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls19/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls19/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls19/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls20/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls20/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls20/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls20/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls21/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls21/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls21/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls21/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls21/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls21/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls21/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls21/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/control_fid_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/control_fid_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/control_fid_6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/control_fid_7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/off_diag_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/off_diag_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/off_diag_6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/off_diag_7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls25/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/control_fid_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/control_fid_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/control_fid_6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/control_fid_7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/off_diag_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/off_diag_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/off_diag_6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/off_diag_7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls27/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls29/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls30/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls31/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls32/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls33/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls33/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls33/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls33/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls33/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls33/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls33/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls33/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls35/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls37/report.tex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls39/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls39/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls39/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls39/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls39/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls39/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls39/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls39/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls40/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls40/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls40/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls40/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls40/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls40/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls40/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls40/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls41/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls41/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls41/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls41/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls41/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls41/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls41/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls41/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls42/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls42/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls42/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls42/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls42/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls42/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls42/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls42/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls7/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls7/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls7/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls7/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls8/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls8/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls8/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls8/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/control_dpn_all.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/control_fid_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/control_fid_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/control_fid_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/control_fid_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/control_fid_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/control_fid_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/control_fid_6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/control_fid_7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/off_diag_0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/off_diag_1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/off_diag_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/off_diag_3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/off_diag_4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/off_diag_5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/off_diag_6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/off_diag_7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controlsaws1/report.tex" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pickled_controls3.pkl" afterPath="$PROJECT_DIR$/pickled_controls3.pkl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2pickled_controls42.pkl" afterPath="$PROJECT_DIR$/python2pickled_controls42.pkl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python2pickled_controlsaws1.pkl" afterPath="$PROJECT_DIR$/python2pickled_controlsaws1.pkl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls13/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls13/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls16/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls16/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls17/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls17/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls18/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls18/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls19/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls19/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls20/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls20/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls21/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls21/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls33/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls33/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls39/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls39/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls40/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls40/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls41/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls41/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls42/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls42/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls7/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls7/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls8/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls8/control_dpn_all.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pauli_channel_approximation.py" afterPath="$PROJECT_DIR$/pauli_channel_approximation.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls13/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls13/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls16/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls16/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls17/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls17/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls18/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls18/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls19/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls19/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls20/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls20/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls21/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls21/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls33/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls33/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls39/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls39/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls40/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls40/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls41/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls41/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls42/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls42/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls7/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls7/report.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls8/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls8/report.tex" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="pauli_channel_approximation.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="814">
+              <caret line="224" column="50" lean-forward="false" selection-start-line="224" selection-start-column="50" selection-end-line="224" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#71#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GRAPE.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GRAPE.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="598">
+              <caret line="156" column="22" lean-forward="false" selection-start-line="156" selection-start-column="14" selection-end-line="156" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deutsch_jozsa.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../grove/grove/alpha/deutsch_jozsa/deutsch_jozsa.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1992">
+              <caret line="195" column="20" lean-forward="false" selection-start-line="195" selection-start-column="20" selection-end-line="195" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pool</find>
+      <find>itertool</find>
+      <find>multipro</find>
+      <find>comp_av</find>
+      <find>pool.map</find>
+      <find>25</find>
+      <find>control_fid</find>
+      <find>/ 2.</find>
+      <find>detunings =</find>
+      <find>detunings</find>
+      <find>print</find>
+      <find>image_locs</find>
+      <find>linspace</find>
+      <find>compute_d</find>
+      <find>=10</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/GRAPE.py" />
+        <option value="$PROJECT_DIR$/../grove/grove/alpha/deutsch_jozsa/deutsch_jozsa.py" />
+        <option value="$PROJECT_DIR$/pauli_channel_approximation.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="27" />
+    <option name="width" value="960" />
+    <option name="height" value="1053" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="randomized_controls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="randomized_controls" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../grove/grove" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="735a76bb-a5a5-4167-be56-d62d3baf2b17" name="Default" comment="" />
+      <created>1508287879932</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1508287879932</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11431624" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/GRAPE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="156" column="22" lean-forward="false" selection-start-line="156" selection-start-column="14" selection-end-line="156" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../grove/grove/alpha/deutsch_jozsa/deutsch_jozsa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1992">
+          <caret line="195" column="20" lean-forward="false" selection-start-line="195" selection-start-column="20" selection-end-line="195" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="224" column="50" lean-forward="false" selection-start-line="224" selection-start-column="50" selection-end-line="224" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

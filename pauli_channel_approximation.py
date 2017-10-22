@@ -118,135 +118,68 @@ class PCA(object):
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
 
-    def plot_control_fidelity(self, cnum):
-        # Vary over ith parameter
-        if self.detunings[cnum + 1] == 0:
-            return
-        values = np.linspace(-self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] * 3, 25)
-        control_fidelities = []
-        for value in values:
-            fidelities = []
-            controlset_unitaries = []
-            for controls in self.controlset:
-                newcontrols = deepcopy(controls)
-                ambient_hamiltonian = deepcopy(self.ambient_hamiltonian).astype("float")
-                if cnum >= 0:
-                    newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
-                if cnum == -1:
-                    ambient_hamiltonian *= float(value)
-                step_unitaries = control_unitaries(ambient_hamiltonian, self.control_hamiltonians, newcontrols, self.dt)
-                unitary = reduce(lambda a, b: a.dot(b), step_unitaries)
-                fidelity = np.trace(adjoint(self.target_operator).dot(unitary))
-                fidelity *= np.conj(fidelity)
-                fidelities.append(fidelity)
-                controlset_unitaries.append(unitary)
-            balanced = reduce(lambda a, b: a + b, [self.probs[i] * np.kron(np.conj(unitary), unitary) for i, unitary in
-                                                   enumerate(controlset_unitaries)])
-            balanced_fidelity = np.trace(
-                adjoint(balanced).dot(np.kron(np.conj(self.target_operator), self.target_operator)))
-            fidelities.append(-balanced_fidelity)
-            control_fidelities.append(fidelities)
-        control_fidelities = np.array(control_fidelities).T
-        for i, row in enumerate(control_fidelities[:-1]):
-            plt.plot(values, row)
-        plt.xlabel("Detuning for {}th controllable parameter in the Hamiltonian with mean 1.\n (-1 is uncontrollable, mean 0)".format(cnum))
-        plt.ylabel("Fidelity of the control.")
-        plt.title("Control Fidelity versus Detuning for the {}th control".format(cnum))
-        plt.legend()
-        plt.plot(values, -control_fidelities[-1], label="min", color='k', linewidth=2)
-        plt.tight_layout()
-        # import os
-        # i = 0
-        # while os.path.exists("image%s.png" % i):
-        #     i += 1
-        # plt.savefig("image%s.png" % i)
-        # plt.clf()
 
-    def plot_dpn(self, cnum, num_processors=7):
-        # Assume we vary the first free parameter
-        if self.detunings[cnum + 1] == 0:
-            return
-        basis = PAULIS
-        dim = self.target_operator.shape[0]
-        for _ in range(int(np.log2(dim) - 1)):
-            basis = [np.kron(base, pauli) for pauli in PAULIS for base in basis]
-        values = np.linspace(-self.detunings[cnum + 1], self.detunings[cnum + 1], 11)
-        control_fidelities = []
-        for value in values:
-            fidelities = []
-            controlset_unitaries = []
-            sops = []
-            for controls in self.controlset:
-                newcontrols = deepcopy(controls)
-                ambient_hamiltonian = deepcopy(self.ambient_hamiltonian).astype("float")
-                if cnum >= 0:
-                    newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
-                if cnum == -1:
-                    ambient_hamiltonian *= float(value)
-                step_unitaries = control_unitaries(ambient_hamiltonian, self.control_hamiltonians, newcontrols, self.dt)
-                unitary = reduce(lambda a, b: a.dot(b), step_unitaries)
-                sop = error_unitary(unitary, self.target_operator)
-                sops.append(sop)
-                fidelities.append(off_diagonal_projection(sop))
-                controlset_unitaries.append(unitary)
-            sop = reduce(lambda a, b: a + b, [prob * sops[i] for i, prob in enumerate(self.probs)])
-            fidelities.append(off_diagonal_projection(sop))
-            control_fidelities.append(fidelities)
-        control_fidelities = np.array(control_fidelities).T
-        for i, row in enumerate(control_fidelities[:-1, :]):
-            plt.plot(values, row)
-        plt.xlabel("Detuning for {}th controllable parameter in the Hamiltonian with mean 1.\n (-1 is uncontrollable, mean 0)".format(cnum))
-        plt.ylabel("Projection onto off diagonal elements of the PTM")
-        plt.title("Off diagonal contribution versus detuning for the {}th control".format(cnum))
-        plt.plot(values, control_fidelities[-1, :], label="min", color='k', linewidth=2)
-        plt.legend()
-        plt.semilogy()
-        plt.tight_layout()
-        # print self.probs
-        # import os
-        # i = 0
-        # while os.path.exists("image%s.png" % i):
-        #     i += 1
-        # plt.savefig("image%s.png" % i)
-        # plt.clf()
-        #
 
-    def plot_everything(self, num_processors=7):
+    def plot_everything(self, num_processors=7, num_points=3):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
-        pairs = []
+
         values_to_plot = []
         for detuning in self.detunings:
             # TODO make params
-            values = np.linspace(-detuning, detuning, 3)
+            values = np.linspace(-3 * detuning, 3 * detuning, num_points)
             values_to_plot.append(values)
         combinations = itertools.product(*values_to_plot)
-        control_fidelities = []
 
         pool = multiprocessing.Pool(num_processors)
         lst = [(self.controlset, self.ambient_hamiltonian, combo, self.dt,
                 self.control_hamiltonians, self.target_operator, self.probs)
                for combo in combinations]
-        projs = pool.map(compute_dpn_and_fid, lst)
+        projs_fidelities = pool.map(compute_dpn_and_fid, lst)
         pool.close()
+        projs = [pf[0] for pf in projs_fidelities]
+        fidelities = [pf[1] for pf in projs_fidelities]
+
+        # projs2 = []
+        # for proj in projs:
+        #     from numbers import Number
+        #     if not isinstance(proj, Number):
+        #         projs2.append(proj)
+        #
+        # projs = projs2
         projs = np.vstack(projs).T
+        fidelities = np.vstack(fidelities).T
+        plt.figure(1,  figsize=(16, 8))  # the first figure
+        plt.subplot(211)  # the first subplot in the first figure
         for i, row in enumerate(projs[:-1, :]):
             plt.plot(range(len(row)), row)
-        plt.plot(range(len(projs[-1, :])), projs[-1, :], label="min", color='k', linewidth=2)
+        plt.plot(range(len(projs[-1, :])), projs[-1, :], label="min", color='k', linewidth=2, zorder=10)
         plt.legend()
         plt.semilogy()
+
+
+        plt.subplot(212)  # the second subplot in the first figure
+        for i, row in enumerate(fidelities[:-1, :]):
+            plt.plot(range(len(row)), row)
+        plt.plot(range(len(fidelities[-1, :])), fidelities[-1, :], label="min", color='k', linewidth=2, zorder=10)
+        plt.legend()
         plt.tight_layout()
 
 
 def compute_dpn_and_fid(data):
-    controlset, ambient_hamiltonian, combo, dt, control_hamiltonians, target_operator, probs = data
+    controlset, ambient_hamiltonian0, combo, dt, control_hamiltonians, target_operator, probs = data
+    print("DOING COMBO {}".format(combo))
     fidelities = []
     projs = []
     sops = []
     controlset_unitaries = []
+    #
+    # for i, com in enumerate(combo):
+    #     if i != 0 and com != 0:
+    #         return 0
     for controls in controlset:
         newcontrols = deepcopy(controls)
-        ambient_hamiltonian = deepcopy(ambient_hamiltonian).astype("float")
+        ambient_hamiltonian = deepcopy(ambient_hamiltonian0).astype("float")
         for cnum, value in enumerate(combo):
             cnum -= 1
             if cnum >= 0:
@@ -261,11 +194,120 @@ def compute_dpn_and_fid(data):
         sops.append(sop)
         projs.append(off_diagonal_projection(sop))
         controlset_unitaries.append(unitary)
-
+        fidelity = np.trace(adjoint(target_operator).dot(unitary))/target_operator.shape[0]
+        fidelity *= np.conj(fidelity)
+        fidelities.append(fidelity)
     avg_sop = reduce(lambda a, b: a + b, [prob * sops[i] for i, prob in enumerate(probs)])
+
+    balanced = reduce(lambda a, b: a + b,
+                      [probs[i] * np.kron(np.conj(unitary), unitary) for i, unitary in
+                       enumerate(controlset_unitaries)])
+    balanced_fidelity = np.trace(
+        adjoint(balanced).dot(np.kron(np.conj(target_operator), target_operator)))/(target_operator.shape[0])**2
+
+    fidelities.append(balanced_fidelity)
     projs.append(off_diagonal_projection(avg_sop))
+
+    fidelities = np.array(fidelities).T
     projs = np.array(projs).T
-    return projs
+
+    return projs, fidelities
+
+# #Deprecated
+#     def plot_control_fidelity(self, cnum):
+#         # Vary over ith parameter
+#         if self.detunings[cnum + 1] == 0:
+#             return
+#         values = np.linspace(-self.detunings[cnum + 1] * 3, self.detunings[cnum + 1] * 3, 25)
+#         control_fidelities = []
+#         for value in values:
+#             fidelities = []
+#             controlset_unitaries = []
+#             for controls in self.controlset:
+#                 newcontrols = deepcopy(controls)
+#                 ambient_hamiltonian = deepcopy(self.ambient_hamiltonian).astype("float")
+#                 if cnum >= 0:
+#                     newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
+#                 if cnum == -1:
+#                     ambient_hamiltonian *= float(value)
+#                 step_unitaries = control_unitaries(ambient_hamiltonian, self.control_hamiltonians, newcontrols, self.dt)
+#                 unitary = reduce(lambda a, b: a.dot(b), step_unitaries)
+#                 fidelity = np.trace(adjoint(self.target_operator).dot(unitary))
+#                 fidelity *= np.conj(fidelity)
+#                 fidelities.append(fidelity)
+#                 controlset_unitaries.append(unitary)
+#             balanced = reduce(lambda a, b: a + b, [self.probs[i] * np.kron(np.conj(unitary), unitary) for i, unitary in
+#                                                    enumerate(controlset_unitaries)])
+#             balanced_fidelity = np.trace(
+#                 adjoint(balanced).dot(np.kron(np.conj(self.target_operator), self.target_operator)))
+#             fidelities.append(-balanced_fidelity)
+#             control_fidelities.append(fidelities)
+#         control_fidelities = np.array(control_fidelities).T
+#         for i, row in enumerate(control_fidelities[:-1]):
+#             plt.plot(values, row)
+#         plt.xlabel("Detuning for {}th controllable parameter in the Hamiltonian with mean 1.\n (-1 is uncontrollable, mean 0)".format(cnum))
+#         plt.ylabel("Fidelity of the control.")
+#         plt.title("Control Fidelity versus Detuning for the {}th control".format(cnum))
+#         plt.legend()
+#         plt.plot(values, -control_fidelities[-1], label="min", color='k', linewidth=2)
+#         plt.tight_layout()
+#         # import os
+#         # i = 0
+#         # while os.path.exists("image%s.png" % i):
+#         #     i += 1
+#         # plt.savefig("image%s.png" % i)
+#         # plt.clf()
+#
+# # Deprecated
+#     def plot_dpn(self, cnum, num_processors=7):
+#         # # Assume we vary the first free parameter
+#         # if self.detunings[cnum + 1] == 0:
+#         #     return
+#         basis = PAULIS
+#         dim = self.target_operator.shape[0]
+#         for _ in range(int(np.log2(dim) - 1)):
+#             basis = [np.kron(base, pauli) for pauli in PAULIS for base in basis]
+#         values = np.linspace(-self.detunings[cnum + 1], self.detunings[cnum + 1], 3)
+#         control_fidelities = []
+#         for value in values:
+#             fidelities = []
+#             controlset_unitaries = []
+#             sops = []
+#             for controls in self.controlset:
+#                 newcontrols = deepcopy(controls)
+#                 ambient_hamiltonian = deepcopy(self.ambient_hamiltonian).astype("float")
+#                 if cnum >= 0:
+#                     newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
+#                 if cnum == -1:
+#                     ambient_hamiltonian *= float(value)
+#                 step_unitaries = control_unitaries(ambient_hamiltonian, self.control_hamiltonians, newcontrols, self.dt)
+#                 unitary = reduce(lambda a, b: a.dot(b), step_unitaries)
+#                 sop = error_unitary(unitary, self.target_operator)
+#                 sops.append(sop)
+#                 fidelities.append(off_diagonal_projection(sop))
+#                 controlset_unitaries.append(unitary)
+#             sop = reduce(lambda a, b: a + b, [prob * sops[i] for i, prob in enumerate(self.probs)])
+#             fidelities.append(off_diagonal_projection(sop))
+#             control_fidelities.append(fidelities)
+#         control_fidelities = np.array(control_fidelities).T
+#         for i, row in enumerate(control_fidelities[:-1, :]):
+#             plt.plot(values, row)
+#         plt.xlabel("Detuning for {}th controllable parameter in the Hamiltonian with mean 1.\n (-1 is uncontrollable, mean 0)".format(cnum))
+#         plt.ylabel("Projection onto off diagonal elements of the PTM")
+#         plt.title("Off diagonal contribution versus detuning for the {}th control".format(cnum))
+#         plt.plot(values, control_fidelities[-1, :], label="min", color='k', linewidth=2)
+#         plt.legend()
+#         plt.semilogy()
+#         plt.tight_layout()
+#         # print self.probs
+#         # import os
+#         # i = 0
+#         # while os.path.exists("image%s.png" % i):
+#         #     i += 1
+#         # plt.savefig("image%s.png" % i)
+#         # plt.clf()
+#         #
+#
 
 
 def load_pca(filename):
@@ -307,18 +349,18 @@ def generate_report(filename):
     image_locs.append(report_dir + "/control_dpn_all")
     plt.savefig(report_dir + "/control_dpn_all")
     plt.clf()
-
-    for i in range(len(pca.control_hamiltonians) + 1):
-        pca.plot_control_fidelity(i - 1)
-        control_fid_loc = report_dir + "/control_fid_{}".format(i)
-        image_locs.append("control_fid_{}".format(i))
-        plt.savefig(control_fid_loc)
-        plt.clf()
-        pca.plot_dpn(i - 1)
-        off_diag_loc = report_dir + "/off_diag_{}".format(i)
-        image_locs.append("off_diag_{}".format(i))
-        plt.savefig(off_diag_loc)
-        plt.clf()
+    #
+    # for i in range(len(pca.control_hamiltonians) + 1):
+    #     pca.plot_control_fidelity(i - 1)
+    #     control_fid_loc = report_dir + "/control_fid_{}".format(i)
+    #     image_locs.append("control_fid_{}".format(i))
+    #     plt.savefig(control_fid_loc)
+    #     plt.clf()
+    #     pca.plot_dpn(i - 1)
+    #     off_diag_loc = report_dir + "/off_diag_{}".format(i)
+    #     image_locs.append("off_diag_{}".format(i))
+    #     plt.savefig(off_diag_loc)
+    #     plt.clf()
 
     latex = r"""
 \documentclass{article}
@@ -349,12 +391,10 @@ def generate_report(filename):
 def generate_all_reports():
     import os
     for filename in os.listdir(os.getcwd()):
-        if filename.split('.')[-1] == "pkl":
+        if filename.split('.')[-1] == "pkl" and  "aws" in filename.split('.')[0]:
             generate_report(filename)
 
-
-if __name__ == "__main__":
-    generate_report("pickled_controls42.pkl")
+# if __name__ == "__main__":
     # np.random.seed(1000)
     # I = np.eye(2)
     # II = np.kron(I, I)
@@ -396,31 +436,31 @@ if __name__ == "__main__":
     # fh.close()
     #
 
-# if __name__ == "__main__":
-#     np.random.seed(1000)
-#     I = np.eye(2)
-#     X = np.array([[0, 1], [1, 0]])
-#     Y = np.array([[0, -1.j], [1.j, 0]])
-#     Z = np.array([[1, 0], [0, -1]])
-#     H = (Z + X)/np.sqrt(2)
-#     # applied multiplicatively
-#     ambient_hamiltonian = Z
-#     control_hamiltonians = [X, Y, Z]
-#     target_operator = X
-#     time = 2 * np.pi
-#     num_steps = 50
-#     threshold = 1 - .001
-#     num_controls = 5
-#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
-#               [0] + [.001 for _ in control_hamiltonians])
-#     print("TOOK {}".format(pca.time))
-#     import os
-#     i = 0
-#     while os.path.exists("pickled_controlsaws%s.pkl" % i):
-#         i += 1
-#     fh = open("pickled_controlsaws%s.pkl" % i, "wb")
-#     dill.dump(pca, fh)
-#     fh.close()
+if __name__ == "__main__":
+    np.random.seed(1000)
+    I = np.eye(2)
+    X = np.array([[0, 1], [1, 0]])
+    Y = np.array([[0, -1.j], [1.j, 0]])
+    Z = np.array([[1, 0], [0, -1]])
+    H = (Z + X)/np.sqrt(2)
+    # applied multiplicatively
+    ambient_hamiltonian = Z
+    control_hamiltonians = [X, Y, Z]
+    target_operator = H
+    time = 4 * np.pi
+    num_steps = 50
+    threshold = 1 - .001
+    num_controls = 5
+    pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
+              [.001] + [.001 for _ in control_hamiltonians])
+    print("TOOK {}".format(pca.time))
+    import os
+    i = 0
+    while os.path.exists("pickled_controls%s.pkl" % i):
+        i += 1
+    fh = open("pickled_controls%s.pkl" % i, "wb")
+    dill.dump(pca, fh)
+    fh.close()
 
     # if __name__ == "__main__":
     #     np.random.seed(1000)
