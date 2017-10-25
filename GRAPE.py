@@ -43,7 +43,7 @@ def control_unitaries(ambient_hamiltonian, control_hamiltonians, controls, dt):
     unitaries = []
     for row in controls:
         step_hamiltonian = [control * control_hamiltonians[i] for i, control in enumerate(row)]
-        evolution = scipy.linalg.expm(-1.j * dt * (ambient_hamiltonian + np.sum(step_hamiltonian, axis=0)))
+        evolution = scipy.linalg.expm(-1.j * dt * (np.sum(ambient_hamiltonian, axis=0) + np.sum(step_hamiltonian, axis=0)))
         unitaries.append(evolution)
     return unitaries
 
@@ -113,12 +113,12 @@ def grape_gradient(ambient_hamiltonian, control_hamiltonians, controls, dt, targ
 
 def comp_avg_perf(pair):
     combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator = pair
-    new_controls = [[control * (1 + combination[i+1][0]) for i, control in enumerate(row)]
+    new_controls = [[control * (1 + combination[i+len(ambient_hamiltonian)][0]) for i, control in enumerate(row)]
                     for row in controls]
     new_controls = np.array(new_controls).flatten()
     nonzero_detunings = np.array(detunings)[np.where(np.array(detunings) != 0)[0]]
     average_perf = reduce(lambda a, b: a * b, [comb[1] for comb in combination]) * \
-                    func(ambient_hamiltonian * (combination[0][0]), control_hamiltonians, new_controls, dt,
+                    func([ambient * combination[i][0] for ambient in ambient_hamiltonian], control_hamiltonians, new_controls, dt,
                          target_operator) / reduce(lambda a, b: a * b, nonzero_detunings)
     return average_perf
 
@@ -195,7 +195,7 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                                            target_operator)
         grad = lambda controls: grape_gradient(ambient_hamiltonian, control_hamiltonians, controls,
                                                dt, target_operator)
-    dimension = np.shape(ambient_hamiltonian)[0]
+    dimension = np.shape(ambient_hamiltonian[0])[0]
     disp = True
     ftol = (1-threshold)
     options = {"ftol": ftol,
@@ -229,13 +229,13 @@ if __name__ == "__main__":
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
-    ambient_hamiltonian = Z
+    ambient_hamiltonian = [Z, Y]
     control_hamiltonians = [X, Y, Z]
     target_operator = (X + Z)/np.sqrt(2)
     assert np.isclose(target_operator.dot(adjoint(target_operator)), np.eye(target_operator.shape[0])).all()
     time = 2 * np.pi
-    num_steps = 200
-    x = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, detunings=[.001] * (len(control_hamiltonians) + 1), threshold=.999)
+    num_steps = 50
+    x = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, detunings=[.001] * (len(control_hamiltonians) + len(ambient_hamiltonian)), threshold=.999)
     controls = x.reshape(-1, len(control_hamiltonians))
     print(reduce(lambda a, b: a.dot(b), control_unitaries(ambient_hamiltonian, control_hamiltonians, controls, time/num_steps)))
     plt.step(list(range(len(controls.flatten()))), controls.flatten())
@@ -252,7 +252,7 @@ if __name__ == "__main__":
     def ham(t):
         dt = time/num_steps
         x = controls
-        return ambient_hamiltonian * 0 + np.sum([control * control_hamiltonians[i] for i, control in enumerate(x[int(t/dt)])], axis=0)
+        return np.sum([control * control_hamiltonians[i] for i, control in enumerate(x[int(t/dt)])], axis=0)
 
 
     def schrodinger(t, y):

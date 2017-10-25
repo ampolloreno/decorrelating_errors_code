@@ -10,7 +10,7 @@ import subprocess
 import os.path
 import multiprocessing
 
-
+#Note ambient hamiltonian as been changed to a list of hamiltonians, but the name remains unchanged.
 
 I = np.eye(2)
 X = np.array([[0, 1], [1, 0]])
@@ -179,13 +179,13 @@ def compute_dpn_and_fid(data):
     #         return 0
     for controls in controlset:
         newcontrols = deepcopy(controls)
-        ambient_hamiltonian = deepcopy(ambient_hamiltonian0).astype("float")
+        ambient_hamiltonian = [deepcopy(ah).astype("float") for ah in ambient_hamiltonian0]
         for cnum, value in enumerate(combo):
-            cnum -= 1
+            cnum -= len(ambient_hamiltonian0)
             if cnum >= 0:
                 newcontrols[:, cnum] = newcontrols[:, cnum] * (1 + value)
-            if cnum == -1:
-                ambient_hamiltonian *= float(value)
+            if cnum < 0:
+                ambient_hamiltonian[cnum] *= float(value)
         step_unitaries = control_unitaries(ambient_hamiltonian,
                                            control_hamiltonians, newcontrols,
                                            dt)
@@ -394,6 +394,42 @@ def generate_all_reports():
         if filename.split('.')[-1] == "pkl" and  "aws" in filename.split('.')[0]:
             generate_report(filename)
 
+
+if __name__ == "__main__":
+    np.random.seed(1000)
+    I = np.eye(2)
+    X = np.array([[0, 1], [1, 0]])
+    Y = np.array([[0, -1.j], [1.j, 0]])
+    Z = np.array([[1, 0], [0, -1]])
+    CNOT = np.array([[1, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1], [0, 0, 1, 0]])
+    IZ = np.kron(I, Z)
+    ZI = np.kron(Z, I)
+    XI = np.kron(X, I)
+    IX = np.kron(I, X)
+    IY = np.kron(I, Y)
+    YI = np.kron(Y, I)
+
+    # applied multiplicatively
+    ambient_hamiltonian = [Z, X]
+    control_hamiltonians = [X, Y]
+    target_operator =
+    time = 4 * np.pi
+    num_steps = 50
+    threshold = 1 - .001
+    num_controls = 5
+    pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
+              num_steps, time, threshold,
+              [.001] + [.001 for _ in control_hamiltonians])
+    print("TOOK {}".format(pca.time))
+    import os
+    i = 0
+    while os.path.exists("pickled_controls%s.pkl" % i):
+        i += 1
+    fh = open("pickled_controls%s.pkl" % i, "wb")
+    dill.dump(pca, fh)
+    fh.close()
+
+####################################################################################################
 # if __name__ == "__main__":
     # np.random.seed(1000)
     # I = np.eye(2)
@@ -436,31 +472,31 @@ def generate_all_reports():
     # fh.close()
     #
 
-if __name__ == "__main__":
-    np.random.seed(1000)
-    I = np.eye(2)
-    X = np.array([[0, 1], [1, 0]])
-    Y = np.array([[0, -1.j], [1.j, 0]])
-    Z = np.array([[1, 0], [0, -1]])
-    H = (Z + X)/np.sqrt(2)
-    # applied multiplicatively
-    ambient_hamiltonian = Z
-    control_hamiltonians = [X, Y, Z]
-    target_operator = H
-    time = 4 * np.pi
-    num_steps = 50
-    threshold = 1 - .001
-    num_controls = 5
-    pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
-              [.001] + [.001 for _ in control_hamiltonians])
-    print("TOOK {}".format(pca.time))
-    import os
-    i = 0
-    while os.path.exists("pickled_controls%s.pkl" % i):
-        i += 1
-    fh = open("pickled_controls%s.pkl" % i, "wb")
-    dill.dump(pca, fh)
-    fh.close()
+# if __name__ == "__main__":
+#     np.random.seed(1000)
+#     I = np.eye(2)
+#     X = np.array([[0, 1], [1, 0]])
+#     Y = np.array([[0, -1.j], [1.j, 0]])
+#     Z = np.array([[1, 0], [0, -1]])
+#     H = (Z + X)/np.sqrt(2)
+#     # applied multiplicatively
+#     ambient_hamiltonian = Z
+#     control_hamiltonians = [X, Y, Z]
+#     target_operator = H
+#     time = 4 * np.pi
+#     num_steps = 50
+#     threshold = 1 - .001
+#     num_controls = 5
+#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
+#               [.001] + [.001 for _ in control_hamiltonians])
+#     print("TOOK {}".format(pca.time))
+#     import os
+#     i = 0
+#     while os.path.exists("pickled_controls%s.pkl" % i):
+#         i += 1
+#     fh = open("pickled_controls%s.pkl" % i, "wb")
+#     dill.dump(pca, fh)
+#     fh.close()
 
     # if __name__ == "__main__":
     #     np.random.seed(1000)
