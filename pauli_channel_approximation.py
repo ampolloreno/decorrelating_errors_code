@@ -346,8 +346,8 @@ def generate_report(filename):
         pass
     image_locs = []
     pca.plot_everything()
-    image_locs.append(report_dir + "/control_dpn_all")
-    plt.savefig(report_dir + "/control_dpn_all")
+    image_locs.append(report_dir + "/control_dpn_all.png")
+    plt.savefig(report_dir + "/control_dpn_all.png")
     plt.clf()
     #
     # for i in range(len(pca.control_hamiltonians) + 1):

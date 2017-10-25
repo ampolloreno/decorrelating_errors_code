@@ -1,0 +1,2309 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.10.13)  23 OCT 2017 23:48
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**report.tex
+(./report.tex
+LaTeX2e <2017/01/01> patch level 3
+Babel <3.9r> and hyphenation patterns for 5 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
+\Gm@bindingoffset=\dimen105
+\Gm@wd@mp=\dimen106
+\Gm@odd@mp=\dimen107
+\Gm@even@mp=\dimen108
+\Gm@layoutwidth=\dimen109
+\Gm@layoutheight=\dimen110
+\Gm@layouthoffset=\dimen111
+\Gm@layoutvoffset=\dimen112
+\Gm@dimlist=\toks15
+)
+No file report.aux.
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count91
+\scratchdimen=\dimen113
+\scratchbox=\box26
+\nofMPsegments=\count92
+\nofMParguments=\count93
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count94
+\MPscratchDim=\dimen114
+\MPnumerator=\count95
+\makeMPintoPDFobject=\count96
+\everyMPtoPDFconversion=\toks17
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(2.84526pt, 608.60448pt, 2.84526pt)
+* v-part:(T,H,B)=(2.84526pt, 789.27946pt, 2.84526pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=608.60448pt
+* \textheight=789.27946pt
+* \oddsidemargin=-69.42473pt
+* \evensidemargin=-69.42473pt
+* \topmargin=-106.42473pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.08863389], [-0.21099966], [-0.20881202], [-0.05367762], [-0
+.23352613], [-0.07193736], [-0.11113997], [-0.13303542], [-0.12369485], [-0.262
+80021],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.13679651], [-0.15422204], [-0.18539474], [-0.20341456], [-0
+.2132176 ], [-0.23003044], [-0.18831162], [-0.29698033], [-0.36999593], [-0.201
+96708],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.26707672], [-0.23840277], [-0.25371784], [-0.27412983], [-0
+.40277789], [-0.37277303], [-0.31947932], [-0.30467671], [-0.29498342], [-0.384
+99508],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.36656146], [-0.31672736], [-0.32876471], [-0.49166374], [-0
+.4817299 ], [-0.36255054], [-0.37416691], [-0.36612043], [-0.38236736], [-0.388
+74329],
+ []
+
+
+Overfull \hbox (10.28603pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.55864542], [-0.7328205 ], [-0.72513233], [-0.76847975], 
+[-0.58871559], [-0.59903211], [-0.6386754 ], [-0.78625958], [-0.76419899], [-0.
+62269036],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.62990891], [-0.75189163], [-0.62791902], [-0.6431676 ], [-0
+.64906292], [-0.85377212], [-0.70281196], [-0.67576429], [-0.8435883 ], [-0.845
+68261],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.68781531], [-0.84729577], [-0.85676308], [-0.80797053], [-0
+.78867962], [-0.77402186], [-0.72417488], [-0.8285513 ], [-0.90386658], [-0.903
+67837],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.78745052], [-0.85527993], [-0.76059369], [-0.74269994], [-0
+.84175168], [-0.79618698], [-0.78565796], [-0.79352807], [-0.86128138], [-0.852
+84347],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.83585004], [-0.83128695], [-0.84939909], [-1.06808518], [-0
+.87434948], [-0.99603338], [-1.07485681], [-0.89026019], [-0.99422673], [-0.874
+15133],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-1.09677442], [-1.08786802], [-1.06922417], [-0.85602327], [-0
+.97759187], [-0.88121164], [-0.91438464], [-1.00714293], [-0.99245505], [-0.856
+46371],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.97233004], [-0.85581704], [-0.88094344], [-0.94595382], [-1
+.13056251], [-0.89800212], [-0.92134709], [-0.93694092], [-0.88038166], [-1.109
+57532],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.90101887], [-1.01279486], [-1.07222772], [-1.0677077 ], [-1
+.03387776], [-0.90311771], [-0.90526207], [-0.89880463], [-1.06906859], [-1.022
+26891],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.91978315], [-1.14863615], [-1.02060394], [-0.92171951], [-0
+.8953272 ], [-0.99276407], [-0.91767202], [-1.0501371 ], [-0.87191979], [-0.879
+78882],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.9410502 ], [-0.88974005], [-0.94756688], [-0.86273523], [-0
+.99996256], [-0.93752123], [-0.90777337], [-1.08708162], [-0.93156379], [-0.915
+35562],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.88289821], [-1.10163519], [-0.84744331], [-0.83208379], [-0
+.90892967], [-1.04368441], [-1.00631539], [-0.83390415], [-1.05481791], [-1.042
+01502],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.8256463 ], [-0.80290403], [-1.05556763], [-0.79725423], [-0
+.99069658], [-0.98893407], [-0.80423146], [-0.87444904], [-0.80832352], [-0.826
+35363],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.78406928], [-0.82280017], [-0.82287897], [-0.80015549], [-0
+.78451689], [-0.74689501], [-0.7685219 ], [-0.85797111], [-0.79043747], [-0.752
+60318],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.72921896], [-0.73470648], [-0.74114132], [-0.73244981], [-0
+.75266307], [-0.88662799], [-0.71997749], [-0.71171989], [-0.79492823], [-0.722
+01303],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.63009611], [-0.63606179], [-0.79253622], [-0.61261592], [-0
+.65486297], [-0.59378753], [-0.59278374], [-0.63046134], [-0.60233041], [-0.697
+79388],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.73696279], [-0.73315706], [-0.73263872], [-0.54167598], [-0
+.5435489 ], [-0.68350393], [-0.52094008], [-0.69208163], [-0.50813156], [-0.604
+77423],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.41353746], [-0.56848024], [-0.39991637], [-0.55789652], 
+[-0.44882027], [-0.36892971], [-0.39578612], [-0.41614149], [-0.42820673], [-0.
+33621125],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.33264711], [-0.32266263], [-0.32527162], [-0.41429824], [-0
+.40995533], [-0.31921936], [-0.32673338], [-0.40633295], [-0.38515008], [-0.429
+64669],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.26335381], [-0.29077216], [-0.21453979], [-0.33600155], [-0
+.26721929], [-0.24538625], [-0.17528343], [-0.33354429], [-0.24176533], [-0.194
+28174],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.17967002], [-0.1505576 ], [-0.28269189], [-0.28424854], [-0
+.27933485], [-0.17495438], [-0.08670836], [-0.13310775], [-0.11664697], [-0.062
+03104],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.19736952], [-0.14000052], [-0.17824332], [-0.10615051], [-0
+.18484884], [-0.15875238], [-0.17032791], [-0.00876114], [-0.03123426], [-0.106
+67768],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.08685156], [-0.15348835], [-0.10762806], [-0.13861034], [-0
+.13975622], [-0.19700807], [-0.11896694], [-0.15293832], [-0.25260121], [-0.312
+94102],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.24638208], [-0.2222147 ], [-0.33649583], [-0.18890804], [-0
+.24550664], [-0.19453448], [-0.24001439], [-0.21759223], [-0.24975781], [-0.260
+06283],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.37403811], [-0.42283004], [-0.37575526], [-0.39752647], [-0
+.33790846], [-0.44466632], [-0.29067872], [-0.35140365], [-0.30043858], [-0.302
+96035],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.31023617], [-0.31719888], [-0.47492285], [-0.48250214], [-0
+.53978486], [-0.35287824], [-0.44863199], [-0.37567192], [-0.46554309], [-0.541
+15032],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.55137736], [-0.43518131], [-0.40091029], [-0.55184371], [-0
+.4133219 ], [-0.61872301], [-0.42719307], [-0.61246559], [-0.5801023 ], [-0.447
+66372],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.45392228], [-0.54465798], [-0.48853302], [-0.63284282], [-0
+.53460951], [-0.52922317], [-0.65352533], [-0.4997085 ], [-0.54349789], [-0.647
+55561],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.58376365], [-0.51659635], [-0.52080074], [-0.52469578], [-0
+.69307094], [-0.54027889], [-0.56900302], [-0.55230309], [-0.5494335 ], [-0.680
+81339],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.60201509], [-0.77141255], [-0.63150496], [-0.66285104], [-0
+.73829625], [-0.57742945], [-0.62708174], [-0.80965498], [-0.60690063], [-0.771
+27261],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.65540315], [-0.64056383], [-0.87115766], [-0.66640116], [-0
+.66288635], [-0.74188519], [-0.65740045], [-0.6625496 ], [-0.67519742], [-0.667
+59958],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.70916854], [-0.78842371], [-0.75438755], [-0.82902997], 
+[-0.70985902], [-0.75277433], [-0.72448584], [-0.82597147], [-0.77889385], [-0.
+83265693],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.79743774], [-0.7627057 ], [-0.77435893], [-0.76696578], [-0
+.88024652], [-0.92032586], [-0.89425034], [-0.74608218], [-0.74361176], [-0.739
+07963],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.76579866], [-0.75456695], [-0.79113274], [-0.73674861], [-0
+.76350896], [-0.87337994], [-0.74964701], [-0.76827594], [-0.78447762], [-0.759
+38123],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.79372602], [-0.75189411], [-0.74907036], [-0.79779593], [-0
+.78889707], [-0.78672942], [-0.90501055], [-0.75212008], [-0.79925893], [-0.772
+05399],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.76859657], [-0.75322648], [-0.76032434], [-0.9653028 ], [-0
+.77852029], [-0.77324748], [-0.89023167], [-0.75850858], [-0.80524503], [-0.896
+17172],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.97933943], [-0.77822769], [-0.78496658], [-0.92213037], [-0
+.79039263], [-0.8723383 ], [-0.78073065], [-0.78037398], [-1.00080039], [-0.791
+79687],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.77470883], [-0.74074003], [-0.85061527], [-0.96350474], 
+[-0.80350016], [-0.79355697], [-0.83927193], [-0.73676211], [-0.95547276], [-0.
+83933678],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.93655226], [-0.73159202], [-0.72239108], [-0.71916709], [-0
+.94011222], [-0.84971143], [-0.93471092], [-0.70752497], [-0.74233833], [-0.698
+51226],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.92097337], [-0.71229799], [-0.72192108], [-0.69683952], [-0
+.68888453], [-0.82076367], [-0.83505829], [-0.7016914 ], [-0.85281918], [-0.812
+00753],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.60511835], [-0.58983456], [-0.59092425], [-0.58655787], [-0
+.79102553], [-0.57287483], [-0.66957437], [-0.62974958], [-0.56853719], [-0.549
+21826],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.58264928], [-0.55174545], [-0.58005818], [-0.73946084], [-0
+.68148817], [-0.58590572], [-0.52221472], [-0.51096593], [-0.64559083], [-0.501
+88327],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.49626752], [-0.62778435], [-0.48307734], [-0.4854576 ], [-0
+.47233316], [-0.4670195 ], [-0.63620981], [-0.45568308], [-0.44808931], [-0.473
+92273],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.35563667], [-0.30075776], [-0.30373005], [-0.42778187], [-0
+.32228931], [-0.25900594], [-0.31056579], [-0.26592218], [-0.28273882], [-0.265
+33659],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.27327823], [-0.20820101], [-0.23174324], [-0.32439399], [-0
+.34151357], [-0.21179275], [-0.17459355], [-0.33619054], [-0.31159564], [-0.189
+95464],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.23829456], [-0.27042933], [-0.17508798], [-0.22927936], [-0
+.18452659], [-0.25046292], [-0.10876956], [-0.26319678], [-0.08759976], [-0.162
+00894],
+ []
+
+
+Overfull \hbox (2.84158pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.20360159], [-0.03175114], [-0.12265791], [-0.19334644], [-0
+.1599486 ], [-0.09258237], [-0.14252279], [ 0.02540692], [-0.13364859], [ 0.022
+94515],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.55574272], [-0.5120667 ], [-0.46244442], [-0.45376347], [-0
+.54892073], [-0.42590215], [-0.41765122], [-0.60001563], [-0.41036689], [-0.384
+87596],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.3839925 ], [-0.4870529 ], [-0.35660425], [-0.35630061], [-0
+.50931106], [-0.38624395], [-0.32431721], [-0.40067822], [-0.38164976], [-0.465
+86465],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.34638728], [-0.2829744 ], [-0.27916682], [-0.43775764], [-0
+.27244125], [-0.30464501], [-0.30685666], [-0.22323549], [-0.39134045], [-0.200
+18071],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.22351502], [-0.22374032], [-0.15358158], [-0.14294196], [-0
+.21134041], [-0.08421937], [-0.03520653], [-0.08166668], [-0.09921099], [-0.153
+29467],
+ []
+
+
+Overfull \hbox (2.84158pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.16738852], [-0.12139525], [-0.01283011], [-0.13678582], [-0
+.1275273 ], [-0.03090007], [-0.04311101], [ 0.05541089], [-0.04881634], [ 0.056
+71623],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.21263564], [-0.2140912 ], [-0.36274588], [-0.24032782], [-0
+.35406284], [-0.2504268 ], [-0.34019111], [-0.27964437], [-0.44840264], [-0.412
+34774],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.62375839], [-0.49788993], [-0.50798211], [-0.51735768], [-0
+.66446978], [-0.65113424], [-0.70515864], [-0.55503634], [-0.74180593], [-0.570
+07577],
+ []
+
+
+Overfull \hbox (11.7305pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.58517136], [-0.59601194], [-0.80054489], [-0.76875603], [-0
+.61814094], [-0.63760304], [-0.64560887], [-0.6634024 ], [-0.75372532], [-0.684
+72674]]),
+ []
+
+
+Overfull \hbox (1.7305pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 0.63922204], [-0.47524563], [-0.64127019], [-0.46031311], [-0.4
+4674175], [-0.61353566], [-0.56628401], [-0.56638824], [-0.41840813], [-0.41123
+515],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.40963057], [-0.39537871], [-0.37782394], [-0.43781405], [-0
+.45753831], [-0.4050406 ], [-0.33523565], [-0.35687367], [-0.42958943], [-0.422
+01936],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.32775685], [-0.29644706], [-0.39949593], [-0.30172125], [-0
+.40788775], [-0.27249868], [-0.38162404], [-0.2411648 ], [-0.33095098], [-0.256
+52102],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.2179984 ], [-0.35082625], [-0.23542833], [-0.36934717], [-0
+.36181898], [-0.23293859], [-0.18283221], [-0.23897273], [-0.3039243 ], [-0.271
+61105],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.12114307], [-0.13399382], [-0.29314298], [-0.13963898], [-0
+.23158195], [-0.21887339], [-0.06421366], [-0.06231266], [-0.08544752], [-0.090
+15847],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.18998478], [-0.23072314], [-0.12813508], [-0.24415613], [-0
+.2096165 ], [-0.13497053], [-0.22679523], [-0.22302732], [-0.24723877], [-0.200
+10067],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.2616615 ], [-0.34159647], [-0.22024913], [-0.3476387 ], [-0
+.20400933], [-0.27717717], [-0.30289039], [-0.39943433], [-0.26669197], [-0.274
+16054],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.45671423], [-0.35708458], [-0.42615033], [-0.3724031 ], [-0
+.53709198], [-0.3936946 ], [-0.39090921], [-0.41977192], [-0.41611781], [-0.504
+59135],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.43671216], [-0.53862565], [-0.58075185], [-0.50277823], [-0
+.50408923], [-0.66192316], [-0.48264603], [-0.56416596], [-0.58287989], [-0.502
+11491],
+ []
+
+
+Overfull \hbox (21.28595pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 9.33999711e-01], [ 8.31612503e-01], [ 8.79260270e-01], [ 8.6693
+7196e-01], [ 1.02016539e+00], [ 8.90351915e-01], [ 9.60223633e-01], [ 1.0596730
+1e+00],
+ []
+
+
+Overfull \hbox (13.50804pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 1.34244693e-02], [ -1.20182109e-01], [ -1.25149134e-01], [ -1.0
+6331795e-01], [ 2.05265816e-02], [ -1.31934623e-01], [ -2.06355273e-02], [ 1.52
+589610e-
+ []
+
+
+Overfull \hbox (1.7305pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 0.23760218], [-0.20588552], [-0.19047595], [-0.29863456], [-0.1
+8461546], [-0.16095193], [-0.17331501], [-0.20181437], [-0.22638037], [-0.16639
+638],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.11455184], [-0.28929267], [-0.20412314], [-0.16296086], [-0
+.16565848], [-0.22039021], [-0.13006963], [-0.22002239], [-0.2238367 ], [-0.175
+60767],
+ []
+
+
+Overfull \hbox (3.9527pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.02383286], [-0.00579668], [-0.04036582], [-0.02874869], [ 0
+.01396676], [-0.0295798 ], [-0.12243219], [-0.13800791], [-0.09282664], [-0.089
+43694],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.12957529], [-0.17038154], [-0.24983938], [-0.10428084], [-0
+.25813855], [-0.13787984], [-0.27538764], [-0.17871279], [-0.20463313], [-0.225
+86489],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.32460099], [-0.2123587 ], [-0.24236324], [-0.24187005], [-0
+.33801183], [-0.26572337], [-0.31199674], [-0.33499727], [-0.26577446], [-0.269
+06324],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.30110708], [-0.30142672], [-0.27800046], [-0.41853812], [-0
+.33239597], [-0.34597356], [-0.3255274 ], [-0.35308045], [-0.33709922], [-0.356
+59406],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.36708153], [-0.53303337], [-0.53763548], [-0.55636991], [-0
+.47594716], [-0.44336743], [-0.57907354], [-0.55411892], [-0.57317237], [-0.462
+58553],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.48266261], [-0.46898094], [-0.49599312], [-0.49652299], [-0
+.51084224], [-0.50869987], [-0.53355811], [-0.68658066], [-0.64888065], [-0.653
+66013],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.60932997], [-0.5736912 ], [-0.58382825], [-0.65349805], [-0
+.60251904], [-0.61490317], [-0.75490155], [-0.63247582], [-0.64199935], [-0.652
+92631],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.23887654], [-0.27435541], [-0.22465856], [-0.18495181], 
+[-0.10616647], [-0.16957345], [-0.13641973], [-0.30766778], [-0.31374477], [-0.
+14259503],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.28428677], [-0.15802382], [-0.24235582], [-0.35704349], [-0
+.19409646], [-0.19230295], [-0.20763608], [-0.22450324], [-0.24601422], [-0.227
+07853],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.24878958], [-0.35261914], [-0.2632661 ], [-0.24958509], [-0
+.44638373], [-0.35030367], [-0.37590183], [-0.38158821], [-0.30786118], [-0.379
+18852],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.37708593], [-0.36414414], [-0.45549771], [-0.32659538], [-0
+.32272657], [-0.42926816], [-0.41523271], [-0.36066034], [-0.36288963], [-0.494
+32612],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.42205179], [-0.56647603], [-0.52258543], [-0.4492674 ], [-0
+.48917076], [-0.58447805], [-0.45349154], [-0.49352706], [-0.45851372], [-0.461
+32673],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.46779099], [-0.47143635], [-0.47660869], [-0.48096082], [-0
+.49129987], [-0.63727761], [-0.65596492], [-0.4976347 ], [-0.63628306], [-0.557
+16428],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.70181206], [-0.51354859], [-0.51696846], [-0.59020754], [-0
+.53355512], [-0.67291886], [-0.53209767], [-0.61421704], [-0.54842787], [-0.550
+23481],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.55917773], [-0.56291465], [-0.55429442], [-0.57229018], [-0
+.57205692], [-0.56297231], [-0.75257162], [-0.58083987], [-0.57550889], [-0.583
+86695],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.58254023], [-0.59858601], [-0.59077988], [-0.77646508], [-0
+.60687012], [-0.61373863], [-0.6197325 ], [-0.68545491], [-0.6140448 ], [-0.604
+75123],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.64209133], [-0.6547105 ], [-0.63368291], [-0.79839954], [-0
+.66403928], [-0.71173168], [-0.71526414], [-0.63445268], [-0.65288206], [-0.663
+88091],
+ []
+
+
+Overfull \hbox (2.50824pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.65947473], [-0.6731164 ], [-0.66725538], [-0.72533338], 
+[-0.69424243], [-0.67156917], [-0.68044047], [-0.68052797], [-0.69908977], [-0.
+9000463
+ []
+
+
+Overfull \hbox (13.06383pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.70207271], [-0.69148411], [-0.68463108], [-0.73364519], 
+[-0.73290492], [-0.69944696], [-0.7547913 ], [-0.68446275], [-0.69912693], [-0.
+68567413],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.85425778], [-0.73154467], [-0.68124346], [-0.79431945], [-0
+.68265407], [-0.70535646], [-0.69952357], [-0.7003112 ], [-0.70517648], [-0.801
+53403],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.82345268], [-0.70177267], [-0.70479524], [-0.87536039], [-0
+.69749008], [-0.72725245], [-0.68650418], [-0.76919148], [-0.79788347], [-0.715
+36992],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.70157252], [-0.68270502], [-0.70178339], [-0.6906989 ], [-0
+.68274727], [-0.69400105], [-0.74159934], [-0.6967415 ], [-0.80895992], [-0.757
+18717],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.87406274], [-0.67541547], [-0.85735555], [-0.71002633], [-0
+.67691446], [-0.68760608], [-0.68342104], [-0.87379526], [-0.69969339], [-0.830
+98477],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.68414112], [-0.68468668], [-0.66374796], [-0.87176257], [-0
+.69559743], [-0.68406838], [-0.68874329], [-0.68136415], [-0.6851009 ], [-0.803
+39897],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.61014735], [-0.66346811], [-0.76698201], [-0.61892208], [-0
+.61416458], [-0.60955859], [-0.59302257], [-0.68608366], [-0.62598776], [-0.626
+17885],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.70225881], [-0.71021974], [-0.68386543], [-0.64191816], [-0
+.57374972], [-0.72161751], [-0.5689698 ], [-0.67182303], [-0.55930407], [-0.613
+56439],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.75317973], [-0.54641027], [-0.53730301], [-0.67350701], [-0
+.52907339], [-0.5293323 ], [-0.63811456], [-0.51814635], [-0.5137505 ], [-0.512
+50277],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.64410673], [-0.51228441], [-0.61120957], [-0.62506786], [-0
+.48775885], [-0.48334222], [-0.47858921], [-0.47387559], [-0.46945537], [-0.562
+99638],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.56121138], [-0.52588955], [-0.44837778], [-0.52436892], [-0
+.43716579], [-0.58763033], [-0.42607453], [-0.46686839], [-0.42262423], [-0.562
+64285],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.40247704], [-0.47605998], [-0.40029947], [-0.4964393 ], [-0
+.37985573], [-0.38390007], [-0.52493327], [-0.38812909], [-0.36335405], [-0.382
+00413],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.39937692], [-0.44445066], [-0.36422535], [-0.33620369], [-0
+.3147914 ], [-0.40740914], [-0.32530583], [-0.29818558], [-0.28824879], [-0.315
+31885],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.39094567], [-0.27650982], [-0.26477371], [-0.28386746], [-0
+.30972939], [-0.24984384], [-0.42441783], [-0.28582461], [-0.27317522], [-0.254
+33305],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.34313409], [-0.33379008], [-0.25888505], [-0.34483508], [-0
+.17620463], [-0.20144191], [-0.31310734], [-0.17190886], [-0.19438802], [-0.328
+26227],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.18282124], [-0.18302372], [-0.21974943], [-0.21780469], [-0
+.23690279], [-0.18974323], [-0.0915418 ], [-0.13964956], [-0.0936639 ], [-0.257
+46219],
+ []
+
+
+Overfull \hbox (5.28604pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.54064929], [-0.43750482], [-0.43453974], [-0.42886294], 
+[-0.49964539], [-0.40774233], [-0.39992272], [-0.38450708], [-0.37798937], [-0.
+3991825
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.37664852], [-0.38977625], [-0.41318703], [-0.34430086], 
+[-0.33011669], [-0.32327048], [-0.35896118], [-0.28358454], [-0.44739125], [-0.
+37871107],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.28203433], [-0.30079764], [-0.24410301], [-0.25326295], [-0
+.24120172], [-0.24470629], [-0.23252021], [-0.35059849], [-0.20486885], [-0.300
+90517],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.23681075], [-0.16057999], [-0.13247672], [-0.20081313], [-0
+.15088118], [-0.13954935], [-0.27859299], [-0.13877879], [-0.20917627], [-0.227
+21127],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.13836289], [-0.08983052], [-0.02878143], [-0.16969187], [-0
+.18296101], [-0.05910987], [-0.22118731], [-0.12035303], [-0.24900533], [-0.174
+27464],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.12321179], [-0.18562525], [-0.27564406], [-0.14146276], [-0
+.30008927], [-0.25994558], [-0.18142604], [-0.18229153], [-0.29703704], [-0.207
+12763],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.57648647], [-0.51847152], [-0.58452663], [-0.53703067], 
+[-0.59074919], [-0.55631422], [-0.56789278], [-0.57724748], [-0.58658772], [-0.
+59376394],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.10826546], [-0.13563759], [-0.15962263], [-0.28583292], [-0
+.14819397], [-0.14019286], [-0.32039567], [-0.16383676], [-0.31881718], [-0.278
+39113],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.26918855], [-0.17394713], [-0.1945611 ], [-0.34965964], [-0
+.28798916], [-0.23427975], [-0.27388263], [-0.22397474], [-0.35353394], [-0.281
+19475],
+ []
+
+
+Overfull \hbox (13.06383pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.39797541], [-0.46529401], [-0.41546632], [-0.46151706], 
+[-0.41550337], [-0.5129592 ], [-0.47898007], [-0.44126464], [-0.48494057], [-0.
+44483464],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.62390345], [-0.51329225], [-0.51898856], [-0.52428675], [-0
+.62440423], [-0.55920476], [-0.66374516], [-0.63695174], [-0.54899023], [-0.555
+33638],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.5610366 ], [-0.62865241], [-0.67371801], [-0.56949655], [-0
+.57387119], [-0.58300552], [-0.73363531], [-0.5856614 ], [-0.70658365], [-0.799
+60651],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.59776365], [-0.70143557], [-0.78198576], [-0.60949687], [-0
+.61930938], [-0.64874282], [-0.61866931], [-0.7462108 ], [-0.63101933], [-0.636
+34228],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.63800853], [-0.71315379], [-0.76589703], [-0.66300165], [-0
+.67348153], [-0.86150822], [-0.69935116], [-0.67325159], [-0.77408163], [-0.670
+72186],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.66636232], [-0.75578865], [-0.66933762], [-0.77246333], [-0
+.80416096], [-0.73658146], [-0.69660368], [-0.87933569], [-0.87550291], [-0.766
+94894],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.70407742], [-0.71922759], [-0.75174444], [-0.70104339], [-0
+.70307854], [-0.70009858], [-0.72920344], [-0.71988772], [-0.84617317], [-0.848
+25898],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.72787796], [-0.72141915], [-0.74071145], [-0.73543329], [-0
+.94801647], [-0.71573696], [-0.73771151], [-0.86446584], [-0.80196351], [-0.908
+01316],
+ []
+
+
+Overfull \hbox (10.28603pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.7641371 ], [-0.78643443], [-0.76630183], [-0.75692206], 
+[-0.74094885], [-0.91262038], [-0.82656307], [-0.74831659], [-0.7530643 ], [-0.
+73877596],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.90826838], [-0.9578086 ], [-0.86188311], [-0.95799162], [-0
+.8799296 ], [-0.76330501], [-0.74048455], [-0.94746865], [-0.74799874], [-0.940
+52529],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.92537157], [-0.73633135], [-0.73724095], [-0.80133363], [-0
+.86465369], [-0.85939269], [-0.70691185], [-0.7067705 ], [-0.84835368], [-0.707
+36279],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.79893007], [-0.81483158], [-0.83526009], [-0.70271291], [-0
+.68975756], [-0.69468321], [-0.72885964], [-0.7024512 ], [-0.69885462], [-0.723
+74988],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.67938334], [-0.81139408], [-0.66587741], [-0.67263729], [-0
+.87044055], [-0.78693274], [-0.67076951], [-0.66079493], [-0.66280449], [-0.702
+58572],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.78212873], [-0.83427244], [-0.65397263], [-0.63216031], [-0
+.79264808], [-0.73946748], [-0.62809493], [-0.62319962], [-0.69609414], [-0.822
+62865],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.79994625], [-0.81353074], [-0.69589317], [-0.60005661], [-0
+.60112345], [-0.58939877], [-0.58753029], [-0.57997313], [-0.72750003], [-0.573
+03095],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.65312944], [-0.56663683], [-0.64085965], [-0.55305704], [-0
+.54850606], [-0.62926941], [-0.54016887], [-0.53503775], [-0.6499082 ], [-0.529
+40316],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.65937376], [-0.51524547], [-0.69287658], [-0.50631964], [-0
+.49917757], [-0.49594567], [-0.48820456], [-0.48303726], [-0.6502253 ], [-0.473
+10153],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.55145279], [-0.45860458], [-0.51030662], [-0.63316361], [-0
+.44126141], [-0.44206949], [-0.55811827], [-0.42862974], [-0.51190245], [-0.420
+61518],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.41442328], [-0.40474023], [-0.40080831], [-0.38942699], [-0
+.53978351], [-0.36889498], [-0.36747159], [-0.54595423], [-0.37077704], [-0.363
+06298],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.52916951], [-0.3333749 ], [-0.32410468], [-0.39281545], [-0
+.42780988], [-0.30367901], [-0.42539401], [-0.30854545], [-0.4722818 ], [-0.400
+81969],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.31502753], [-0.17978268], [-0.19240283], [-0.25510507], [-0
+.32483979], [-0.16393017], [-0.17648248], [-0.1376843 ], [-0.29030301], [-0.208
+90938],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.13251212], [-0.10152879], [-0.17338817], [-0.27333536], [-0
+.23509025], [-0.10653059], [-0.11487707], [-0.08422544], [-0.18504687], [-0.087
+62007],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.67059279], [-0.61413264], [-0.47384048], [-0.46318206], [-0
+.45239487], [-0.63209218], [-0.57021811], [-0.42187294], [-0.48025618], [-0.546
+86919],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.3871197 ], [-0.41798224], [-0.36535974], [-0.53125806], [-0
+.36213049], [-0.37547794], [-0.34163668], [-0.4196423 ], [-0.36371211], [-0.397
+23639],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.28925371], [-0.28431051], [-0.27678976], [-0.4312091 ], [-0
+.33746132], [-0.26026046], [-0.2289589 ], [-0.24635006], [-0.22241422], [-0.322
+18938],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.31230247], [-0.16130696], [-0.2061723 ], [-0.22330841], [-0
+.29774716], [-0.12748576], [-0.23890602], [-0.09749316], [-0.10973615], [-0.108
+64444],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.21861249], [-0.11258955], [-0.11703596], [-0.22326482], [-0
+.05566388], [-0.05824936], [-0.0537099 ], [-0.03488414], [-0.00428605], [-0.036
+11276],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.16261892], [-0.02977963], [-0.22642901], [-0.11869613], 
+[-0.08511887], [-0.11813858], [-0.21311264], [-0.11549283], [-0.27806713], [-0.
+12325364],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.12662711], [-0.19895524], [-0.24827509], [-0.23817057], [-0
+.17652896], [-0.17752392], [-0.28331647], [-0.21232915], [-0.27631344], [-0.235
+58399],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.36353004], [-0.39266257], [-0.42955747], [-0.37351687], [-0
+.39452997], [-0.29727803], [-0.31126574], [-0.4640082 ], [-0.32686054], [-0.388
+87486],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.3366355 ], [-0.46935161], [-0.37889035], [-0.39954442], [-0
+.42836776], [-0.39264526], [-0.55959341], [-0.41743278], [-0.52201771], [-0.439
+27286],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.63837005], [-0.45538177], [-0.56652889], [-0.64021748], [-0
+.67085629], [-0.53355588], [-0.54493758], [-0.66326409], [-0.52894667], [-0.532
+17918],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.54344496], [-0.60177847], [-0.64631237], [-0.5690091 ], [-0
+.58880206], [-0.75602244], [-0.61132081], [-0.62839375], [-0.65243885], [-0.794
+51689],
+ []
+
+
+Overfull \hbox (14.5083pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.64047175], [-0.80034973], [-0.67328707], [-0.72443539], [-0
+.70312873], [-0.68447265], [-0.70623991], [-0.90192972], [-0.71510666], [-0.757
+97571]]),
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.07005872], [-0.02743607], [-0.06368477], [-0.07887834], [-0
+.11429987], [-0.08073131], [-0.18296871], [-0.06373518], [-0.12029708], [-0.244
+41104],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.12217439], [-0.26339769], [-0.17515089], [-0.19615603], [-0
+.18002899], [-0.15258272], [-0.29207015], [-0.31010862], [-0.21576467], [-0.304
+98571],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.29345312], [-0.20345584], [-0.22586382], [-0.2008901 ], [-0
+.21834728], [-0.3777211 ], [-0.22056052], [-0.25797802], [-0.23320757], [-0.417
+53171],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.32500192], [-0.4434909 ], [-0.46492737], [-0.35206682], [-0
+.35406499], [-0.35660236], [-0.40366215], [-0.42672262], [-0.37899015], [-0.536
+77223],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.44964786], [-0.52288403], [-0.40937379], [-0.41156681], [-0
+.51688068], [-0.4311908 ], [-0.43489388], [-0.4419515 ], [-0.58062161], [-0.451
+01579],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.45699178], [-0.53088841], [-0.6534645 ], [-0.65153906], [-0
+.5548842 ], [-0.48554046], [-0.64989113], [-0.49606959], [-0.50051166], [-0.517
+39849],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.62777779], [-0.6058378 ], [-0.52267505], [-0.52802162], [-0
+.53895213], [-0.64341765], [-0.53787302], [-0.70661106], [-0.54663787], [-0.727
+07594],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.70188836], [-0.61566079], [-0.71827177], [-0.61351202], [-0
+.6363371 ], [-0.71792973], [-0.73338858], [-0.62425691], [-0.84227255], [-0.749
+72082],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.64639012], [-0.71649337], [-0.82873529], [-0.66796832], [-0
+.73223941], [-0.72785777], [-0.65528121], [-0.67822069], [-0.66691797], [-0.671
+50925],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.71431717], [-0.92288063], [-0.73647729], [-0.72806261], [-0
+.8660108 ], [-0.93204519], [-0.74398527], [-0.74628426], [-0.73745398], [-0.927
+19923],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.72274709], [-0.79263698], [-0.8202022 ], [-0.72584513], [-0
+.74689511], [-0.83780344], [-0.77201192], [-0.78919254], [-0.74150628], [-0.737
+47476],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.77794348], [-0.87551439], [-0.78999004], [-0.86293268], [-0
+.83852896], [-0.94846318], [-0.77107679], [-0.75335694], [-0.88340368], [-0.976
+89856],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.75148906], [-0.73338416], [-0.90139445], [-0.77707837], [-0
+.77826251], [-0.73796501], [-0.76712689], [-0.9540149 ], [-0.77481276], [-0.804
+41356],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.92995576], [-0.79974128], [-0.75551357], [-0.74421131], [-0
+.73269975], [-0.74924231], [-0.78435292], [-0.75160684], [-0.74367986], [-0.742
+97015],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.76205826], [-0.73175962], [-0.72440958], [-0.82673013], [-0
+.73845399], [-0.73583186], [-0.71615204], [-0.92726018], [-0.71355067], [-0.834
+25044],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.71293881], [-0.93214477], [-0.73347884], [-0.80103021], [-0
+.87884804], [-0.72231182], [-0.82843741], [-0.74552327], [-0.90889978], [-0.931
+49251],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.71508254], [-0.86763485], [-0.70231514], [-0.71290343], [-0
+.88390005], [-0.69540465], [-0.8287588 ], [-0.85112359], [-0.71182777], [-0.788
+37583],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.72297416], [-0.64005538], [-0.82387298], [-0.63565353], [-0
+.84412725], [-0.85036383], [-0.63767792], [-0.6734085 ], [-0.81840253], [-0.833
+61347],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.61226621], [-0.67893263], [-0.60213764], [-0.67207368], [-0
+.59357936], [-0.64612756], [-0.71552873], [-0.66002902], [-0.57932819], [-0.668
+79513],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.7314224 ], [-0.69359538], [-0.56286117], [-0.75003977], [-0
+.54623656], [-0.64721226], [-0.53837477], [-0.61523003], [-0.52934761], [-0.523
+44724],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.61426574], [-0.66437914], [-0.6189837 ], [-0.50207418], [-0
+.54943254], [-0.65096471], [-0.48670456], [-0.48151906], [-0.66943287], [-0.470
+05251],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.46425388], [-0.53644594], [-0.45118299], [-0.44766319], [-0
+.52387679], [-0.43765387], [-0.42753218], [-0.58261375], [-0.60086982], [-0.465
+75977],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.52646681], [-0.50708163], [-0.39687075], [-0.4148005 ], [-0
+.46256737], [-0.45405727], [-0.3630651 ], [-0.36580514], [-0.35573353], [-0.342
+11841],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.34356146], [-0.33178066], [-0.32815595], [-0.32388272], [-0
+.32290072], [-0.29944408], [-0.29419068], [-0.31155663], [-0.39365606], [-0.264
+98562],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.43931946], [-0.27870229], [-0.28503879], [-0.33901943], [-0
+.41600579], [-0.36994113], [-0.25002671], [-0.21803073], [-0.22907038], [-0.184
+07241],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.20325459], [-0.20156913], [-0.28510791], [-0.1666523 ], [-0
+.15555905], [-0.26818289], [-0.14422712], [-0.15408041], [-0.24839104], [-0.149
+96428],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.20444233], [-0.24307938], [-0.07514695], [-0.17047796], [-0
+.1635335 ], [-0.16968338], [-0.09813242], [-0.17985056], [-0.09663082], [-0.010
+43076],
+ []
+
+
+Overfull \hbox (6.7305pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.05695162], [-0.16921675], [-0.15335024], [-0.02867709], [-0
+.14570295], [-0.13043446], [-0.02770688], [-0.01307659], [ 0.01502987], [-0.004
+50751],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.18426299], [-0.11248433], [-0.06677364], [-0.16381086], [-0
+.21637447], [-0.10521179], [-0.06004297], [-0.10752507], [-0.10263617], [-0.082
+50227],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.11287072], [-0.11475323], [-0.09711195], [-0.21379136], [-0
+.14471355], [-0.17134183], [-0.19747508], [-0.27428095], [-0.16822207], [-0.250
+55694],
+ []
+
+
+Overfull \hbox (13.06383pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.27649165], [-0.25056024], [-0.27131844], [-0.34195773], 
+[-0.34313704], [-0.43607192], [-0.29850836], [-0.29783848], [-0.2891332 ], [-0.
+42680847],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.3051449 ], [-0.45984501], [-0.38158009], [-0.32015717], [-0
+.43321345], [-0.41025039], [-0.48454269], [-0.36417234], [-0.53309982], [-0.425
+17281],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.42797775], [-0.38610484], [-0.39556574], [-0.37945871], [-0
+.58331427], [-0.50207364], [-0.40976549], [-0.40993856], [-0.41329391], [-0.543
+07976],
+ []
+
+
+Overfull \hbox (13.06383pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.47530505], [-0.5714369 ], [-0.48539388], [-0.48939957], 
+[-0.49378024], [-0.54937688], [-0.54871806], [-0.68124169], [-0.51356814], [-0.
+51856815],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.52031131], [-0.71946257], [-0.52883385], [-0.53476573], [-0
+.54681997], [-0.69979595], [-0.60744869], [-0.55443528], [-0.55734299], [-0.581
+51385],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.65982735], [-0.63029281], [-0.56468554], [-0.57190219], [-0
+.70836961], [-0.5743206 ], [-0.66508027], [-0.67126089], [-0.58653753], [-0.592
+13441],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.73786085], [-0.60426539], [-0.66829652], [-0.60433644], [-0
+.63904038], [-0.62471292], [-0.6267028 ], [-0.62146743], [-0.73246598], [-0.789
+32549],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.69839758], [-0.62766023], [-0.63138225], [-0.67978045], [-0
+.73974968], [-0.63351338], [-0.65298604], [-0.64906921], [-0.65284009], [-0.665
+53117],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.64903808], [-0.83926032], [-0.67403328], [-0.66312814], [-0
+.67291163], [-0.66741136], [-0.70985743], [-0.68677806], [-0.67575379], [-0.791
+91086],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.75678809], [-0.67643226], [-0.71220454], [-0.7079606 ], [-0
+.67519032], [-0.80774748], [-0.81405996], [-0.67680623], [-0.71568042], [-0.703
+12243],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.81204809], [-0.8351607 ], [-0.69903218], [-0.86417717], [-0
+.86473997], [-0.70990631], [-0.69374078], [-0.69732094], [-0.85964114], [-0.708
+28072],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.71685765], [-0.68802277], [-0.90696651], [-0.80979845], [-0
+.71585581], [-0.70391455], [-0.71289305], [-0.70455209], [-0.71233963], [-0.749
+26808],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.70210663], [-0.69930698], [-0.71227614], [-0.79992961], [-0
+.90620013], [-0.75094551], [-0.71352754], [-0.85585254], [-0.7933388 ], [-0.722
+15152],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.73208794], [-0.69894841], [-0.70471209], [-0.71335747], [-0
+.79902465], [-0.79737356], [-0.78409351], [-0.80356631], [-0.70991482], [-0.696
+75899],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.68526514], [-0.70298415], [-0.69334873], [-0.81740081], [-0
+.68410266], [-0.68123319], [-0.70926588], [-0.70303715], [-0.69507774], [-0.687
+04748],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.83898147], [-0.70134575], [-0.67557522], [-0.72223204], [-0
+.67225187], [-0.69636735], [-0.69084936], [-0.68536607], [-0.66735358], [-0.683
+19069],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.82382664], [-0.88001243], [-0.6714951 ], [-0.69258072], [-0
+.86749052], [-0.65965619], [-0.70174936], [-0.64797338], [-0.65605585], [-0.641
+80865],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.66001365], [-0.64399428], [-0.64347436], [-0.64701248], [-0
+.63696078], [-0.62538861], [-0.84160796], [-0.80692093], [-0.63184845], [-0.628
+33078],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.61552363], [-0.72174448], [-0.63886783], [-0.71310013], [-0
+.60935979], [-0.59880601], [-0.62486371], [-0.60603586], [-0.61840773], [-0.730
+41909],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.64925102], [-0.58194458], [-0.5851261 ], [-0.76627936], [-0
+.58278738], [-0.68158406], [-0.58466639], [-0.64302536], [-0.56631736], [-0.555
+00135],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.64346821], [-0.64383036], [-0.65814583], [-0.54467298], [-0
+.53456994], [-0.63472703], [-0.52792478], [-0.63248044], [-0.52014113], [-0.626
+39393],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.64511078], [-0.50537678], [-0.59199848], [-0.63688954], [-0
+.53383462], [-0.52953634], [-0.64879371], [-0.47638702], [-0.4907044 ], [-0.636
+13636],
+ []
+
+
+Overfull \hbox (13.06383pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.41179559], [-0.4395468 ], [-0.40164131], [-0.57749235], 
+[-0.51944284], [-0.55747837], [-0.56166142], [-0.37066568], [-0.47892131], [-0.
+36253028],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.27172986], [-0.43002182], [-0.42824857], [-0.25299675], 
+[-0.42708555], [-0.24923235], [-0.29776209], [-0.23648592], [-0.40028788], [-0.
+22275516],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.16800081], [-0.13953664], [-0.29597473], [-0.15859538], [-0
+.15783399], [-0.1063497 ], [-0.12158195], [-0.10594437], [-0.09176149], [-0.094
+79397],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.1535235 ], [-0.22886114], [-0.16352352], [-0.13157151], [-0
+.13897264], [-0.06201034], [-0.05641204], [-0.10658553], [-0.11556442], [-0.113
+15285],
+ []
+
+
+Overfull \hbox (0.61935pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.02697466], [-0.05100311], [-0.01863065], [ 0.0216234 ], [ 0
+.04767518], [-0.06038122], [-0.07951584], [ 0.03712393], [-0.08899301], [ 0.053
+11461],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.57480493], [-0.69355051], [-0.6888875 ], [-0.52156598], [-0
+.51361688], [-0.50690383], [-0.67225132], [-0.48780547], [-0.47997123], [-0.613
+91445],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.56190067], [-0.38433184], [-0.36259479], [-0.44166707], [-0
+.3526492 ], [-0.39512918], [-0.44331397], [-0.31324255], [-0.32837934], [-0.492
+78554],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.39887248], [-0.28511058], [-0.29938786], [-0.26866816], [-0
+.26965631], [-0.31471424], [-0.33885204], [-0.37964429], [-0.22159812], [-0.243
+95456],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.22182191], [-0.27604916], [-0.30801811], [-0.19609843], [-0
+.22291501], [-0.26669819], [-0.32062555], [-0.16572738], [-0.15819742], [-0.142
+18905],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.12981781], [-0.14680791], [-0.25337982], [-0.10745592], [-0
+.13972693], [-0.1323666 ], [-0.1538591 ], [-0.23028218], [-0.11694217], [-0.075
+94011],
+ []
+
+
+Overfull \hbox (6.7305pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.14250616], [-0.18723304], [-0.19586382], [-0.08663306], [-0
+.05906167], [-0.01022764], [-0.05496263], [-0.00835002], [ 0.00365614], [-0.038
+67832],
+ []
+
+
+Overfull \hbox (2.28604pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.04040796], [-0.03389434], [-0.12142232], [ 0.04906483], [-0
+.00608642], [ 0.05233888], [ 0.03286182], [ 0.02099935], [-0.04671891], [ 0.041
+20849],
+ []
+
+
+Overfull \hbox (13.06383pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.09130295], [-0.06878395], [-0.20841401], [-0.17328031], 
+[-0.08902826], [-0.14774301], [-0.19705607], [-0.15670558], [-0.1214576 ], [-0.
+17259923],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.1820471 ], [-0.28122199], [-0.25943655], [-0.35943542], [-0
+.36970595], [-0.21608835], [-0.23191367], [-0.22063682], [-0.26439789], [-0.249
+85501],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.26142093], [-0.26379736], [-0.24186141], [-0.25222471], [-0
+.27097681], [-0.27529766], [-0.43742395], [-0.29042231], [-0.30301141], [-0.306
+41026],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.45655977], [-0.51625829], [-0.4723366 ], [-0.46239775], [-0
+.36469793], [-0.39136523], [-0.37797715], [-0.38294436], [-0.39099722], [-0.400
+87589],
+ []
+
+
+Overfull \hbox (13.06383pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.48716281], [-0.49563956], [-0.50757224], [-0.51115665], 
+[-0.66556938], [-0.52690704], [-0.5407975 ], [-0.54211621], [-0.56753152], [-0.
+71941746],
+ []
+
+
+Overfull \hbox (13.06383pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.49055774], [-0.42414342], [-0.4775003 ], [-0.38198604], 
+[-0.37404274], [-0.36427975], [-0.34891695], [-0.33970182], [-0.32570773], [-0.
+37228989],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.30935316], [-0.30756247], [-0.4535478 ], [-0.29545147], [-0
+.45116977], [-0.26057351], [-0.33466256], [-0.25828954], [-0.24043404], [-0.222
+61799],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.21102706], [-0.21519567], [-0.19876072], [-0.22205655], [-0
+.2637109 ], [-0.18807193], [-0.27505572], [-0.24458945], [-0.16942466], [-0.208
+47403],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.23259105], [-0.24617434], [-0.24619776], [-0.10148915], [-0
+.1437656 ], [-0.10228123], [-0.12553894], [-0.19372249], [-0.20932844], [-0.128
+07183],
+ []
+
+
+Overfull \hbox (2.84158pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.00904194], [-0.09408798], [-0.14374159], [-0.0323678 ], [-0
+.11188248], [ 0.00492629], [-0.08451948], [ 0.00195511], [-0.05823433], [-0.084
+82598],
+ []
+
+
+Overfull \hbox (1.17493pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.07389328], [-0.01506621], [-0.03571511], [-0.04053338], [ 0
+.01527991], [ 0.05904588], [ 0.09447633], [ 0.09590337], [ 0.06304692], [ 0.033
+14105],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.09397955], [-0.22411249], [-0.20159038], [-0.26042218], [-0
+.14239645], [-0.13312504], [-0.24588587], [-0.27313133], [-0.23037485], [-0.227
+19031],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.3603637 ], [-0.19029235], [-0.30231971], [-0.30259675], [-0
+.24864511], [-0.23955174], [-0.25869961], [-0.26020283], [-0.29345179], [-0.274
+48703],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.28620342], [-0.4300901 ], [-0.49038061], [-0.37557912], [-0
+.32626175], [-0.33925737], [-0.48959016], [-0.52031425], [-0.49141892], [-0.437
+56628],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.51100404], [-0.38759736], [-0.4240248 ], [-0.40923715], [-0
+.4176132 ], [-0.42369114], [-0.43540384], [-0.44351015], [-0.45347059], [-0.462
+10398],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.47310282], [-0.47994808], [-0.52916495], [-0.5769674 ], [-0
+.51334406], [-0.52316736], [-0.52315925], [-0.58443055], [-0.5505437 ], [-0.549
+84451],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.56772708], [-0.58628856], [-0.5779429 ], [-0.75082303], [-0
+.78917634], [-0.62331676], [-0.61199672], [-0.76689607], [-0.64232912], [-0.702
+20062],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.5516584 ], [-0.60077925], [-0.48289393], [-0.50626984], [-0
+.46816027], [-0.45126087], [-0.54136379], [-0.43879057], [-0.42467247], [-0.546
+38198],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.47695733], [-0.40644023], [-0.55170975], [-0.3709338 ], [-0
+.38292462], [-0.35820944], [-0.41667119], [-0.35497303], [-0.34575992], [-0.326
+26526],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.26040407], [-0.13753032], [-0.11844882], [-0.24670523], 
+[-0.12880981], [-0.17796004], [-0.05854331], [-0.04205369], [-0.05306904], [-0.
+11827929],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.20369886], [-0.22375658], [-0.21090774], [-0.09794598], [-0
+.10418051], [-0.13719134], [-0.14266197], [-0.22814877], [-0.11121471], [-0.152
+06423],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.1129658 ], [-0.1430053 ], [-0.17415956], [-0.23857674], [-0
+.15479725], [-0.30462768], [-0.17760397], [-0.25687778], [-0.25164761], [-0.225
+32258],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.25002644], [-0.22933723], [-0.24730038], [-0.25257548], [-0
+.28369645], [-0.45285094], [-0.42949479], [-0.29458431], [-0.29740735], [-0.324
+78524],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.36280538], [-0.34833302], [-0.33795559], [-0.36685204], [-0
+.38024419], [-0.38679482], [-0.3860748 ], [-0.46546032], [-0.40084195], [-0.416
+39395],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.42156301], [-0.43041866], [-0.44779241], [-0.45248613], [-0
+.47750626], [-0.65253076], [-0.48275905], [-0.67970567], [-0.69294651], [-0.566
+63258],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.54505643], [-0.58646357], [-0.55741132], [-0.60808138], [-0
+.56497758], [-0.5828285 ], [-0.5819637 ], [-0.63275776], [-0.77379263], [-0.610
+79427],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.12259228], [-0.06383245], [-0.18658321], [-0.0809324 ], [-0
+.12074404], [-0.18648695], [-0.11217701], [-0.16226201], [-0.25033123], [-0.240
+13736],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.30088911], [-0.13522845], [-0.20091482], [-0.14323538], [-0
+.32267801], [-0.3414971 ], [-0.29762604], [-0.23840748], [-0.34388283], [-0.306
+59733],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.28535299], [-0.28202386], [-0.35876949], [-0.31822116], [-0
+.35026708], [-0.32494482], [-0.44927111], [-0.37645362], [-0.33445225], [-0.439
+21781],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.48319946], [-0.4979236 ], [-0.35569873], [-0.37041123], [-0
+.38489689], [-0.3770232 ], [-0.38855675], [-0.52620382], [-0.40078596], [-0.398
+92319],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.47009821], [-0.47486452], [-0.48211757], [-0.48654484], [-0
+.67976105], [-0.49870634], [-0.5638775 ], [-0.50744051], [-0.51246725], [-0.520
+98695],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.63706658], [-0.56886622], [-0.53705776], [-0.71048817], [-0
+.57562171], [-0.55068542], [-0.5568742 ], [-0.74310623], [-0.5604062 ], [-0.571
+27748],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.56916112], [-0.57319791], [-0.69615233], [-0.62389945], [-0
+.59754094], [-0.59194986], [-0.77070572], [-0.60372072], [-0.6049096 ], [-0.725
+47823],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.61183453], [-0.77748996], [-0.78723738], [-0.62283486], [-0
+.73353011], [-0.64124747], [-0.6416642 ], [-0.65705654], [-0.73579793], [-0.638
+65769],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.81623043], [-0.84775328], [-0.66352247], [-0.7396351 ], [-0
+.82353882], [-0.87199331], [-0.75340534], [-0.67030248], [-0.87223367], [-0.750
+07894],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.88516203], [-0.83444777], [-0.86593168], [-0.72902937], [-0
+.73693664], [-0.71935057], [-0.80067716], [-0.78113168], [-0.76196697], [-0.890
+51581],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.73692044], [-0.77520342], [-0.76218086], [-0.91344025], [-0
+.75616238], [-0.83829463], [-0.7673299 ], [-0.94070081], [-0.73929432], [-0.862
+56645],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.76307638], [-0.74568137], [-0.73425758], [-0.73946335], [-0
+.73721743], [-0.74749775], [-0.96988942], [-0.76293033], [-0.73102176], [-0.767
+60768],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.73365988], [-0.74283009], [-0.90595134], [-0.71921283], 
+[-0.92434183], [-0.75504122], [-0.82627022], [-0.80631812], [-0.71157447], [-0.
+91943483],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.79763879], [-0.65760248], [-0.76547557], [-0.65119466], [-0
+.75097887], [-0.83864156], [-0.64150107], [-0.63989708], [-0.77672492], [-0.809
+34166],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.63542517], [-0.62391378], [-0.6242091 ], [-0.63494231], [-0
+.6126782 ], [-0.80921028], [-0.60448634], [-0.61852429], [-0.72818966], [-0.597
+38752],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.60352084], [-0.63316257], [-0.75503076], [-0.74169377], [-0
+.60766628], [-0.57604708], [-0.6522118 ], [-0.56983856], [-0.65319181], [-0.560
+86254],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.68669596], [-0.55133469], [-0.54263272], [-0.54087739], [-0
+.53238849], [-0.54607363], [-0.63604184], [-0.51834998], [-0.57974975], [-0.507
+67868],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.50371513], [-0.67202422], [-0.49193366], [-0.4870966 ], [-0
+.48085064], [-0.47586863], [-0.62989514], [-0.58888793], [-0.58068893], [-0.511
+54049],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.50216294], [-0.44012145], [-0.62913663], [-0.55766512], [-0
+.46900534], [-0.5679593 ], [-0.51255245], [-0.4962753 ], [-0.58301462], [-0.454
+96194],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.4673464 ], [-0.38066869], [-0.49203889], [-0.51549316], [-0
+.40432482], [-0.42892608], [-0.51726742], [-0.35055095], [-0.32860881], [-0.337
+69875],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.29834884], [-0.23320324], [-0.22033244], [-0.21660099], [-0
+.22080269], [-0.27326542], [-0.19978236], [-0.22672487], [-0.22030072], [-0.204
+49452],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.13729767], [-0.2322854 ], [-0.12203687], [-0.09926273], [-0
+.22729093], [-0.04582372], [-0.20777092], [-0.07148825], [-0.06347302], [-0.028
+77317],
+ []
+
+
+Overfull \hbox (1.7305pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 0.86567117], [-0.85099698], [-0.93256896], [-0.73930866], [-0.7
+1790959], [-0.71148344], [-0.71008223], [-0.70669539], [-0.83509116], [-0.78011
+168],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.72693087], [-0.66761074], [-0.65717639], [-0.76378889], [-0
+.62180606], [-0.78515156], [-0.62172149], [-0.59647376], [-0.62448131], [-0.668
+31588],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.64730342], [-0.69055499], [-0.7265333 ], [-0.53814843], [-0
+.61588877], [-0.52741559], [-0.51456331], [-0.50258271], [-0.49119638], [-0.481
+66772],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.47158308], [-0.53098408], [-0.45036772], [-0.44268053], [-0
+.43341887], [-0.60819607], [-0.40831617], [-0.39814746], [-0.39044195], [-0.460
+08826],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.36638917], [-0.36554951], [-0.35745874], [-0.35347576], [-0
+.37252414], [-0.36541244], [-0.33720544], [-0.42214526], [-0.32240248], [-0.284
+57356],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.4342397 ], [-0.26204266], [-0.34429726], [-0.2774064 ], [-0
+.33642133], [-0.33024589], [-0.19912601], [-0.19091226], [-0.25979421], [-0.168
+96539],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.32722761], [-0.15713006], [-0.13726104], [-0.30855377], [-0
+.24940812], [-0.17266236], [-0.15225357], [-0.07237867], [-0.13254842], [-0.068
+67235],
+ []
+
+
+Overfull \hbox (6.7305pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.15358843], [-0.03793101], [-0.02292615], [-0.16227597], [-0
+.08055633], [-0.04319431], [-0.00844806], [ 0.00762409], [-0.07477538], [-0.084
+99678],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.14592681], [-0.12552269], [-0.21189004], [-0.26021159], [-0
+.18625954], [-0.22333638], [-0.17401641], [-0.19039791], [-0.26218285], [-0.241
+14149],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.22042829], [-0.26079765], [-0.27622029], [-0.26528709], [-0
+.3459228 ], [-0.41572792], [-0.27916767], [-0.3067433 ], [-0.31974038], [-0.326
+55893],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.3809654 ], [-0.42965437], [-0.34438448], [-0.36447753], [-0
+.37467161], [-0.49652585], [-0.38840939], [-0.46632364], [-0.41086796], [-0.424
+56278],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.43010554], [-0.44190103], [-0.4539951 ], [-0.46366534], [-0
+.56552765], [-0.48193345], [-0.49148115], [-0.50471516], [-0.59145928], [-0.716
+62528],
+ []
+
+
+Overfull \hbox (15.84163pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 ], [-0.61964341], [-0.73099787], [-0.70932483], [-0.81819621], 
+[-0.86675588], [-0.78300195], [-0.71903575], [-0.70383847], [-0.71392426], [-0.
+71452985],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.00802786], [-0.09945226], [-0.03775861], [-0.08572929], [-0
+.19511823], [-0.03919017], [-0.12268288], [-0.13218779], [-0.10880613], [-0.090
+45876],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.17217964], [-0.09012593], [-0.27309011], [-0.1106717 ], [-0
+.28811121], [-0.30424597], [-0.19957162], [-0.28446409], [-0.25967148], [-0.242
+12162],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.34053462], [-0.19129779], [-0.32386687], [-0.38207522], [-0
+.21778261], [-0.24610711], [-0.28950759], [-0.26748586], [-0.24450058], [-0.282
+57584],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.27028346], [-0.27290694], [-0.30138989], [-0.29603155], [-0
+.30862119], [-0.31145723], [-0.32703411], [-0.40134085], [-0.46225714], [-0.476
+55785],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.40615223], [-0.41524464], [-0.53858638], [-0.37695373], [-0
+.49479539], [-0.38449618], [-0.45002405], [-0.55537886], [-0.44830478], [-0.414
+68407],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.42132744], [-0.43231672], [-0.43847535], [-0.44827492], [-0
+.61705039], [-0.46149214], [-0.46675884], [-0.63877744], [-0.48141038], [-0.541
+11037],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.67711246], [-0.64435668], [-0.65489352], [-0.58200556], [-0
+.6419361 ], [-0.67651327], [-0.65780021], [-0.6702886 ], [-0.61979661], [-0.622
+28648],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.61679838], [-0.6675462 ], [-0.6210402 ], [-0.64726394], [-0
+.63807441], [-0.70762957], [-0.67328106], [-0.67267336], [-0.65918195], [-0.824
+91263],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.67987021], [-0.66068612], [-0.89189366], [-0.70588849], [-0
+.79878149], [-0.69409591], [-0.68127486], [-0.74370253], [-0.70897821], [-0.752
+47375],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.73359144], [-0.73903501], [-0.70669075], [-0.74141328], [-0
+.81849074], [-0.74808498], [-0.72572631], [-0.74693725], [-0.9796516 ], [-0.732
+94308],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.82947078], [-0.8018766 ], [-0.80867213], [-0.91628088], [-0
+.86226953], [-0.81075123], [-0.81754013], [-0.8471237 ], [-0.80974439], [-0.867
+57723],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-1.0353129 ], [-0.88275086], [-0.9359815 ], [-0.86935934], [-0
+.87837065], [-0.84848338], [-0.85085038], [-1.07299894], [-0.85090258], [-0.940
+61691],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.83849308], [-0.84814599], [-0.94441827], [-0.91320536], [-0
+.83589064], [-1.05965617], [-0.96299328], [-0.86352216], [-0.84279774], [-0.822
+24516],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.82813115], [-0.82077609], [-0.85987788], [-0.83179152], [-0
+.82926021], [-0.79792923], [-0.8425664 ], [-0.8591832 ], [-0.85336233], [-0.886
+43519],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.94490731], [-0.81343693], [-0.78867522], [-0.81994937], [-0
+.98273587], [-0.95976252], [-0.8295332 ], [-0.77662533], [-1.00165635], [-0.998
+62568],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.97076963], [-0.9263917 ], [-0.82959996], [-0.73879917], [-0
+.75891056], [-0.8189461 ], [-0.88246691], [-0.91237625], [-0.73015638], [-0.717
+87729],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.70615024], [-0.79531395], [-0.70865912], [-0.67737587], [-0
+.70900813], [-0.70627795], [-0.80935657], [-0.8802536 ], [-0.66127345], [-0.781
+40139],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.73392098], [-0.5876721 ], [-0.77157495], [-0.62860911], [-0
+.65501757], [-0.56548724], [-0.63497072], [-0.55521085], [-0.55154496], [-0.752
+97488],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.57617957], [-0.53197671], [-0.52582163], [-0.72573036], [-0
+.51509629], [-0.51076773], [-0.50087943], [-0.49298619], [-0.4884992 ], [-0.633
+25658],
+ []
+
+
+Overfull \hbox (2.28601pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.5784885 ], [-0.61059638], [-0.48479376], [-0.45014933], [-0
+.50194653], [-0.43582394], [-0.4269599 ], [-0.51605401], [-0.59159184], [-0.508
+83601],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.39722642], [-0.39513397], [-0.41831977], [-0.42699239], [-0
+.36144023], [-0.3639768 ], [-0.48864373], [-0.50678929], [-0.34121975], [-0.343
+38831],
+ []
+
+
+Overfull \hbox (7.84161pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.32235869], [-0.31578894], [-0.36764128], [-0.37515636], [-0
+.28140865], [-0.27806202], [-0.25856199], [-0.30022714], [-0.41947111], [-0.362
+93082],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.41964076], [-0.21960618], [-0.24143996], [-0.24642963], [-0
+.35031433], [-0.3201755 ], [-0.29982596], [-0.22447662], [-0.16080079], [-0.166
+19878],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.20102782], [-0.31552859], [-0.30295127], [-0.1341821 ], [-0
+.09831015], [-0.15463177], [-0.13581155], [-0.14326078], [-0.13875227], [-0.211
+26745],
+ []
+
+
+Overfull \hbox (5.06381pt too wide) in paragraph at lines 32--10013
+\OT1/cmr/m/n/10 [-0.21924852], [-0.18867114], [-0.06804305], [-0.02923619], [-0
+.12611384], [-0.0757028 ], [-0.10932671], [-0.05972352], [-0.07452042], [-0.025
+57466],
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6]
+[7] [8] [9] [10] [11] [12] [13] [14] [15] [16]
+<control_dpn_all.png, id=54, 1156.32pt x 578.16pt>
+File: control_dpn_all.png Graphic file (type png)
+ <use control_dpn_all.png>
+Package pdftex.def Info: control_dpn_all.png used on input line 10014.
+(pdftex.def)             Requested size: 1040.6784pt x 520.33919pt.
+
+Overfull \hbox (432.07393pt too wide) in paragraph at lines 10014--10015
+ [] 
+ []
+
+[17 <./control_dpn_all.png>] (./report.aux) ) 
+Here is how much of TeX's memory you used:
+ 1942 strings out of 494902
+ 28066 string characters out of 6179890
+ 374831 words of memory out of 5000000
+ 5254 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 39i,5n,32p,251b,173s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on report.pdf (17 pages, 470680 bytes).
+PDF statistics:
+ 66 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+
