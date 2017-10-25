@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="735a76bb-a5a5-4167-be56-d62d3baf2b17" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GRAPE.py" afterPath="$PROJECT_DIR$/GRAPE.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pauli_channel_approximation.py" afterPath="$PROJECT_DIR$/pauli_channel_approximation.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="pauli_channel_approximation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="410" column="4" lean-forward="false" selection-start-line="410" selection-start-column="4" selection-end-line="410" selection-end-column="4" />
+            <state relative-caret-position="300">
+              <caret line="415" column="20" lean-forward="true" selection-start-line="415" selection-start-column="20" selection-end-line="415" selection-end-column="20" />
               <folding>
                 <element signature="e#0#71#0" expanded="true" />
               </folding>
@@ -29,8 +28,8 @@
       <file leaf-file-name="GRAPE.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GRAPE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="778">
-              <caret line="254" column="15" lean-forward="false" selection-start-line="254" selection-start-column="15" selection-end-line="254" selection-end-column="15" />
+            <state relative-caret-position="174">
+              <caret line="151" column="16" lean-forward="false" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="16" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -61,7 +60,6 @@
       <find>control_fid</find>
       <find>/ 2.</find>
       <find>detunings =</find>
-      <find>detunings</find>
       <find>print</find>
       <find>image_locs</find>
       <find>linspace</find>
@@ -75,8 +73,10 @@
       <find>am</find>
       <find>-1</find>
       <find>ambient</find>
-      <find>kron(Z,</find>
       <find>[Z]</find>
+      <find>kron(Z,</find>
+      <find>detunings</find>
+      <find>combinations</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -236,8 +236,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GRAPE.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="778">
-          <caret line="254" column="15" lean-forward="false" selection-start-line="254" selection-start-column="15" selection-end-line="254" selection-end-column="15" />
+        <state relative-caret-position="174">
+          <caret line="151" column="16" lean-forward="false" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="16" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
@@ -246,8 +246,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="410" column="4" lean-forward="false" selection-start-line="410" selection-start-column="4" selection-end-line="410" selection-end-column="4" />
+        <state relative-caret-position="300">
+          <caret line="415" column="20" lean-forward="true" selection-start-line="415" selection-start-column="20" selection-end-line="415" selection-end-column="20" />
           <folding>
             <element signature="e#0#71#0" expanded="true" />
           </folding>

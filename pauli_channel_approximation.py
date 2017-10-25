@@ -408,11 +408,11 @@ if __name__ == "__main__":
     IX = np.kron(I, X)
     IY = np.kron(I, Y)
     YI = np.kron(Y, I)
-
+    ZZ = np.kron(Z, Z)
     # applied multiplicatively
-    ambient_hamiltonian = [Z, X]
-    control_hamiltonians = [X, Y]
-    target_operator =
+    ambient_hamiltonian = [IZ, ZI, ZZ]
+    control_hamiltonians = [IX, IY, XI, YI, ZZ]
+    target_operator = CNOT
     time = 4 * np.pi
     num_steps = 50
     threshold = 1 - .001
