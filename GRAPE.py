@@ -141,15 +141,33 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
      coefficients are being handled correctly)
     :rtype: rtype of func
     """
+    corr = []
+    if type(detunings[0]) != tuple:
+        pass
+    else:
+        new_detunings = []
+        for i,detune in enumerate(detunings):
+            new_detunings.append(detune[0])
+            for _ in range(detune[1]):
+                corr.append(i) # use the ith detuning more than once
+        detunings = new_detunings
     points, weights = hermgauss(deg)
     nonzero_detunings = np.where(np.array(detunings) != 0)[0]
     zero_detunings = np.where(np.array(detunings) == 0)[0]
     pairs = [list(zip(detuning * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
     for index in zero_detunings:
         pairs.insert(index, [(0, 1)])
-
     controls = controls.reshape(-1, len(control_hamiltonians))
     combinations = itertools.product(*pairs)
+    #Expand them if there are correlations
+    if corr:
+        new_combinations = []
+        for combo in combinations:
+            new_combo = []
+            for index in corr:
+                new_combo.append(combo[index])
+            new_combinations.append(new_combo)
+        combinations = new_combinations
     pool = multiprocessing.Pool(num_processors)
 
     lst = [(combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator) for
@@ -225,6 +243,7 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
     return result.x
 
 if __name__ == "__main__":
+    np.random.seed(1000)
     I = np.eye(2)
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
