@@ -118,9 +118,7 @@ class PCA(object):
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
 
-
-
-    def plot_everything(self, num_processors=7, num_points=3):
+    def plot_everything(self, num_processors=63, num_points=3):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
