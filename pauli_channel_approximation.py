@@ -125,12 +125,20 @@ class PCA(object):
          provided by itertools."""
 
         values_to_plot = []
-        for detuning in self.detunings:
+        corr = []
+        for i, detuning in enumerate(self.detunings):
             # TODO make params
-            values = np.linspace(-3 * detuning, 3 * detuning, num_points)
+            values = np.linspace(-3 * detuning[0], 3 * detuning[0], num_points)
             values_to_plot.append(values)
+            corr.append(i)
         combinations = itertools.product(*values_to_plot)
-
+        new_combinations = []
+        for combo in combinations:
+            new_combo = []
+            for index in corr:
+                new_combo.append(combo[index])
+            new_combinations.append(new_combo)
+        combinations = new_combinations
         pool = multiprocessing.Pool(num_processors)
         lst = [(self.controlset, self.ambient_hamiltonian, combo, self.dt,
                 self.control_hamiltonians, self.target_operator, self.probs)
@@ -401,7 +409,7 @@ if __name__ == "__main__":
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
-    CNOT = np.array([[1, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1], [0, 0, 1, 0]])
+    #CNOT = np.array([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])
     IZ = np.kron(I, Z)
     ZI = np.kron(Z, I)
     XI = np.kron(X, I)
@@ -409,17 +417,18 @@ if __name__ == "__main__":
     IY = np.kron(I, Y)
     YI = np.kron(Y, I)
     ZZ = np.kron(Z, Z)
+    entangle_ZZ = np.array([[1, 0, 0, 0], [0, -1.j, 0, 0], [0, 0, -1.j, 0], [0, 0, 0, 1]])
     # applied multiplicatively
-    ambient_hamiltonian = [IZ, ZI, ZZ]
+    ambient_hamiltonian = [IZ, ZI]
     control_hamiltonians = [IX, IY, XI, YI, ZZ]
-    target_operator = CNOT
-    time = 4 * np.pi
-    num_steps = 50
+    detunings = [(.001, 1), (.001, 1), (.001, 2), (.001, 2), (.001, 1)]
+    target_operator = entangle_ZZ
+    time = 2 * np.pi
+    num_steps = 200
     threshold = 1 - .001
-    num_controls = 5
+    num_controls = 100
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
-              num_steps, time, threshold,
-              [.001] + [.001 for _ in control_hamiltonians])
+              num_steps, time, threshold, detunings)
     print("TOOK {}".format(pca.time))
     import os
     i = 0

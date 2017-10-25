@@ -230,7 +230,6 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                               target_operator)
     print("PERFORMANCE IS: ", (-perf_at_zero)/dimension**2)
     while (-perf_at_zero)/dimension**2 < threshold:
-        print("PERFORMANCE IS: ",  (-perf_at_zero)/dimension**2)
         print("RETRYING GRAPE FOR BETTER CONTROLS")
         controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0) * .1
         result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc', options=options)
@@ -240,6 +239,7 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                                   control_hamiltonians,
                                   result.x, dt,
                                   target_operator)
+        print("PERFORMANCE IS: ", (-perf_at_zero) / dimension ** 2)
     return result.x
 
 if __name__ == "__main__":
