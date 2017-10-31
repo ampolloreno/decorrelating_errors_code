@@ -118,7 +118,7 @@ class PCA(object):
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
 
-    def plot_everything(self, num_processors=63, num_points=3):
+    def plot_everything(self, num_processors=7, num_points=3):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
@@ -401,6 +401,31 @@ def generate_all_reports():
             generate_report(filename)
 
 
+#
+# if __name__ == "__main__":
+#     np.random.seed(1000)
+#     I = np.eye(2)
+#     X = np.array([[0, 1], [1, 0]])
+#     Y = np.array([[0, -1.j], [1.j, 0]])
+#     Z = np.array([[1, 0], [0, -1]])
+#     ambient_hamiltonian = [Z]
+#     control_hamiltonians = [X, Y]
+#     detunings = [(.01, 1), (.01, 2)]
+#     target_operator = X
+#     time = 2 * np.pi
+#     num_steps = 200
+#     threshold = 1 - .001
+#     num_controls = 100
+#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
+#               num_steps, time, threshold, detunings)
+#     print("TOOK {}".format(pca.time))
+#     import os
+#     i = 0
+#     while os.path.exists("pickled_controls%s.pkl" % i):
+#         i += 1
+#     fh = open("pickled_controls%s.pkl" % i, "wb")
+#     dill.dump(pca, fh)
+    fh.close()
 if __name__ == "__main__":
     np.random.seed(1000)
     I = np.eye(2)

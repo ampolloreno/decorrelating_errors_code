@@ -118,13 +118,13 @@ def comp_avg_perf(pair):
     new_controls = np.array(new_controls).flatten()
     nonzero_detunings = np.array(detunings)[np.where(np.array(detunings) != 0)[0]]
     average_perf = reduce(lambda a, b: a * b, [comb[1] for comb in combination]) * \
-                    func([ambient * combination[i][0] for ambient in ambient_hamiltonian], control_hamiltonians, new_controls, dt,
+                    func([ambient * combination[i][0] for i, ambient in enumerate(ambient_hamiltonian)], control_hamiltonians, new_controls, dt,
                          target_operator) / reduce(lambda a, b: a * b, nonzero_detunings)
     return average_perf
 
 
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=3, num_processors=63):
+                       controls, detunings, dt, target_operator, deg=3, num_processors=7):
     """
     Average the given func over noise using gaussian quadrature.
 
@@ -146,7 +146,7 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
         pass
     else:
         new_detunings = []
-        for i,detune in enumerate(detunings):
+        for i, detune in enumerate(detunings):
             new_detunings.append(detune[0])
             for _ in range(detune[1]):
                 corr.append(i) # use the ith detuning more than once
