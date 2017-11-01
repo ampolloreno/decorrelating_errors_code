@@ -6,6 +6,19 @@ import matplotlib.pyplot as plt
 from numpy.polynomial.hermite import hermgauss
 import multiprocessing
 from functools import reduce
+from mpi4py import MPI
+
+
+COMM = MPI.COMM_WORLD
+
+
+def split(container, count):
+    """
+    Simple function splitting a container into equal length chunks.
+    Order is not preserved but this is potentially an advantage depending on
+    the use case.
+    """
+    return [container[_i::count] for _i in range(count)]
 
 
 def adjoint(operator):
@@ -124,7 +137,7 @@ def comp_avg_perf(pair):
 
 
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=3, num_processors=7):
+                       controls, detunings, dt, target_operator, deg=2, num_processors=7):
     """
     Average the given func over noise using gaussian quadrature.
 
@@ -141,39 +154,61 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
      coefficients are being handled correctly)
     :rtype: rtype of func
     """
-    corr = []
-    if type(detunings[0]) != tuple:
-        pass
+    if COMM.rank == 0:
+        corr = []
+        if type(detunings[0]) != tuple:
+            pass
+        else:
+            new_detunings = []
+            for i, detune in enumerate(detunings):
+                new_detunings.append(detune[0])
+                for _ in range(detune[1]):
+                    corr.append(i) # use the ith detuning more than once
+            detunings = new_detunings
+        points, weights = hermgauss(deg)
+        nonzero_detunings = np.where(np.array(detunings) != 0)[0]
+        zero_detunings = np.where(np.array(detunings) == 0)[0]
+        pairs = [list(zip(detuning * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
+        for index in zero_detunings:
+            pairs.insert(index, [(0, 1)])
+        controls = controls.reshape(-1, len(control_hamiltonians))
+        combinations = itertools.product(*pairs)
+        #Expand them if there are correlations
+        if corr:
+            new_combinations = []
+            for combo in combinations:
+                new_combo = []
+                for index in corr:
+                    new_combo.append(combo[index])
+                new_combinations.append(new_combo)
+            combinations = new_combinations
+        # pool = multiprocessing.Pool(num_processors)
+        #
+        lst = [(combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator) for
+         combination in combinations]
+        # results = pool.map(comp_avg_perf, lst)
+        # pool.close()
+        jobs = lst
+        # Split into however many cores are available.
+        jobs = split(jobs, COMM.size)
     else:
-        new_detunings = []
-        for i, detune in enumerate(detunings):
-            new_detunings.append(detune[0])
-            for _ in range(detune[1]):
-                corr.append(i) # use the ith detuning more than once
-        detunings = new_detunings
-    points, weights = hermgauss(deg)
-    nonzero_detunings = np.where(np.array(detunings) != 0)[0]
-    zero_detunings = np.where(np.array(detunings) == 0)[0]
-    pairs = [list(zip(detuning * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
-    for index in zero_detunings:
-        pairs.insert(index, [(0, 1)])
-    controls = controls.reshape(-1, len(control_hamiltonians))
-    combinations = itertools.product(*pairs)
-    #Expand them if there are correlations
-    if corr:
-        new_combinations = []
-        for combo in combinations:
-            new_combo = []
-            for index in corr:
-                new_combo.append(combo[index])
-            new_combinations.append(new_combo)
-        combinations = new_combinations
-    pool = multiprocessing.Pool(num_processors)
+        jobs = None
 
-    lst = [(combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator) for
-     combination in combinations]
-    results = pool.map(comp_avg_perf, lst)
-    pool.close()
+    # Scatter jobs across cores.
+    jobs = COMM.scatter(jobs, root=0)
+    # Now each rank just does its jobs and collects everything in a results list.
+    # Make sure to not use super big objects in there as they will be pickled to be
+    # exchanged over MPI.
+    results = []
+    for job in jobs:
+        #print("{} has {} jobs, doing job {}".format(COMM.rank, len(jobs), job[0]))
+        results.append(comp_avg_perf(job))
+    # Gather results on rank 0.
+    results = MPI.COMM_WORLD.allgather(results)
+
+    # if COMM.rank == 0:
+    #     # Flatten list of lists.
+    results = [_i for temp in results for _i in temp]
     return np.sum(results, axis=0)
 
 
@@ -224,13 +259,16 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                                #bounds=[constraint for _ in controls[0]],
 
     # Verify that the controls meet requirements at zero.
-    perf_at_zero = grape_perf(ambient_hamiltonian * 0,
+    perf_at_zero = grape_perf(np.array(ambient_hamiltonian) * 0,
                               control_hamiltonians,
                               result.x, dt,
                               target_operator)
     print("PERFORMANCE IS: ", (-perf_at_zero)/dimension**2)
+    import sys
+    sys.stdout.flush()
     while (-perf_at_zero)/dimension**2 < threshold:
         print("RETRYING GRAPE FOR BETTER CONTROLS")
+        sys.stdout.flush()
         controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0) * .1
         result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc', options=options)
                                    #bounds=[constraint for _ in controls[0]], options=options)
@@ -240,7 +278,9 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                                   result.x, dt,
                                   target_operator)
         print("PERFORMANCE IS: ", (-perf_at_zero) / dimension ** 2)
+        sys.stdout.flush()
     return result.x
+
 
 if __name__ == "__main__":
     np.random.seed(1000)

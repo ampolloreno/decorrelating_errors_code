@@ -9,7 +9,9 @@ from functools import reduce
 import subprocess
 import os.path
 import multiprocessing
+from mpi4py import MPI
 
+COMM = MPI.COMM_WORLD
 #Note ambient hamiltonian as been changed to a list of hamiltonians, but the name remains unchanged.
 
 I = np.eye(2)
@@ -400,9 +402,10 @@ def generate_all_reports():
         if filename.split('.')[-1] == "pkl" and  "aws" in filename.split('.')[0]:
             generate_report(filename)
 
-
 #
 # if __name__ == "__main__":
+#     from mpi4py import MPI
+#     COMM = MPI.COMM_WORLD
 #     np.random.seed(1000)
 #     I = np.eye(2)
 #     X = np.array([[0, 1], [1, 0]])
@@ -413,19 +416,20 @@ def generate_all_reports():
 #     detunings = [(.01, 1), (.01, 2)]
 #     target_operator = X
 #     time = 2 * np.pi
-#     num_steps = 200
+#     num_steps = 20
 #     threshold = 1 - .001
-#     num_controls = 100
+#     num_controls = 1
 #     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
 #               num_steps, time, threshold, detunings)
-#     print("TOOK {}".format(pca.time))
-#     import os
-#     i = 0
-#     while os.path.exists("pickled_controls%s.pkl" % i):
-#         i += 1
-#     fh = open("pickled_controls%s.pkl" % i, "wb")
-#     dill.dump(pca, fh)
-    fh.close()
+#     if COMM.rank == 0:
+#         print("TOOK {}".format(pca.time))
+#         import os
+#         i = 0
+#         while os.path.exists("pickled_controls%s.pkl" % i):
+#             i += 1
+#         fh = open("pickled_controls%s.pkl" % i, "wb")
+#         dill.dump(pca, fh)
+#         fh.close()
 if __name__ == "__main__":
     np.random.seed(1000)
     I = np.eye(2)
@@ -449,17 +453,18 @@ if __name__ == "__main__":
     time = 2 * np.pi
     num_steps = 200
     threshold = 1 - .001
-    num_controls = 50
+    num_controls = 100
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
-    print("TOOK {}".format(pca.time))
-    import os
-    i = 0
-    while os.path.exists("pickled_controls%s.pkl" % i):
-        i += 1
-    fh = open("pickled_controls%s.pkl" % i, "wb")
-    dill.dump(pca, fh)
-    fh.close()
+    if COMM.rank == 0:
+        print("TOOK {}".format(pca.time))
+        import os
+        i = 0
+        while os.path.exists("pickled_controls%s.pkl" % i):
+            i += 1
+        fh = open("pickled_controls%s.pkl" % i, "wb")
+        dill.dump(pca, fh)
+        fh.close()
 
 ####################################################################################################
 # if __name__ == "__main__":
@@ -554,3 +559,12 @@ if __name__ == "__main__":
     #     fh = open("pickled_controls%s.pkl" % i, "wb")
     #     dill.dump(pca, fh)
     #     fh.close()
+
+
+
+#####################################
+
+
+#Notes on parallelization: Took 169 seconds on 4 cores for the 2Q results with 200 steps.
+#On 5 cores it took 234 seconds, seeming to hold up with the hypothesis that 2 cores are being used for everyone
+# I think is being used.
