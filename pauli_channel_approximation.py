@@ -444,12 +444,12 @@ if __name__ == "__main__":
     # applied multiplicatively
     ambient_hamiltonian = [IZ, ZI]
     control_hamiltonians = [IX, IY, XI, YI, ZZ]
-    detunings = [(.001, 1), (.001, 1), (.001, 2), (.001, 2), (.001, 1)]
+    detunings = [(.01, 1), (.01, 1), (.01, 2), (.01, 2), (.01, 1)]
     target_operator = entangle_ZZ
     time = 2 * np.pi
     num_steps = 200
     threshold = 1 - .001
-    num_controls = 100
+    num_controls = 50
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     print("TOOK {}".format(pca.time))
