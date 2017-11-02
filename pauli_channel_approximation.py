@@ -449,12 +449,12 @@ if __name__ == "__main__":
     # applied multiplicatively
     ambient_hamiltonian = [IZ, ZI]
     control_hamiltonians = [IX, IY, XI, YI, ZZ]
-    detunings = [(.01, 1), (.01, 1), (.01, 2), (.01, 2), (.01, 1)]
+    detunings = [(.1, 1), (.1, 1), (.1, 2), (.1, 2), (.1, 1)]
     target_operator = entangle_ZZ
     time = 2 * np.pi
     num_steps = 200
     threshold = 1 - .001
-    num_controls = 100
+    num_controls = 40
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:
@@ -569,3 +569,8 @@ if __name__ == "__main__":
 #Notes on parallelization: Took 169 seconds on 4 cores for the 2Q results with 200 steps.
 #On 5 cores it took 234 seconds, seeming to hold up with the hypothesis that 2 cores are being used for everyone
 # I think is being used.
+
+
+# The controls being found are very bad around the shoulders, this might be the real problem.
+# This is allowed because the code only checks to see if the zero detuning point is okay. THis work for 1Q,
+# But maybe for 2Q we need to make sure that it's "okay everywhere".

@@ -125,7 +125,7 @@ def grape_gradient(ambient_hamiltonian, control_hamiltonians, controls, dt, targ
 
 
 def comp_avg_perf(pair):
-    combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator = pair
+    combination, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator= pair
     new_controls = [[control * (1 + combination[i+len(ambient_hamiltonian)][0]) for i, control in enumerate(row)]
                     for row in controls]
     new_controls = np.array(new_controls).flatten()
@@ -178,8 +178,17 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
             new_combinations = []
             for combo in combinations:
                 new_combo = []
+                last_number = -1
                 for index in corr:
-                    new_combo.append(combo[index])
+                    if index == last_number:
+                        new_number = False
+                    else:
+                        new_number = True
+                    last_number = index
+                    pair = combo[index]
+                    if not new_number:
+                        pair = (pair[0], 1)
+                    new_combo.append(pair)
                 new_combinations.append(new_combo)
             combinations = new_combinations
         # pool = multiprocessing.Pool(num_processors)
