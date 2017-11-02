@@ -431,7 +431,7 @@ def generate_all_reports():
 #         dill.dump(pca, fh)
 #         fh.close()
 if __name__ == "__main__":
-    np.random.seed(1000)
+    np.random.seed(1337)
     I = np.eye(2)
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
