@@ -1,9 +1,10 @@
+import matplotlib.pyplot as plt
+plt.switch_backend('agg')
 from GRAPE import GRAPE, control_unitaries, adjoint, average_over_noise
 import numpy as np
 from scipy.optimize import minimize
 import dill
 import itertools
-import matplotlib.pyplot as plt
 from copy import deepcopy
 from functools import reduce
 import subprocess
@@ -120,7 +121,7 @@ class PCA(object):
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
 
-    def plot_everything(self, num_processors=7, num_points=3):
+    def plot_everything(self, num_processors=18, num_points=4):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
