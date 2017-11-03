@@ -121,15 +121,16 @@ class PCA(object):
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
 
-    def plot_everything(self, num_processors=18, num_points=4):
+    def plot_everything(self, num_processors=4, num_points=20):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
         values_to_plot = []
         corr = []
         for i, detuning in enumerate(self.detunings):
-            # TODO make params
-            values = np.linspace(-3 * detuning[0], 3 * detuning[0], num_points)
+            values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1)) * detuning[0]
+            values = [-value for value in values[::-1]] + list(values[1:])
+            print(values)
             values_to_plot.append(values)
             corr.append(i)
         combinations = itertools.product(*values_to_plot)
@@ -164,14 +165,20 @@ class PCA(object):
             plt.plot(range(len(row)), row)
         plt.plot(range(len(projs[-1, :])), projs[-1, :], label="min", color='k', linewidth=2, zorder=10)
         plt.legend()
+        plt.ylabel("Absolute Sum of Off Diagonal Elements")
         plt.semilogy()
-
 
         plt.subplot(212)  # the second subplot in the first figure
         for i, row in enumerate(fidelities[:-1, :]):
-            plt.plot(range(len(row)), row)
-        plt.plot(range(len(fidelities[-1, :])), fidelities[-1, :], label="min", color='k', linewidth=2, zorder=10)
+            plt.plot(range(len(row)), -np.log(1 - row))
+        plt.plot(range(len(fidelities[-1, :])), -np.log(1 - fidelities[-1, :]), label="min", color='k', linewidth=2, zorder=10)
         plt.legend()
+        plt.ylabel("f")
+        samples = np.linspace(plt.ylim()[0], plt.ylim()[1], 11)
+        labels = -(np.exp(-samples) - 1)
+        plt.xlabel("Sample Index")
+        plt.tight_layout()
+        plt.yticks(samples, labels)
         plt.tight_layout()
 
 
@@ -403,58 +410,24 @@ def generate_all_reports():
         if filename.split('.')[-1] == "pkl" and  "aws" in filename.split('.')[0]:
             generate_report(filename)
 
-#
-# if __name__ == "__main__":
-#     from mpi4py import MPI
-#     COMM = MPI.COMM_WORLD
-#     np.random.seed(1000)
-#     I = np.eye(2)
-#     X = np.array([[0, 1], [1, 0]])
-#     Y = np.array([[0, -1.j], [1.j, 0]])
-#     Z = np.array([[1, 0], [0, -1]])
-#     ambient_hamiltonian = [Z]
-#     control_hamiltonians = [X, Y]
-#     detunings = [(.01, 1), (.01, 2)]
-#     target_operator = X
-#     time = 2 * np.pi
-#     num_steps = 20
-#     threshold = 1 - .001
-#     num_controls = 1
-#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
-#               num_steps, time, threshold, detunings)
-#     if COMM.rank == 0:
-#         print("TOOK {}".format(pca.time))
-#         import os
-#         i = 0
-#         while os.path.exists("pickled_controls%s.pkl" % i):
-#             i += 1
-#         fh = open("pickled_controls%s.pkl" % i, "wb")
-#         dill.dump(pca, fh)
-#         fh.close()
+
 if __name__ == "__main__":
+    from mpi4py import MPI
+    COMM = MPI.COMM_WORLD
     np.random.seed(1337)
     I = np.eye(2)
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
-    #CNOT = np.array([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])
-    IZ = np.kron(I, Z)
-    ZI = np.kron(Z, I)
-    XI = np.kron(X, I)
-    IX = np.kron(I, X)
-    IY = np.kron(I, Y)
-    YI = np.kron(Y, I)
-    ZZ = np.kron(Z, Z)
-    entangle_ZZ = np.array([[1, 0, 0, 0], [0, -1.j, 0, 0], [0, 0, -1.j, 0], [0, 0, 0, 1]])
-    # applied multiplicatively
-    ambient_hamiltonian = [IZ, ZI]
-    control_hamiltonians = [IX, IY, XI, YI, ZZ]
-    detunings = [(.1, 1), (.1, 1), (.1, 2), (.1, 2), (.1, 1)]
-    target_operator = entangle_ZZ
+    ambient_hamiltonian = [Z]
+    control_hamiltonians = [X, Y]
+    detunings = [(.01, 1), (.01, 2)]
+    import scipy
+    target_operator = scipy.linalg.sqrtm(X)
     time = 2 * np.pi
-    num_steps = 200
+    num_steps = 300
     threshold = 1 - .001
-    num_controls = 40
+    num_controls = 100
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:
@@ -466,49 +439,84 @@ if __name__ == "__main__":
         fh = open("pickled_controls%s.pkl" % i, "wb")
         dill.dump(pca, fh)
         fh.close()
+# if __name__ == "__main__":
+#     np.random.seed(1337)
+#     I = np.eye(2)
+#     X = np.array([[0, 1], [1, 0]])
+#     Y = np.array([[0, -1.j], [1.j, 0]])
+#     Z = np.array([[1, 0], [0, -1]])
+#     #CNOT = np.array([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])
+#     IZ = np.kron(I, Z)
+#     ZI = np.kron(Z, I)
+#     XI = np.kron(X, I)
+#     IX = np.kron(I, X)
+#     IY = np.kron(I, Y)
+#     YI = np.kron(Y, I)
+#     ZZ = np.kron(Z, Z)
+#     entangle_ZZ = np.array([[1, 0, 0, 0], [0, -1.j, 0, 0], [0, 0, -1.j, 0], [0, 0, 0, 1]])
+#     # applied multiplicatively
+#     ambient_hamiltonian = [IZ, ZI]
+#     control_hamiltonians = [IX, IY, XI, YI, ZZ]
+#     detunings = [(.1, 1), (.1, 1), (.1, 2), (.1, 2), (.1, 1)]
+#     target_operator = entangle_ZZ
+#     time = 2 * np.pi
+#     num_steps = 200
+#     threshold = 1 - .001
+#     num_controls = 40
+#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
+#               num_steps, time, threshold, detunings)
+#     if COMM.rank == 0:
+#         print("TOOK {}".format(pca.time))
+#         import os
+#         i = 0
+#         while os.path.exists("pickled_controls%s.pkl" % i):
+#             i += 1
+#         fh = open("pickled_controls%s.pkl" % i, "wb")
+#         dill.dump(pca, fh)
+#         fh.close()
 
 ####################################################################################################
 # if __name__ == "__main__":
-    # np.random.seed(1000)
-    # I = np.eye(2)
-    # II = np.kron(I, I)
-    # X = np.array([[0, 1], [1, 0]])
-    # IX = np.kron(I, X)
-    # XI = np.kron(X, I)
-    # Y = np.array([[0, -1.j], [1.j, 0]])
-    # IY = np.kron(I, Y)
-    # YI = np.kron(Y, I)
-    # Z = np.array([[1, 0], [0, -1]])
-    # IZ = np.kron(I, Z)
-    # ZI = np.kron(Z, I)
-    # XXYY = np.kron(X, X) + np.kron(Y, Y)
-    # ISWAP = np.array([[1, 0, 0, 0], [0, 0, -1.j, 0], [0, -1.j, 0, 0], [0, 0, 0, 1]])
-    # # H = (Z + X) / np.sqrt(2)
-    # # applied multiplicatively
-    # unisup = 1 / 2.0 * np.array([1, 1, 1, 1])
-    # unisup = 2 * np.outer(unisup, unisup)
-    # unisup -= np.eye(4)
-    # assert np.isclose(adjoint(unisup).dot(unisup), np.eye(4)).all()
-    #
-    # ambient_hamiltonian = IZ
-    # control_hamiltonians = [IX, XI, IY, YI, IZ, ZI, XXYY]
-    # target_operator = unisup
-    # time = 2 * np.pi
-    # num_steps = 1000
-    # threshold = 1 - .001
-    # num_controls = 100
-    # pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time,
-    #           threshold, [.001] + [.001, .001, .001, .001, 0, 0, .001])
-    # print("TOOK {}".format(pca.time))
-    # import os
-    #
-    # i = 0
-    # while os.path.exists("pickled_controlsaws%s.pkl" % i):
-    #     i += 1
-    # fh = open("pickled_controlsaws%s.pkl" % i, "wb")
-    # dill.dump(pca, fh)
-    # fh.close()
-    #
+#     np.random.seed(1000)
+#     I = np.eye(2)
+#     II = np.kron(I, I)
+#     X = np.array([[0, 1], [1, 0]])
+#     IX = np.kron(I, X)
+#     XI = np.kron(X, I)
+#     Y = np.array([[0, -1.j], [1.j, 0]])
+#     IY = np.kron(I, Y)
+#     YI = np.kron(Y, I)
+#     Z = np.array([[1, 0], [0, -1]])
+#     IZ = np.kron(I, Z)
+#     ZI = np.kron(Z, I)
+#     XXYY = np.kron(X, X) + np.kron(Y, Y)
+#     ISWAP = np.array([[1, 0, 0, 0], [0, 0, -1.j, 0], [0, -1.j, 0, 0], [0, 0, 0, 1]])
+#     # H = (Z + X) / np.sqrt(2)
+#     # applied multiplicatively
+#     unisup = 1 / 2.0 * np.array([1, 1, 1, 1])
+#     unisup = 2 * np.outer(unisup, unisup)
+#     unisup -= np.eye(4)
+#     assert np.isclose(adjoint(unisup).dot(unisup), np.eye(4)).all()
+#
+#     ambient_hamiltonian = IZ
+#     control_hamiltonians = [IX, XI, IY, YI, IZ, ZI, XXYY]
+#     target_operator = unisup
+#     time = 2 * np.pi
+#     num_steps = 1000
+#     threshold = 1 - .001
+#     num_controls = 100
+#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time,
+#               threshold, [.001] + [.001, .001, .001, .001, 0, 0, .001])
+#     print("TOOK {}".format(pca.time))
+#     import os
+#
+#     i = 0
+#     while os.path.exists("pickled_controlsaws%s.pkl" % i):
+#         i += 1
+#     fh = open("pickled_controlsaws%s.pkl" % i, "wb")
+#     dill.dump(pca, fh)
+#     fh.close()
+
 
 # if __name__ == "__main__":
 #     np.random.seed(1000)

@@ -130,9 +130,13 @@ def comp_avg_perf(pair):
                     for row in controls]
     new_controls = np.array(new_controls).flatten()
     nonzero_detunings = np.array(detunings)[np.where(np.array(detunings) != 0)[0]]
+    # if func == grape_perf:
+    #     print("VALUE {}".format(func([ambient * combination[i][0] for i, ambient in enumerate(ambient_hamiltonian)], control_hamiltonians, new_controls, dt,
+    #                      target_operator)))
+    #     print(combination)
     average_perf = reduce(lambda a, b: a * b, [comb[1] for comb in combination]) * \
                     func([ambient * combination[i][0] for i, ambient in enumerate(ambient_hamiltonian)], control_hamiltonians, new_controls, dt,
-                         target_operator) / reduce(lambda a, b: a * b, nonzero_detunings)
+                         target_operator) / (np.sqrt(np.pi) ** len(nonzero_detunings))
     return average_perf
 
 
@@ -168,7 +172,7 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
         points, weights = hermgauss(deg)
         nonzero_detunings = np.where(np.array(detunings) != 0)[0]
         zero_detunings = np.where(np.array(detunings) == 0)[0]
-        pairs = [list(zip(detuning * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
+        pairs = [list(zip(np.sqrt(detuning) * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
         for index in zero_detunings:
             pairs.insert(index, [(0, 1)])
         controls = controls.reshape(-1, len(control_hamiltonians))
@@ -218,6 +222,8 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
     # if COMM.rank == 0:
     #     # Flatten list of lists.
     results = [_i for temp in results for _i in temp]
+    # if np.sum(results, axis=0).shape == ():
+    #     print(np.sum(results, axis=0))
     return np.sum(results, axis=0)
 
 
@@ -267,11 +273,15 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
     result = optimize.minimize(fun=perf, x0=controls, jac=grad, method='tnc', options=options)
                                #bounds=[constraint for _ in controls[0]],
 
-    # Verify that the controls meet requirements at zero.
+    #Verify that the controls meet requirements at zero.
     perf_at_zero = grape_perf(np.array(ambient_hamiltonian) * 0,
                               control_hamiltonians,
                               result.x, dt,
                               target_operator)
+
+    print("PERF AT ZERO: {}".format(perf_at_zero))
+
+#    check_perf = perf(result.x)
     print("PERFORMANCE IS: ", (-perf_at_zero)/dimension**2)
     import sys
     sys.stdout.flush()
@@ -286,6 +296,7 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                                   control_hamiltonians,
                                   result.x, dt,
                                   target_operator)
+        #check_perf = perf(result.x)
         print("PERFORMANCE IS: ", (-perf_at_zero) / dimension ** 2)
         sys.stdout.flush()
     return result.x
