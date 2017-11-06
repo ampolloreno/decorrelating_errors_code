@@ -115,30 +115,30 @@ class PCA(object):
             sys.stdout.flush()
             return off_diagonal_error(x, controlset, ambient_hamiltonian, control_hamiltonians, detunings, dt,
                                             target_operator)
-        def cons(probs, i):
-            return probs[i]
-        def conscons(i):
-            return lambda probs: cons(probs, i)
-        def minuscons(probs, i):
-            return 1 - probs[i]
-        def minusconscons(i):
-            return lambda probs: minuscons(probs, i)
-
-        constraints = ([{'type':'ineq', 'fun':conscons(i)} for i in range(len(probs))]
-                       + [{'type':'ineq', 'fun':minusconscons(i)} for i in range(len(probs))]
-                       + [{'type':'ineq', 'fun': lambda x: 1 - sum(x)},
-                          {'type': 'ineq', 'fun': lambda x: sum(x) - 1}])
-        res = scipy.optimize.minimize(func, probs, method="COBYLA", constraints=constraints,
-                                      options={'disp':True, 'maxiter': 100})
-        new_probs = res.x[0]
-        print("MINIMIZATION WAS {}".format(res.success))
-        self.success = res.success
+        # def cons(probs, i):
+        #     return probs[i]
+        # def conscons(i):
+        #     return lambda probs: cons(probs, i)
+        # def minuscons(probs, i):
+        #     return 1 - probs[i]
+        # def minusconscons(i):
+        #     return lambda probs: minuscons(probs, i)
+        #
+        # constraints = ([{'type':'ineq', 'fun':conscons(i)} for i in range(len(probs))]
+        #                + [{'type':'ineq', 'fun':minusconscons(i)} for i in range(len(probs))]
+        #                + [{'type':'ineq', 'fun': lambda x: 1 - sum(x)},
+        #                   {'type': 'ineq', 'fun': lambda x: sum(x) - 1}])
+        # res = scipy.optimize.minimize(func, probs, method="COBYLA", constraints=constraints,
+        #                               options={'maxiter': 1000, 'rhobeg':.1})
+        # new_probs = res.x[0]
+        # print("MINIMIZATION WAS {}".format(res.success))
+        # self.success = res.success
         # new_probs = scipy.optimize.fmin_cobyla(func, probs, cons=constraints)
         # new_probs = minimize(func, probs, method='COBYLA', bounds=[constraint for _ in probs[0]], constraints=constraints, options=options)
         # import scipy
-        # new_probs = scipy.optimize.fmin_slsqp(func, probs, eqcons=[lambda x: 1 - sum(probs)],
-        #                                   bounds=[constraint for _ in probs[0]],
-        #                                   iprint=10)
+        new_probs = scipy.optimize.fmin_slsqp(func, probs, eqcons=[lambda x: 1 - sum(probs)],
+                                          bounds=[constraint for _ in probs[0]],
+                                          iprint=10)
         self.probs = new_probs
         self.controlset = controlset
 
@@ -448,7 +448,7 @@ def generate_all_reports():
 if __name__ == "__main__":
     from mpi4py import MPI
     COMM = MPI.COMM_WORLD
-    np.random.seed(1000)
+    np.random.seed(666)
     I = np.eye(2)
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
@@ -459,9 +459,9 @@ if __name__ == "__main__":
     import scipy
     target_operator = scipy.linalg.sqrtm(Y)
     time = 2 * np.pi
-    num_steps = 100
+    num_steps = 50
     threshold = 1 - .001
-    num_controls = 10
+    num_controls = 50
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:
