@@ -75,8 +75,15 @@ class PCA(object):
         dt = time / num_steps
         for i in range(num_controls):
             print("CONTROL {}".format(i))
+            random_detunings = []
+            for detuning in detunings:
+                random_detunings.append((detuning[0] * np.random.rand(), detuning[1]))
+                # random_detunings.append((detuning[0], detuning[1]))
+            print(random_detunings)
+            import sys
+            sys.stdout.flush()
             result = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator,
-                           num_steps, time, threshold, detunings)
+                           num_steps, time, threshold, random_detunings)
             controlset.append(result.reshape(-1, len(control_hamiltonians)))
             # controlset.append(np.array([1] * num_steps).reshape(-1, 1))
 
@@ -87,7 +94,7 @@ class PCA(object):
         constraint = (0, 1)
         disp = True
         options = {"disp": disp}
-        constraints = {"type": "eq", "fun": lambda x: 1 - sum(x)}
+        # constraints = {"type": "eq", "fun": lambda x: 1 - sum(x)}
 
         def off_diagonal_error(probs, controlset, ambient_hamiltonian, control_hamiltonians,
                                detunings, dt, target_operator):
@@ -103,12 +110,30 @@ class PCA(object):
 
         func = lambda x: off_diagonal_error(x, controlset, ambient_hamiltonian, control_hamiltonians, detunings, dt,
                                             target_operator)
-        # probs = minimize(func, probs, method='SLSQP', bounds=[constraint for _ in probs[0]], constraints=constraints, options=options, iprint=2)
-        import scipy
-        probs = scipy.optimize.fmin_slsqp(func, probs, eqcons=[lambda x: 1 - sum(probs)],
-                                          bounds=[constraint for _ in probs[0]],
-                                          iprint=10)
-        self.probs = probs
+        def cons(probs, i):
+            return probs[i]
+        def conscons(i):
+            return lambda probs: cons(probs, i)
+        def minuscons(probs, i):
+            return 1 - probs[i]
+        def minusconscons(i):
+            return lambda probs: minuscons(probs, i)
+
+        constraints = ([{'type':'ineq', 'fun':conscons(i)} for i in range(len(probs))]
+                       + [{'type':'ineq', 'fun':minusconscons(i)} for i in range(len(probs))]
+                       + [{'type':'ineq', 'fun': lambda x: 1 - sum(x)},
+                          {'type': 'ineq', 'fun': lambda x: sum(x) - 1}])
+        res = scipy.optimize.minimize(func, probs, method="COBYLA", constraints=constraints)
+        new_probs = res.x[0]
+        print("MINIMIZATION WAS {}".format(res.success))
+        self.success = res.success
+        # new_probs = scipy.optimize.fmin_cobyla(func, probs, cons=constraints)
+        # new_probs = minimize(func, probs, method='COBYLA', bounds=[constraint for _ in probs[0]], constraints=constraints, options=options)
+        # import scipy
+        # new_probs = scipy.optimize.fmin_slsqp(func, probs, eqcons=[lambda x: 1 - sum(probs)],
+        #                                   bounds=[constraint for _ in probs[0]],
+        #                                   iprint=10)
+        self.probs = new_probs
         self.controlset = controlset
 
         self.detunings = detunings
@@ -121,7 +146,7 @@ class PCA(object):
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
 
-    def plot_everything(self, num_processors=4, num_points=20):
+    def plot_everything(self, num_processors=4, num_points=10):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
@@ -130,6 +155,7 @@ class PCA(object):
         for i, detuning in enumerate(self.detunings):
             values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1)) * detuning[0]
             values = [-value for value in values[::-1]] + list(values[1:])
+            # values = np.linspace(-detuning[0], detuning[0], num_points)
             print(values)
             values_to_plot.append(values)
             corr.append(i)
@@ -213,8 +239,10 @@ def compute_dpn_and_fid(data):
         fidelity = np.trace(adjoint(target_operator).dot(unitary))/target_operator.shape[0]
         fidelity *= np.conj(fidelity)
         fidelities.append(fidelity)
+    print(sops)
+    print(probs)
+    print([prob * sops[i] for i, prob in enumerate(probs)])
     avg_sop = reduce(lambda a, b: a + b, [prob * sops[i] for i, prob in enumerate(probs)])
-
     balanced = reduce(lambda a, b: a + b,
                       [probs[i] * np.kron(np.conj(unitary), unitary) for i, unitary in
                        enumerate(controlset_unitaries)])
@@ -421,13 +449,13 @@ if __name__ == "__main__":
     Z = np.array([[1, 0], [0, -1]])
     ambient_hamiltonian = [Z]
     control_hamiltonians = [X, Y]
-    detunings = [(.01, 1), (.01, 2)]
+    detunings = [(.001, 1), (.01, 2)]
     import scipy
-    target_operator = scipy.linalg.sqrtm(X)
+    target_operator = scipy.linalg.sqrtm(Y)
     time = 2 * np.pi
-    num_steps = 300
+    num_steps = 100
     threshold = 1 - .001
-    num_controls = 100
+    num_controls = 10
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:
