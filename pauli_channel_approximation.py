@@ -11,7 +11,8 @@ import subprocess
 import os.path
 import multiprocessing
 from mpi4py import MPI
-
+import sys
+import time as timemod
 COMM = MPI.COMM_WORLD
 #Note ambient hamiltonian as been changed to a list of hamiltonians, but the name remains unchanged.
 
@@ -69,16 +70,17 @@ class PCA(object):
 
     def __init__(self, num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
                  num_steps, time, threshold, detunings):
-        import time as t
-        start = t.time()
+
+        self.start = timemod.time()
         controlset = []
         dt = time / num_steps
+        self.num_controls = num_controls
         for i in range(num_controls):
             print("CONTROL {}".format(i))
             random_detunings = []
             for detuning in detunings:
-                #random_detunings.append((detuning[0] * np.random.rand(), detuning[1]))
-                random_detunings.append((detuning[0], detuning[1]))
+                random_detunings.append((detuning[0] * np.random.rand(), detuning[1]))
+                #random_detunings.append((detuning[0], detuning[1]))
             print(random_detunings)
             import sys
             sys.stdout.flush()
@@ -86,9 +88,18 @@ class PCA(object):
                            num_steps, time, threshold, random_detunings)
             controlset.append(result.reshape(-1, len(control_hamiltonians)))
             # controlset.append(np.array([1] * num_steps).reshape(-1, 1))
+        self.controlset = controlset
 
+        self.detunings = detunings
+        self.target_operator = target_operator
+        self.dt = dt
+        self.ambient_hamiltonian = ambient_hamiltonian
+        self.control_hamiltonians = control_hamiltonians
+        self.assign_probs()
+
+    def assign_probs(self):
         # Initialize random probabilities
-        probs = np.random.rand(1, num_controls)
+        probs = np.random.rand(1, self.num_controls)
         probs /= np.sum(probs)
         # Enforce bounds on probs
         constraint = (0, 1)
@@ -113,17 +124,21 @@ class PCA(object):
             print(count_call)
             count_call +=1
             sys.stdout.flush()
-            return off_diagonal_error(x, controlset, ambient_hamiltonian, control_hamiltonians, detunings, dt,
-                                            target_operator)
-        # def cons(probs, i):
-        #     return probs[i]
-        # def conscons(i):
-        #     return lambda probs: cons(probs, i)
-        # def minuscons(probs, i):
-        #     return 1 - probs[i]
-        # def minusconscons(i):
-        #     return lambda probs: minuscons(probs, i)
-        #
+            return off_diagonal_error(x, self.controlset, self.ambient_hamiltonian, self.control_hamiltonians, self.detunings, self.dt,
+                                            self.target_operator)
+        def cons(probs, i):
+            return probs[i]
+        def conscons(i):
+            return lambda probs: cons(probs, i)
+        def minuscons(probs, i):
+            return 1 - probs[i]
+        def minusconscons(i):
+            return lambda probs: minuscons(probs, i)
+        def delta(i):
+            return lambda x: np.array([1 if num == i else 0 for num in range(len(x))])
+
+        def minusdelta(i):
+            return lambda x: -1 * delta(i)(x)
         # constraints = ([{'type':'ineq', 'fun':conscons(i)} for i in range(len(probs))]
         #                + [{'type':'ineq', 'fun':minusconscons(i)} for i in range(len(probs))]
         #                + [{'type':'ineq', 'fun': lambda x: 1 - sum(x)},
@@ -136,23 +151,25 @@ class PCA(object):
         # new_probs = scipy.optimize.fmin_cobyla(func, probs, cons=constraints)
         # new_probs = minimize(func, probs, method='COBYLA', bounds=[constraint for _ in probs[0]], constraints=constraints, options=options)
         # import scipy
-        new_probs = scipy.optimize.fmin_slsqp(func, probs, eqcons=[lambda x: 1 - sum(probs)],
-                                          bounds=[constraint for _ in probs[0]],
-                                          iprint=10)
-        self.probs = new_probs
-        self.controlset = controlset
+        constraints = ([{'type': 'eq', 'fun': lambda x: sum(x) - 1, 'jac': lambda x: np.array([1.0 for _ in range(len(x))])}]
+                + [{'type':'ineq', 'fun': conscons(i), 'jac': delta(i)} for i in range(len(probs))]
+                + [{'type':'ineq', 'fun': minusconscons(i), 'jac': minusdelta(i)} for i in range(len(probs))]
+                )
 
-        self.detunings = detunings
-        self.target_operator = target_operator
-        self.dt = dt
-        self.ambient_hamiltonian = ambient_hamiltonian
-        self.control_hamiltonians = control_hamiltonians
-        stop = t.time()
-        self.time = stop - start
+        res = scipy.optimize.minimize(func, probs, method="SLSQP", constraints=constraints)
+        # new_probs = scipy.optimize.fmin_slsqp(func, probs, eqcons=[lambda x: 1 - sum(probs)],
+        #                                   bounds=[constraint for _ in probs[0]],
+        #                                   iprint=10)
+        new_probs = res.x
+        self.success = res.success
+        self.probs = new_probs
+
+        self.stop = timemod.time()
+        self.time = self.stop - self.start
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
 
-    def plot_everything(self, num_processors=18, num_points=10):
+    def plot_everything(self, num_processors=18, num_points=15):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
@@ -160,8 +177,8 @@ class PCA(object):
         corr = []
         for i, detuning in enumerate(self.detunings):
             values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1)) * detuning[0]
-            #values = [-value for value in values[::-1]] + list(values[1:])
-            values = np.linspace(-detuning[0], detuning[0], num_points)
+            values = [-value for value in values[::-1]] + list(values[1:])
+            # values = np.linspace(-detuning[0], detuning[0], num_points)
             print(values)
             values_to_plot.append(values)
             corr.append(i)
@@ -459,9 +476,9 @@ if __name__ == "__main__":
     import scipy
     target_operator = scipy.linalg.sqrtm(Y)
     time = 2 * np.pi
-    num_steps = 50
+    num_steps = 100
     threshold = 1 - .001
-    num_controls = 50
+    num_controls = 1
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:

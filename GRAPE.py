@@ -141,7 +141,7 @@ def comp_avg_perf(pair):
 
 
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=2, num_processors=7):
+                       controls, detunings, dt, target_operator, deg=3, num_processors=7):
     """
     Average the given func over noise using gaussian quadrature.
 
