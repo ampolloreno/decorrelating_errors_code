@@ -107,8 +107,13 @@ class PCA(object):
             avg_error = reduce(lambda a, b: a + b,
                                [avg_errors[i] * prob for i, prob in enumerate(probs)])
             return off_diagonal_projection(avg_error)
-
-        func = lambda x: off_diagonal_error(x, controlset, ambient_hamiltonian, control_hamiltonians, detunings, dt,
+        count_call = 0
+        def func(x):
+            nonlocal count_call
+            print(count_call)
+            count_call +=1
+            sys.stdout.flush()
+            return off_diagonal_error(x, controlset, ambient_hamiltonian, control_hamiltonians, detunings, dt,
                                             target_operator)
         def cons(probs, i):
             return probs[i]
@@ -155,8 +160,8 @@ class PCA(object):
         corr = []
         for i, detuning in enumerate(self.detunings):
             values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1)) * detuning[0]
-            values = [-value for value in values[::-1]] + list(values[1:])
-            # values = np.linspace(-detuning[0], detuning[0], num_points)
+            #values = [-value for value in values[::-1]] + list(values[1:])
+            values = np.linspace(-detuning[0], detuning[0], num_points)
             print(values)
             values_to_plot.append(values)
             corr.append(i)
@@ -456,7 +461,7 @@ if __name__ == "__main__":
     time = 2 * np.pi
     num_steps = 100
     threshold = 1 - .001
-    num_controls = 10
+    num_controls = 20
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:
