@@ -123,7 +123,8 @@ class PCA(object):
                        + [{'type':'ineq', 'fun':minusconscons(i)} for i in range(len(probs))]
                        + [{'type':'ineq', 'fun': lambda x: 1 - sum(x)},
                           {'type': 'ineq', 'fun': lambda x: sum(x) - 1}])
-        res = scipy.optimize.minimize(func, probs, method="COBYLA", constraints=constraints)
+        res = scipy.optimize.minimize(func, probs, method="COBYLA", constraints=constraints,
+                                      options={'maxiter': 10000})
         new_probs = res.x[0]
         print("MINIMIZATION WAS {}".format(res.success))
         self.success = res.success
