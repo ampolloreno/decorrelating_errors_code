@@ -77,8 +77,8 @@ class PCA(object):
             print("CONTROL {}".format(i))
             random_detunings = []
             for detuning in detunings:
-                random_detunings.append((detuning[0] * np.random.rand(), detuning[1]))
-                # random_detunings.append((detuning[0], detuning[1]))
+                #random_detunings.append((detuning[0] * np.random.rand(), detuning[1]))
+                random_detunings.append((detuning[0], detuning[1]))
             print(random_detunings)
             import sys
             sys.stdout.flush()
@@ -129,7 +129,7 @@ class PCA(object):
                        + [{'type':'ineq', 'fun': lambda x: 1 - sum(x)},
                           {'type': 'ineq', 'fun': lambda x: sum(x) - 1}])
         res = scipy.optimize.minimize(func, probs, method="COBYLA", constraints=constraints,
-                                      options={'disp':True, 'maxiter': 10000})
+                                      options={'disp':True, 'maxiter': 100})
         new_probs = res.x[0]
         print("MINIMIZATION WAS {}".format(res.success))
         self.success = res.success
@@ -448,7 +448,7 @@ def generate_all_reports():
 if __name__ == "__main__":
     from mpi4py import MPI
     COMM = MPI.COMM_WORLD
-    np.random.seed(1337)
+    np.random.seed(1000)
     I = np.eye(2)
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
@@ -461,7 +461,7 @@ if __name__ == "__main__":
     time = 2 * np.pi
     num_steps = 100
     threshold = 1 - .001
-    num_controls = 20
+    num_controls = 10
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:
