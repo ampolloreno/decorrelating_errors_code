@@ -1,0 +1,11 @@
+import os
+import dill
+from pauli_channel_approximation import generate_report, PCA
+for filename in os.listdir():
+	if len(filename) >=4 and filename[-4:] == '.pkl':
+		fileh = 
+		pca = dill.load(open(filename, 'rb'))
+		PCA.assign_probs(pca)
+		dill.dump(pca, filename)
+		generate_report(filename)
+open(filename, 'rb')

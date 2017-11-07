@@ -3,6 +3,7 @@ plt.switch_backend('agg')
 from GRAPE import GRAPE, control_unitaries, adjoint, average_over_noise
 import numpy as np
 from scipy.optimize import minimize
+import scipy
 import dill
 import itertools
 from copy import deepcopy
@@ -79,9 +80,8 @@ class PCA(object):
             print("CONTROL {}".format(i))
             random_detunings = []
             for detuning in detunings:
-                random_detunings.append((detuning[0] * np.random.rand(), detuning[1]))
-                #random_detunings.append((detuning[0], detuning[1]))
-            print(random_detunings)
+                # random_detunings.append((detuning[0] * np.random.rand(), detuning[1]))
+                random_detunings.append((detuning[0], detuning[1]))
             import sys
             sys.stdout.flush()
             result = GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator,
@@ -99,8 +99,12 @@ class PCA(object):
 
     def assign_probs(self):
         # Initialize random probabilities
-        probs = np.random.rand(1, self.num_controls)
-        probs /= np.sum(probs)
+        if COMM.rank == 0:
+            probs = np.random.rand(1, len(self.controlset))
+            probs /= np.sum(probs)
+        else:
+            probs = None
+        probs = COMM.bcast(probs, root=0)
         # Enforce bounds on probs
         constraint = (0, 1)
         disp = True
@@ -164,12 +168,12 @@ class PCA(object):
         self.success = res.success
         self.probs = new_probs
 
-        self.stop = timemod.time()
-        self.time = self.stop - self.start
+        # self.stop = timemod.time()
+        # self.time = self.stop - self.start
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
 
-    def plot_everything(self, num_processors=18, num_points=15):
+    def plot_everything(self, num_processors=18, num_points=4):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
@@ -179,7 +183,7 @@ class PCA(object):
             values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1)) * detuning[0]
             values = [-value for value in values[::-1]] + list(values[1:])
             # values = np.linspace(-detuning[0], detuning[0], num_points)
-            print(values)
+            # print(values)
             values_to_plot.append(values)
             corr.append(i)
         combinations = itertools.product(*values_to_plot)
@@ -262,9 +266,9 @@ def compute_dpn_and_fid(data):
         fidelity = np.trace(adjoint(target_operator).dot(unitary))/target_operator.shape[0]
         fidelity *= np.conj(fidelity)
         fidelities.append(fidelity)
-    print(sops)
-    print(probs)
-    print([prob * sops[i] for i, prob in enumerate(probs)])
+    # print(sops)
+    # print(probs)
+    # print([prob * sops[i] for i, prob in enumerate(probs)])
     avg_sop = reduce(lambda a, b: a + b, [prob * sops[i] for i, prob in enumerate(probs)])
     balanced = reduce(lambda a, b: a + b,
                       [probs[i] * np.kron(np.conj(unitary), unitary) for i, unitary in
