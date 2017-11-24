@@ -279,6 +279,7 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
     constraint = (-1, 1)
     controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0)
     pi_pulse = np.random.randint(3) - 1
+
     num_pi_steps = round(np.pi / dt)
     print(num_pi_steps)
     import sys
@@ -288,7 +289,7 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
         print("PI_PULSE", pi_pulse)
         import sys
         sys.stdout.flush()
-        if pi_pulse != -2:
+        if pi_pulse != 0:
             controls[0][i*len(control_hamiltonians)] = pi_pulse
             controls[0][i*len(control_hamiltonians) + 1] = 0
             bounds[i*len(control_hamiltonians)] = (pi_pulse, pi_pulse)

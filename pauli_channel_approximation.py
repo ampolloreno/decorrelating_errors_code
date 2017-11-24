@@ -483,8 +483,8 @@ if __name__ == "__main__":
     detunings = [(1E-3, 1), (1E-3,  2)]
     import scipy
     target_operator = scipy.linalg.sqrtm(Y)
-    time = 4 * np.pi
-    num_steps = 200
+    time = 3/2 * np.pi
+    num_steps = 100
     # time = 2 * np.pi
     # num_steps = 100
     threshold = 1 - .001
