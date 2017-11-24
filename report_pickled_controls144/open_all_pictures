@@ -1,5 +1,0 @@
-import os
-from subprocess import Popen
-for thing in os.listdir():
-	if os.isdir(thing) and 'report' in thing:
-		Popen(['eog', 'control_dpn_all.png'])

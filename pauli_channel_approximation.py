@@ -1,3 +1,4 @@
+import numpy as np
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
 from GRAPE import GRAPE, control_unitaries, adjoint, average_over_noise
@@ -80,7 +81,7 @@ class PCA(object):
             print("CONTROL {}".format(i))
             random_detunings = []
             for detuning in detunings:
-                # random_detunings.append((detuning[0] * np.random.rand(), detuning[1]))
+                #random_detunings.append((detuning[0] * np.random.rand(), detuning[1]))
                 random_detunings.append((detuning[0], detuning[1]))
             import sys
             sys.stdout.flush()
@@ -105,6 +106,7 @@ class PCA(object):
         else:
             probs = None
         probs = COMM.bcast(probs, root=0)
+
         # Enforce bounds on probs
         constraint = (0, 1)
         disp = True
@@ -156,8 +158,8 @@ class PCA(object):
         # new_probs = minimize(func, probs, method='COBYLA', bounds=[constraint for _ in probs[0]], constraints=constraints, options=options)
         # import scipy
         constraints = ([{'type': 'eq', 'fun': lambda x: sum(x) - 1, 'jac': lambda x: np.array([1.0 for _ in range(len(x))])}]
-                + [{'type':'ineq', 'fun': conscons(i), 'jac': delta(i)} for i in range(len(probs))]
-                + [{'type':'ineq', 'fun': minusconscons(i), 'jac': minusdelta(i)} for i in range(len(probs))]
+                + [{'type':'ineq', 'fun': conscons(i), 'jac': delta(i)} for i in range(len(probs[0]))]
+                + [{'type':'ineq', 'fun': minusconscons(i), 'jac': minusdelta(i)} for i in range(len(probs[0]))]
                 )
 
         res = scipy.optimize.minimize(func, probs, method="SLSQP", constraints=constraints)
@@ -168,12 +170,13 @@ class PCA(object):
         self.success = res.success
         self.probs = new_probs
 
-        # self.stop = timemod.time()
-        # self.time = self.stop - self.start
+        self.stop = timemod.time()
+        self.time = self.stop - self.start
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
+        print(new_probs)
 
-    def plot_everything(self, num_processors=18, num_points=4):
+    def plot_everything(self, num_processors=18, num_points=3):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
@@ -242,6 +245,7 @@ def compute_dpn_and_fid(data):
     projs = []
     sops = []
     controlset_unitaries = []
+    #
     #
     # for i, com in enumerate(combo):
     #     if i != 0 and com != 0:
@@ -469,20 +473,22 @@ def generate_all_reports():
 if __name__ == "__main__":
     from mpi4py import MPI
     COMM = MPI.COMM_WORLD
-    np.random.seed(666)
+    np.random.seed(100)
     I = np.eye(2)
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
     ambient_hamiltonian = [Z]
     control_hamiltonians = [X, Y]
-    detunings = [(.001, 1), (.01, 2)]
+    detunings = [(1E-3, 1), (1E-3,  2)]
     import scipy
     target_operator = scipy.linalg.sqrtm(Y)
-    time = 2 * np.pi
-    num_steps = 100
+    time = 4 * np.pi
+    num_steps = 200
+    # time = 2 * np.pi
+    # num_steps = 100
     threshold = 1 - .001
-    num_controls = 1
+    num_controls = 10
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:
@@ -494,6 +500,8 @@ if __name__ == "__main__":
         fh = open("pickled_controls%s.pkl" % i, "wb")
         dill.dump(pca, fh)
         fh.close()
+
+
 # if __name__ == "__main__":
 #     np.random.seed(1337)
 #     I = np.eye(2)
@@ -512,12 +520,12 @@ if __name__ == "__main__":
 #     # applied multiplicatively
 #     ambient_hamiltonian = [IZ, ZI]
 #     control_hamiltonians = [IX, IY, XI, YI, ZZ]
-#     detunings = [(.1, 1), (.1, 1), (.1, 2), (.1, 2), (.1, 1)]
+#     detunings = [(.0001, 1), (.0001, 1), (.01, 2), (.01, 2), (.01, 1)]
 #     target_operator = entangle_ZZ
 #     time = 2 * np.pi
 #     num_steps = 200
 #     threshold = 1 - .001
-#     num_controls = 40
+#     num_controls = 20
 #     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
 #               num_steps, time, threshold, detunings)
 #     if COMM.rank == 0:
@@ -529,111 +537,3 @@ if __name__ == "__main__":
 #         fh = open("pickled_controls%s.pkl" % i, "wb")
 #         dill.dump(pca, fh)
 #         fh.close()
-
-####################################################################################################
-# if __name__ == "__main__":
-#     np.random.seed(1000)
-#     I = np.eye(2)
-#     II = np.kron(I, I)
-#     X = np.array([[0, 1], [1, 0]])
-#     IX = np.kron(I, X)
-#     XI = np.kron(X, I)
-#     Y = np.array([[0, -1.j], [1.j, 0]])
-#     IY = np.kron(I, Y)
-#     YI = np.kron(Y, I)
-#     Z = np.array([[1, 0], [0, -1]])
-#     IZ = np.kron(I, Z)
-#     ZI = np.kron(Z, I)
-#     XXYY = np.kron(X, X) + np.kron(Y, Y)
-#     ISWAP = np.array([[1, 0, 0, 0], [0, 0, -1.j, 0], [0, -1.j, 0, 0], [0, 0, 0, 1]])
-#     # H = (Z + X) / np.sqrt(2)
-#     # applied multiplicatively
-#     unisup = 1 / 2.0 * np.array([1, 1, 1, 1])
-#     unisup = 2 * np.outer(unisup, unisup)
-#     unisup -= np.eye(4)
-#     assert np.isclose(adjoint(unisup).dot(unisup), np.eye(4)).all()
-#
-#     ambient_hamiltonian = IZ
-#     control_hamiltonians = [IX, XI, IY, YI, IZ, ZI, XXYY]
-#     target_operator = unisup
-#     time = 2 * np.pi
-#     num_steps = 1000
-#     threshold = 1 - .001
-#     num_controls = 100
-#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time,
-#               threshold, [.001] + [.001, .001, .001, .001, 0, 0, .001])
-#     print("TOOK {}".format(pca.time))
-#     import os
-#
-#     i = 0
-#     while os.path.exists("pickled_controlsaws%s.pkl" % i):
-#         i += 1
-#     fh = open("pickled_controlsaws%s.pkl" % i, "wb")
-#     dill.dump(pca, fh)
-#     fh.close()
-
-
-# if __name__ == "__main__":
-#     np.random.seed(1000)
-#     I = np.eye(2)
-#     X = np.array([[0, 1], [1, 0]])
-#     Y = np.array([[0, -1.j], [1.j, 0]])
-#     Z = np.array([[1, 0], [0, -1]])
-#     H = (Z + X)/np.sqrt(2)
-#     # applied multiplicatively
-#     ambient_hamiltonian = Z
-#     control_hamiltonians = [X, Y, Z]
-#     target_operator = H
-#     time = 4 * np.pi
-#     num_steps = 50
-#     threshold = 1 - .001
-#     num_controls = 5
-#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
-#               [.001] + [.001 for _ in control_hamiltonians])
-#     print("TOOK {}".format(pca.time))
-#     import os
-#     i = 0
-#     while os.path.exists("pickled_controls%s.pkl" % i):
-#         i += 1
-#     fh = open("pickled_controls%s.pkl" % i, "wb")
-#     dill.dump(pca, fh)
-#     fh.close()
-
-    # if __name__ == "__main__":
-    #     np.random.seed(1000)
-    #     I = np.eye(2)
-    #     X = np.array([[0, 1], [1, 0]])
-    #     Y = np.array([[0, -1.j], [1.j, 0]])
-    #     Z = np.array([[1, 0], [0, -1]])
-    #     H = (Z + X)/np.sqrt(2)
-    #     ambient_hamiltonian = .01 * Z
-    #     control_hamiltonians = [X, Y, Z]
-    #     target_operator = H
-    #     time = 6 * np.pi
-    #     num_steps = 500
-    #     threshold = 1 - .001
-    #     num_controls = 10
-    #     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator, num_steps, time, threshold,
-    #               [.001] + [.01 for _ in control_hamiltonians])
-    #     print "TOOK {}".format(pca.time)
-    #     import os
-    #     i = 0
-    #     while os.path.exists("pickled_controls%s.pkl" % i):
-    #         i += 1
-    #     fh = open("pickled_controls%s.pkl" % i, "wb")
-    #     dill.dump(pca, fh)
-    #     fh.close()
-
-
-
-#####################################
-
-
-#Notes on parallelization: Took 169 seconds on 4 cores for the 2Q results with 200 steps.
-#On 5 cores it took 234 seconds, seeming to hold up with the hypothesis that 2 cores are being used for everyone
-# I think is being used.
-
-
-# The controls being found are very bad around the shoulders, this might be the real problem.
-# This is allowed because the code only checks to see if the zero detuning point is okay. THis work for 1Q,
-# But maybe for 2Q we need to make sure that it's "okay everywhere".
