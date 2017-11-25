@@ -77,7 +77,8 @@ class PCA(object):
         controlset = []
         dt = time / num_steps
         self.num_controls = num_controls
-        for i in range(num_controls):
+        from tqdm import tqdm
+        for i in tqdm(range(num_controls)):
             print("CONTROL {}".format(i))
             random_detunings = []
             for detuning in detunings:
@@ -484,13 +485,14 @@ if __name__ == "__main__":
     import scipy
     target_operator = scipy.linalg.sqrtm(Y)
     time = 3/2 * np.pi
-    num_steps = 100
+    num_steps = 400
     # time = 2 * np.pi
     # num_steps = 100
     threshold = 1 - .001
-    num_controls = 20
+    num_controls = 100
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
+
     if COMM.rank == 0:
         print("TOOK {}".format(pca.time))
         import os
@@ -500,6 +502,7 @@ if __name__ == "__main__":
         fh = open("pickled_controls%s.pkl" % i, "wb")
         dill.dump(pca, fh)
         fh.close()
+
 
 
 # if __name__ == "__main__":
