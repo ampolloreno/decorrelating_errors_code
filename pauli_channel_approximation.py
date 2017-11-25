@@ -24,6 +24,12 @@ Y = np.array([[0, -1.j], [1.j, 0]])
 Z = np.array([[1, 0], [0, -1]])
 PAULIS = [I, X, Y, Z]
 
+from itertools import product
+def generate_indices(num_points, order_desired):
+    num_indices = len(order_desired)
+    tuples = product(range(num_points), repeat=num_indices)
+    indices = [sum([num_points**(num_indices - 1 - order_desired[i]) * t[i] for i in range(num_indices)]) for t in tuples]
+    return indices
 
 def error_unitary(unitary, target):
     """
@@ -177,7 +183,7 @@ class PCA(object):
         # self.plot_dpn(-1)
         print(new_probs)
 
-    def plot_everything(self, num_processors=18, num_points=3):
+    def plot_everything(self, num_processors=4, num_points=5):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
@@ -218,17 +224,30 @@ class PCA(object):
         fidelities = np.vstack(fidelities).T
         plt.figure(1,  figsize=(16, 8))  # the first figure
         plt.subplot(211)  # the first subplot in the first figure
+
+        tuple_length = len(combinations[0])
+        standard_ordering = list(range(tuple_length))
+        ordering = standard_ordering
+        # Switch first index
+
+        ordering[0], ordering[1] = ordering[1], ordering[0]
+        print(tuple_length)
+
+        indices = generate_indices(len(values), ordering)
+
         for i, row in enumerate(projs[:-1, :]):
-            plt.plot(range(len(row)), row)
-        plt.plot(range(len(projs[-1, :])), projs[-1, :], label="min", color='k', linewidth=2, zorder=10)
+            reordered_row = np.array([row[j] for j in indices])
+            plt.plot(range(len(row)), reordered_row)
+        plt.plot(range(len(projs[-1, :])), [projs[-1, :][i] for i in indices], label="min", color='k', linewidth=2, zorder=10)
         plt.legend()
         plt.ylabel("Absolute Sum of Off Diagonal Elements")
         plt.semilogy()
 
         plt.subplot(212)  # the second subplot in the first figure
         for i, row in enumerate(fidelities[:-1, :]):
-            plt.plot(range(len(row)), -np.log(1 - row))
-        plt.plot(range(len(fidelities[-1, :])), -np.log(1 - fidelities[-1, :]), label="min", color='k', linewidth=2, zorder=10)
+            reordered_row = np.array([row[j] for j in indices])
+            plt.plot(range(len(row)), -np.log(1 - reordered_row))
+        plt.plot(range(len(fidelities[-1, :])), [-np.log(1 - fidelities[-1, :][i]) for i in indices], label="min", color='k', linewidth=2, zorder=10)
         plt.legend()
         plt.ylabel("f")
         samples = np.linspace(plt.ylim()[0], plt.ylim()[1], 11)
@@ -242,6 +261,7 @@ class PCA(object):
 def compute_dpn_and_fid(data):
     controlset, ambient_hamiltonian0, combo, dt, control_hamiltonians, target_operator, probs = data
     print("DOING COMBO {}".format(combo))
+    sys.stdout.flush()
     fidelities = []
     projs = []
     sops = []
@@ -469,6 +489,80 @@ def generate_all_reports():
     for filename in os.listdir(os.getcwd()):
         if filename.split('.')[-1] == "pkl" and  "aws" in filename.split('.')[0]:
             generate_report(filename)
+
+
+def subsample(filename):
+    from copy import deepcopy
+    with open(filename, 'rb') as filep:
+        pca = dill.load(filep)
+    iterstep = 10
+    num_controlsets = len(pca.controlset)
+    for i in range(int(num_controlsets/iterstep)):
+        pca2 = deepcopy(pca)
+        pca2.controlset = pca2.controlset[: (i + 2) * iterstep]
+        pca2.num_controls = i * iterstep
+        pca2.assign_probs()
+        j = 0
+        if COMM.rank == 0:
+            while os.path.exists("pickled_controls%s.pkl" % j):
+                j += 1
+            fh = open("pickled_controls%s.pkl" % j, "wb")
+            dill.dump(pca2, fh)
+            fh.close()
+
+
+def pick_best_controls(filename, num_best, num_points=5, num_processors=4):
+    from copy import deepcopy
+    with open(filename, 'rb') as filep:
+        pca = dill.load(filep)
+    values_to_plot = []
+    corr = []
+    for i, detuning in enumerate(pca.detunings):
+        values = (np.geomspace(1, 2 ** (num_points - 1), num_points) - 1) / (
+        2 ** (num_points - 1)) * detuning[0]
+        values = [-value for value in values[::-1]] + list(values[1:])
+        # values = np.linspace(-detuning[0], detuning[0], num_points)
+        # print(values)
+        values_to_plot.append(values)
+        corr.append(i)
+    combinations = itertools.product(*values_to_plot)
+    new_combinations = []
+    for combo in combinations:
+        new_combo = []
+        for index in corr:
+            new_combo.append(combo[index])
+        new_combinations.append(new_combo)
+    combinations = new_combinations
+
+    if COMM.Get_rank() == 0:
+        pool = multiprocessing.Pool(num_processors)
+        lst = [(pca.controlset, pca.ambient_hamiltonian, combo, pca.dt,
+                pca.control_hamiltonians, pca.target_operator, pca.probs)
+               for combo in combinations]
+        projs_fidelities = pool.map(compute_dpn_and_fid, lst)
+        pool.close()
+        projs = [pf[0] for pf in projs_fidelities]
+        projs = np.vstack(projs).T
+        means = []
+        for i, row in enumerate(projs[:-1, :]):
+            print("Looking at control {}".format(i))
+            sys.stdout.flush()
+            means.append(np.mean(row))
+        best = sorted(range(len(means)), key=lambda i: means[i])[:num_best]
+    else:
+        best = None
+    best = COMM.bcast(best, root=0)
+    pca2 = deepcopy(pca)
+    pca2.num_controls = num_best
+    pca2.controlset = [pca.controlset[i] for i in best]
+    pca2.assign_probs()
+    j = 0
+    if COMM.rank == 0:
+        while os.path.exists("pickled_controls%s.pkl" % j):
+            j += 1
+        fh = open("pickled_controls%s.pkl" % j, "wb")
+        dill.dump(pca2, fh)
+        fh.close()
 
 
 if __name__ == "__main__":
