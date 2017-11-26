@@ -137,7 +137,7 @@ class PCA(object):
             print(count_call)
             count_call +=1
             sys.stdout.flush()
-            return off_diagonal_error(x, self.controlset, self.ambient_hamiltonian, self.control_hamiltonians, self.detunings, self.dt,
+            return off_diagonal_error(x, self.controlset, self.ambient_hamiltonian, self.control_hamiltonians, [(d[0] / 10., d[1]) for d in self.detunings], self.dt,
                                             self.target_operator)
         def cons(probs, i):
             return probs[i]
@@ -182,8 +182,9 @@ class PCA(object):
         # self.plot_control_fidelity(-1)
         # self.plot_dpn(-1)
         print(new_probs)
+        return res.fun
 
-    def plot_everything(self, num_processors=4, num_points=5):
+    def plot_everything(self, num_processors=4, num_points=10):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
@@ -230,7 +231,7 @@ class PCA(object):
         ordering = standard_ordering
         # Switch first index
 
-        ordering[0], ordering[1] = ordering[1], ordering[0]
+        #ordering[0], ordering[1] = ordering[1], ordering[0]
         print(tuple_length)
 
         indices = generate_indices(len(values), ordering)
@@ -491,17 +492,24 @@ def generate_all_reports():
             generate_report(filename)
 
 
-def subsample(filename):
+def subsample(filename, num_iters=5):
     from copy import deepcopy
     with open(filename, 'rb') as filep:
         pca = dill.load(filep)
     iterstep = 10
+    np.random.seed(1000)
     num_controlsets = len(pca.controlset)
     for i in range(int(num_controlsets/iterstep)):
         pca2 = deepcopy(pca)
         pca2.controlset = pca2.controlset[: (i + 2) * iterstep]
         pca2.num_controls = i * iterstep
-        pca2.assign_probs()
+        values = []
+        probs = []
+        for iter in range(num_iters):
+            value = pca2.assign_probs()
+            values.append(value)
+            probs.append(pca2.probs)
+        pca2.probs = probs[np.argmin(values)]
         j = 0
         if COMM.rank == 0:
             while os.path.exists("pickled_controls%s.pkl" % j):
@@ -577,11 +585,11 @@ if __name__ == "__main__":
     control_hamiltonians = [X, Y]
     detunings = [(1E-3, 1), (1E-3,  2)]
     import scipy
-    target_operator = scipy.linalg.sqrtm(Y)
-    time = 3/2 * np.pi
-    num_steps = 400
-    # time = 2 * np.pi
-    # num_steps = 100
+    target_operator = scipy.linalg.sqrtm(X)
+    # time = 4 * np.pi
+    # num_steps = 400
+    time = np.pi
+    num_steps = 100
     threshold = 1 - .001
     num_controls = 100
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,

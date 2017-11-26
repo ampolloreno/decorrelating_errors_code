@@ -278,21 +278,21 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                "disp": disp}
     constraint = (-1, 1)
     controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0)
-    pi_pulse = np.random.randint(3) - 1
-    num_pi_steps = round(np.pi / dt)
-    print(num_pi_steps)
+    #pi_pulse = np.random.randint(2)
+    #num_pi_steps = round(np.pi / dt)
+    #print(num_pi_steps)
     import sys
     sys.stdout.flush()
     bounds = [constraint for _ in controls[0]]
-    for i in range(num_pi_steps):
-        print("PI_PULSE", pi_pulse)
-        import sys
-        sys.stdout.flush()
-        if pi_pulse != -2:
-            controls[0][i*len(control_hamiltonians)] = pi_pulse
-            controls[0][i*len(control_hamiltonians) + 1] = 0
-            bounds[i*len(control_hamiltonians)] = (pi_pulse, pi_pulse)
-            bounds[i*len(control_hamiltonians) + 1] = (0, 0)
+    # for i in range(num_pi_steps):
+    #     print("PI_PULSE", pi_pulse)
+    #     import sys
+    #     sys.stdout.flush()
+    #     if pi_pulse != -2:
+    #         controls[0][i*len(control_hamiltonians)] = pi_pulse
+    #         controls[0][i*len(control_hamiltonians) + 1] = 0
+    #         bounds[i*len(control_hamiltonians)] = (pi_pulse, pi_pulse)
+    #         bounds[i*len(control_hamiltonians) + 1] = (0, 0)
         # Start with a pi pulse
 
     # for i in range(len(controls)):
