@@ -585,7 +585,7 @@ if __name__ == "__main__":
     control_hamiltonians = [X, Y]
     detunings = [(1E-3, 1), (1E-3,  2)]
     import scipy
-    target_operator = scipy.linalg.sqrtm(X)
+    target_operator = scipy.linalg.sqrtm(Y)
     # time = 4 * np.pi
     # num_steps = 400
     time = np.pi
