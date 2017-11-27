@@ -185,14 +185,14 @@ class PCA(object):
         print(new_probs)
         return res.fun
 
-    def plot_everything(self, num_processors=36, num_points=2):
+    def plot_everything(self, num_processors=4, num_points=2):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
         values_to_plot = []
         corr = []
         for i, detuning in enumerate(self.detunings):
-            values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1)) * detuning[0]
+            values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1) - 1) * detuning[0]
             values = [-value for value in values[::-1]] + list(values[1:])
             # values = np.linspace(-detuning[0], detuning[0], num_points)
             # print(values)
@@ -505,7 +505,7 @@ def subsample(filename, num_iters=5):
     num_controlsets = len(pca.controlset)
     for i in range(int(num_controlsets/iterstep)):
         pca2 = deepcopy(pca)
-        pca2.controlset = pca2.controlset[: (i + 2) * iterstep]
+        pca2.controlset = pca2.controlset[: (i + 1) * iterstep]
         pca2.num_controls = i * iterstep
         values = []
         probs = []
@@ -531,7 +531,7 @@ def pick_best_controls(filename, num_best, num_points=5, num_processors=4):
     corr = []
     for i, detuning in enumerate(pca.detunings):
         values = (np.geomspace(1, 2 ** (num_points - 1), num_points) - 1) / (
-        2 ** (num_points - 1)) * detuning[0]
+        2 ** (num_points - 1) - 1) * detuning[0]
         values = [-value for value in values[::-1]] + list(values[1:])
         # values = np.linspace(-detuning[0], detuning[0], num_points)
         # print(values)
