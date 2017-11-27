@@ -146,7 +146,7 @@ def comp_avg_perf(pair):
 
 
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=3, num_processors=7):
+                       controls, detunings, dt, target_operator, deg=2, num_processors=7):
     """
     Average the given func over noise using gaussian quadrature.
 
@@ -163,6 +163,8 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
      coefficients are being handled correctly)
     :rtype: rtype of func
     """
+    controls = controls.reshape(-1, len(control_hamiltonians))
+
     if COMM.rank == 0:
         corr = []
         if type(detunings[0]) != tuple:
@@ -183,7 +185,6 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
         pairs = [list(zip(np.sqrt(detuning) * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
         for index in zero_detunings:
             pairs.insert(index, [(0, 1)])
-        controls = controls.reshape(-1, len(control_hamiltonians))
         combinations = itertools.product(*pairs)
         #Expand them if there are correlations
         if corr:
@@ -209,7 +210,7 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
          combination in combinations]
         # results = pool.map(comp_avg_perf, lst)
         # pool.close()
-        jobs = lst
+        jobs = combinations
         # Split into however many cores are available.
         jobs = split(jobs, COMM.size)
     else:
@@ -223,7 +224,7 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
     results = []
     for job in jobs:
         # print("{} has {} jobs, doing job {}".format(COMM.rank, len(jobs), job[0]))
-        results.append(comp_avg_perf(job))
+        results.append(comp_avg_perf((job, controls, func, ambient_hamiltonian, control_hamiltonians, detunings, dt, target_operator)))
     # Gather results on rank 0.
     results = MPI.COMM_WORLD.allgather(results)
 
@@ -275,7 +276,8 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
     disp = True
     ftol = (1-threshold)
     options = {"ftol": ftol,
-               "disp": disp}
+               "disp": disp,
+	       "maxiter": 500}
     constraint = (-1, 1)
     controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0)
     #pi_pulse = np.random.randint(2)
