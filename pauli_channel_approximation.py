@@ -628,10 +628,10 @@ if __name__ == "__main__":
     control_hamiltonians = [IX, IY, XI, YI, ZZ]
     detunings = [(.001, 1), (.001, 1), (.001, 2), (.001, 2), (.001, 1)]
     target_operator = entangle_ZZ
-    time = 2 * np.pi
-    num_steps = 100
+    time = 3 * np.pi / 2
+    num_steps = 200
     threshold = 1 - .001
-    num_controls = 100
+    num_controls = 20
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:

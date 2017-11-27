@@ -277,7 +277,7 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
     ftol = (1-threshold)
     options = {"ftol": ftol,
                "disp": disp,
-	       "maxiter": 500}
+	           "maxiter": 1000}
     constraint = (-1, 1)
     controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0)
     #pi_pulse = np.random.randint(2)
