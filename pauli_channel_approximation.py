@@ -523,7 +523,7 @@ def subsample(filename, num_iters=5):
             fh.close()
 
 
-def pick_best_controls(filename, num_best, num_points=5, num_processors=4):
+def pick_best_controls(filename, num_best, num_points=2, num_processors=36):
     from copy import deepcopy
     with open(filename, 'rb') as filep:
         pca = dill.load(filep)
