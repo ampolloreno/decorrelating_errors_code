@@ -185,7 +185,7 @@ class PCA(object):
         print(new_probs)
         return res.fun
 
-    def plot_everything(self, num_processors=36, num_points=3):
+    def plot_everything(self, num_processors=36, num_points=2):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
@@ -628,7 +628,7 @@ if __name__ == "__main__":
     control_hamiltonians = [IX, IY, XI, YI, ZZ]
     detunings = [(.001, 1), (.001, 1), (.001, 2), (.001, 2), (.001, 1)]
     target_operator = entangle_ZZ
-    time = 2 * np.pi
+    time = 3./2 * np.pi
     num_steps = 400
     threshold = 1 - .001
     num_controls = 50
