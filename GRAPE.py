@@ -146,7 +146,7 @@ def comp_avg_perf(pair):
 
 
 def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
-                       controls, detunings, dt, target_operator, deg=2, num_processors=7):
+                       controls, detunings, dt, target_operator, deg=3, num_processors=7):
     """
     Average the given func over noise using gaussian quadrature.
 
@@ -277,7 +277,7 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
     ftol = (1-threshold)
     options = {"ftol": ftol,
                "disp": disp,
-	           "maxiter": 1000}
+               "maxiter": 200}
     constraint = (-1, 1)
     controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0)
     #pi_pulse = np.random.randint(2)
