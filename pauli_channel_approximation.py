@@ -185,7 +185,7 @@ class PCA(object):
         print(new_probs)
         return res.fun
 
-    def plot_everything(self, num_processors=36, num_points=2):
+    def plot_everything(self, num_processors=70, num_points=3):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
 
