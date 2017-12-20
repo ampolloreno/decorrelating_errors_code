@@ -182,7 +182,7 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
         #print([np.sqrt(detuning) * points for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])])
         #print([1/np.sqrt(detuning) * points for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])])
 
-        pairs = [list(zip(np.sqrt(detuning) * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
+        pairs = [list(zip(np.sqrt(detuning/10.) * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
         for index in zero_detunings:
             pairs.insert(index, [(0, 1)])
         combinations = itertools.product(*pairs)

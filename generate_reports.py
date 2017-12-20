@@ -1,4 +1,4 @@
 from pauli_channel_approximation import *
 from subprocess import Popen
-for i in [256]:
+for i in [257]:
 	generate_report('pickled_controls{}.pkl'.format(i))
