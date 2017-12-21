@@ -130,7 +130,6 @@ def comp_avg_perf(pair):
                     for row in controls]
     new_controls = np.array(new_controls).flatten()
     nonzero_detunings = np.array(detunings)[np.where(np.array(detunings) != 0)[0]]
-    #print(combination)
     # if func == grape_perf:
     #     print("VALUE {}".format(func([ambient * combination[i][0] for i, ambient in enumerate(ambient_hamiltonian)], control_hamiltonians, new_controls, dt,
     #                      target_operator)))
@@ -182,7 +181,7 @@ def average_over_noise(func, ambient_hamiltonian, control_hamiltonians,
         #print([np.sqrt(detuning) * points for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])])
         #print([1/np.sqrt(detuning) * points for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])])
 
-        pairs = [list(zip(np.sqrt(detuning/10.) * points, weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
+        pairs = [list(zip(np.sqrt(detuning) * points / 100., weights)) for i, detuning in enumerate(np.array(detunings)[nonzero_detunings])]
         for index in zero_detunings:
             pairs.insert(index, [(0, 1)])
         combinations = itertools.product(*pairs)
