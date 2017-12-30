@@ -78,7 +78,7 @@ class PCA(object):
 
     def __init__(self, num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
                  num_steps, time, threshold, detunings):
-        self.seed = 137
+        self.seed = 138
         np.random.seed(self.seed)
         self.start = timemod.time()
         controlset = []
@@ -629,9 +629,9 @@ if __name__ == "__main__":
     detunings = [(.001, 1), (.001, 1), (.001, 2), (.001, 2), (.001, 1)]
     target_operator = entangle_ZZ
     time = 4. * np.pi
-    num_steps = 100
+    num_steps = 400
     threshold = 1 - .001
-    num_controls = 100
+    num_controls = 50
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:
