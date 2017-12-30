@@ -2,73 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="735a76bb-a5a5-4167-be56-d62d3baf2b17" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls17/control_dpn_all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls17/report.tex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls19/control_dpn_all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls19/report.tex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls33/control_dpn_all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls33/report.tex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls4/control_dpn_all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls4/report.tex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls40/control_dpn_all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls40/report.tex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls42/control_dpn_all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_best/report_pickled_controls42/report.tex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls101/control_dpn_all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls101/report.tex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls144/open_all_pictures" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls66/control_dpn_all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls66/report.tex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls97/control_dpn_all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/report_pickled_controls97/report.tex" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls119/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls119/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls120/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls120/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls121/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls121/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls122/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls122/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls123/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls123/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls124/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls124/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls125/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls125/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls126/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls126/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls127/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls127/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls128/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls128/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls129/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls129/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls130/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls130/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls131/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls131/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls132/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls132/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls133/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls133/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls134/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls134/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls135/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls135/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls136/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls136/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls137/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls137/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls138/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls138/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls139/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls139/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls140/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls140/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls141/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls141/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls142/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls142/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls143/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls143/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls144/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls144/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls145/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls145/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls146/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls146/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls147/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls147/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls148/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls148/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls149/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls149/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls150/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls150/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls151/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls151/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls152/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls152/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls153/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls153/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls154/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls154/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls155/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls155/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls156/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls156/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls157/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls157/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls158/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls158/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls159/control_dpn_all.png" afterPath="$PROJECT_DIR$/report_pickled_controls159/control_dpn_all.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/randomized_controls.iml" afterPath="$PROJECT_DIR$/.idea/randomized_controls.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GRAPE.py" afterPath="$PROJECT_DIR$/GRAPE.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generate_reports.py" afterPath="$PROJECT_DIR$/generate_reports.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pauli_channel_approximation.py" afterPath="$PROJECT_DIR$/pauli_channel_approximation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report_pickled_controls122/report.tex" afterPath="$PROJECT_DIR$/report_pickled_controls122/report.tex" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -79,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GRAPE.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GRAPE.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GRAPE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-355">
-              <caret line="327" column="50" lean-forward="false" selection-start-line="327" selection-start-column="50" selection-end-line="327" selection-end-column="50" />
+            <state relative-caret-position="239">
+              <caret line="149" column="70" lean-forward="false" selection-start-line="149" selection-start-column="68" selection-end-line="149" selection-end-column="70" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -91,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pauli_channel_approximation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pauli_channel_approximation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="486" column="17" lean-forward="false" selection-start-line="486" selection-start-column="17" selection-end-line="486" selection-end-column="17" />
+            <state relative-caret-position="1211">
+              <caret line="318" column="76" lean-forward="false" selection-start-line="318" selection-start-column="67" selection-end-line="318" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -112,8 +48,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>func</find>
-      <find>como</find>
       <find>reduce</find>
       <find>* 0</find>
       <find>new_con</find>
@@ -136,12 +70,14 @@
       <find>hermgaus</find>
       <find>points</find>
       <find>1/</find>
-      <find>detunings</find>
       <find>deg</find>
       <find>new_controls</find>
       <find>print</find>
       <find>controls =</find>
       <find>bou</find>
+      <find>for i in range</find>
+      <find>detuni</find>
+      <find>detunings</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,8 +99,8 @@
         <option value="$PROJECT_DIR$/../../qos/willow/willow/client/analysis/readout.py" />
         <option value="$PROJECT_DIR$/../../apps/demos/demos/tests/test_grover.py" />
         <option value="$PROJECT_DIR$/../../apps/demos/demos/grover.py" />
-        <option value="$PROJECT_DIR$/GRAPE.py" />
         <option value="$PROJECT_DIR$/pauli_channel_approximation.py" />
+        <option value="$PROJECT_DIR$/GRAPE.py" />
       </list>
     </option>
   </component>
@@ -174,11 +110,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="350" />
-    <option name="y" value="260" />
-    <option name="width" value="1270" />
-    <option name="height" value="789" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="27" />
+    <option name="width" value="960" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -212,7 +147,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../apps/phloem" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -244,10 +179,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="350" y="260" width="1270" height="789" extended-state="0" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11702128" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.077991456" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -255,7 +190,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16253869" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.114285715" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -536,20 +471,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../qos/redwood/redwood/schedule.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../qos/redwood/scripts/worker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1206">
-          <caret line="82" column="94" lean-forward="false" selection-start-line="82" selection-start-column="94" selection-end-line="82" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../qos/redwood/redwood/schedule.py" />
+    <entry file="file://$PROJECT_DIR$/../../qos/redwood/scripts/worker.py" />
     <entry file="file://$PROJECT_DIR$/../../qos/redwood/redwood/scheduler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -600,21 +523,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GRAPE.py">
+    <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-355">
-          <caret line="327" column="50" lean-forward="false" selection-start-line="327" selection-start-column="50" selection-end-line="327" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1211">
+          <caret line="318" column="76" lean-forward="false" selection-start-line="318" selection-start-column="67" selection-end-line="318" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
+    <entry file="file://$PROJECT_DIR$/GRAPE.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="486" column="17" lean-forward="false" selection-start-line="486" selection-start-column="17" selection-end-line="486" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="239">
+          <caret line="149" column="70" lean-forward="false" selection-start-line="149" selection-start-column="68" selection-end-line="149" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
