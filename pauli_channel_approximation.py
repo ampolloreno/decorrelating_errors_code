@@ -138,7 +138,8 @@ class PCA(object):
             print(count_call)
             count_call +=1
             sys.stdout.flush()
-            return off_diagonal_error(x, self.controlset, self.ambient_hamiltonian, self.control_hamiltonians, [(d[0] / 10., d[1]) for d in self.detunings], self.dt,
+            # We divide the detuning by 10 to improve performance.
+            return off_diagonal_error(x, self.controlset, self.ambient_hamiltonian, self.control_hamiltonians, [(d[0] / 100., d[1]) for d in self.detunings], self.dt,
                                             self.target_operator)
         def cons(probs, i):
             return probs[i]
@@ -629,9 +630,9 @@ if __name__ == "__main__":
     detunings = [(.001, 1), (.001, 1), (.001, 2), (.001, 2), (.001, 1)]
     target_operator = entangle_ZZ
     time = 4. * np.pi
-    num_steps = 400
+    num_steps = 200
     threshold = 1 - .001
-    num_controls = 50
+    num_controls = 200
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
     if COMM.rank == 0:
