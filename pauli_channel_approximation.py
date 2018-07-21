@@ -78,7 +78,8 @@ class PCA(object):
 
     def __init__(self, num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
                  num_steps, time, threshold, detunings):
-        self.seed = 138
+        #self.seed = 138
+        self.seed = np.random.randint(1000)
         np.random.seed(self.seed)
         self.start = timemod.time()
         controlset = []
@@ -609,32 +610,65 @@ def pick_best_controls(filename, num_best, num_points=2, num_processors=36):
 #         dill.dump(pca, fh)
 #         fh.close()
 
+#
+# if __name__ == "__main__":
+#     I = np.eye(2)
+#     X = np.array([[0, 1], [1, 0]])
+#     Y = np.array([[0, -1.j], [1.j, 0]])
+#     Z = np.array([[1, 0], [0, -1]])
+#     #CNOT = np.array([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])
+#     IZ = np.kron(I, Z)
+#     ZI = np.kron(Z, I)
+#     XI = np.kron(X, I)
+#     IX = np.kron(I, X)
+#     IY = np.kron(I, Y)
+#     YI = np.kron(Y, I)
+#     ZZ = np.kron(Z, Z)
+#     entangle_ZZ = np.array([[1, 0, 0, 0], [0, 1.j, 0, 0], [0, 0, 1.j, 0], [0, 0, 0, 1]])
+#     # applied multiplicatively
+#     ambient_hamiltonian = [IZ, ZI]
+#     control_hamiltonians = [IX, IY, XI, YI, ZZ]
+#     detunings = [(.001, 1), (.001, 1), (.001, 2), (.001, 2), (.001, 1)]
+#     target_operator = entangle_ZZ
+#     time = 4. * np.pi
+#     num_steps = 200
+#     threshold = 1 - .001
+#     num_controls = 200
+#     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
+#               num_steps, time, threshold, detunings)
+#     if COMM.rank == 0:
+#         print("TOOK {}".format(pca.time))
+#         import os
+#         i = 0
+#         while os.path.exists("pickled_controls%s.pkl" % i):
+#             i += 1
+#         fh = open("pickled_controls%s.pkl" % i, "wb")
+#         dill.dump(pca, fh)s
+#         fh.close()
 
 if __name__ == "__main__":
+    from mpi4py import MPI
+    COMM = MPI.COMM_WORLD
     I = np.eye(2)
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
-    #CNOT = np.array([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])
-    IZ = np.kron(I, Z)
-    ZI = np.kron(Z, I)
-    XI = np.kron(X, I)
-    IX = np.kron(I, X)
-    IY = np.kron(I, Y)
-    YI = np.kron(Y, I)
-    ZZ = np.kron(Z, Z)
-    entangle_ZZ = np.array([[1, 0, 0, 0], [0, 1.j, 0, 0], [0, 0, 1.j, 0], [0, 0, 0, 1]])
-    # applied multiplicatively
-    ambient_hamiltonian = [IZ, ZI]
-    control_hamiltonians = [IX, IY, XI, YI, ZZ]
-    detunings = [(.001, 1), (.001, 1), (.001, 2), (.001, 2), (.001, 1)]
-    target_operator = entangle_ZZ
-    time = 4. * np.pi
-    num_steps = 200
+    ambient_hamiltonian = [I]
+    control_hamiltonians = [X]
+    detunings = [(0, 1), (0, 1)]
+    import scipy
+    target_operator = scipy.linalg.sqrtm(X)
+    # time = 4 * np.pi
+    # num_steps = 400
+    time = 2.7805011887409234
+    #time = 1
+    num_steps = 6
     threshold = 1 - .001
-    num_controls = 200
+    num_controls = 10
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
+
+
     if COMM.rank == 0:
         print("TOOK {}".format(pca.time))
         import os

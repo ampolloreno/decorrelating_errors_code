@@ -283,12 +283,29 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                                                dt, target_operator)
     dimension = np.shape(ambient_hamiltonian[0])[0]
     disp = True
-    ftol = (1 - threshold)
+    ftol = (1 - .05)
     options = {"ftol": ftol,
                "disp": disp,
-               "maxiter": 200}
-    constraint = (-1, 1)
-    controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0)
+               "maxiter": 30}
+
+
+    # num_samples = 10
+    # # We'll assume one control
+    # fwhm = 2.5
+    # ts = np.arange(num_samples)
+    # sigma = 0.5 * fwhm / np.sqrt(2.0 * np.log(2.0))
+    # vals = np.exp(-0.5 * (ts - 5) ** 2 / sigma ** 2)
+    epsilon = 1
+
+    vals = [0.096969373667194075, 0.2855908556258086, 0.46483897331596474, 0.4648389733159648, 0.28559085562580871, 0.096969373667194186]
+
+    constraint = (min(vals), 1)
+
+    controls = np.reshape(vals, (1, len(vals)))\
+               + (np.random.rand(1, len(vals)) - .5)*epsilon + (np.random.rand(1) - .6) * .1
+    (np.random.rand(1) - .4) * .1
+
+    #controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0)
     # pi_pulse = np.random.randint(2)
     # num_pi_steps = round(np.pi / dt)
     # print(num_pi_steps)
@@ -350,7 +367,7 @@ if __name__ == "__main__":
     X = np.array([[0, 1], [1, 0]])
     Y = np.array([[0, -1.j], [1.j, 0]])
     Z = np.array([[1, 0], [0, -1]])
-    ambient_hamiltonian = [Z]
+    ambient_hamiltonian = [I]
     control_hamiltonians = [X, Z]
     target_operator = X
     assert np.isclose(target_operator.dot(adjoint(target_operator)),
