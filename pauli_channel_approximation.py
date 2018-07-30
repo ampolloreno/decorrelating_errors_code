@@ -98,7 +98,8 @@ class PCA(object):
                            num_steps, time, threshold, random_detunings)
             controlset.append(result.reshape(-1, len(control_hamiltonians)))
             # controlset.append(np.array([1] * num_steps).reshape(-1, 1))
-        self.controlset = controlset
+        self.controlset = np.array(controlset) + np.random.normal(0, .01,
+                                                                  size=(np.array(controlset).shape))
 
         self.detunings = detunings
         self.target_operator = target_operator
@@ -187,18 +188,189 @@ class PCA(object):
         print(new_probs)
         return res.fun
 
-    def plot_everything(self, num_processors=70, num_points=3):
+    # def plot_everything(self, num_processors=6, num_points=10):
+    #     """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
+    #      provided by itertools."""
+    #
+    #     values_to_plot = []
+    #     corr = []
+    #     import time
+    #     start = time.time()
+    #     for i, detuning in enumerate(self.detunings):
+    #         # values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1) -
+    #         #                                                                  1) * detuning[0]*200
+    #         # values = [-value for value in values[::-1]] + list(values[1:])
+    #         values = np.linspace(-detuning[0]*3, detuning[0]*3, num_points)
+    #         # print(values)
+    #         values_to_plot.append(values)
+    #         corr.append(i)
+    #     combinations = itertools.product(*values_to_plot)
+    #     new_combinations = []
+    #     for combo in combinations:
+    #         new_combo = []
+    #         for index in corr:
+    #             new_combo.append(combo[index])
+    #         new_combinations.append(new_combo)
+    #     combinations = new_combinations
+    #     pool = multiprocessing.Pool(num_processors)
+    #     lst = [(self.controlset, self.ambient_hamiltonian, combo, self.dt,
+    #             self.control_hamiltonians, self.target_operator, self.probs)
+    #            for combo in combinations]
+    #     projs_fidelities_sops = pool.map(compute_dpn_and_fid, lst)
+    #     pool.close()
+    #     projs = [pf[0] for pf in projs_fidelities_sops]
+    #     fidelities = [pf[1] for pf in projs_fidelities_sops]
+    #     sops = [pf[2] for pf in projs_fidelities_sops]
+    #
+    #     print(fidelities)
+    #
+    #     # projs2 = []
+    #     # for proj in projs:
+    #     #     from numbers import Number
+    #     #     if not isinstance(proj, Number):
+    #     #         projs2.append(proj)
+    #     #
+    #     # projs = projs2
+    #     projs = np.vstack(projs).T
+    #     fidelities = np.vstack(fidelities).T
+    #     plt.figure(1,  figsize=(16, 8))  # the first figure
+    #     plt.subplot(211)  # the first subplot in the first figure
+    #
+    #     tuple_length = len(combinations[0])
+    #     standard_ordering = list(range(tuple_length))
+    #     ordering = standard_ordering
+    #     # Switch first index
+    #
+    #     #ordering[0], ordering[1] = ordering[1], ordering[0]
+    #     print(tuple_length)
+    #
+    #     indices = generate_indices(len(values), ordering)
+    #
+    #     for i, row in enumerate(projs[:-1, :]):
+    #         reordered_row = np.array([row[j] for j in indices])
+    #         plt.plot(range(len(row)), reordered_row)
+    #     plt.plot(range(len(projs[-1, :])), [projs[-1, :][i] for i in indices], label="min", color='k', linewidth=2, zorder=10)
+    #     plt.legend()
+    #     plt.ylabel("Absolute Sum of Off Diagonal Elements")
+    #     plt.semilogy()
+    #
+    #     plt.subplot(212)  # the second subplot in the first figure
+    #     for i, row in enumerate(fidelities[:-1, :]):
+    #         reordered_row = np.array([row[j] for j in indices])
+    #         plt.plot(range(len(row)), -np.log(1 - reordered_row))
+    #     plt.plot(range(len(fidelities[-1, :])), [-np.log(1 - fidelities[-1, :][i]) for i in indices], label="min", color='k', linewidth=2, zorder=10)
+    #     plt.legend()
+    #     plt.ylabel("f")
+    #     samples = np.linspace(plt.ylim()[0], plt.ylim()[1], 11)
+    #     labels = -(np.exp(-samples) - 1)
+    #     plt.xlabel("Sample Index")
+    #     plt.tight_layout()
+    #     plt.yticks(samples, labels)
+    #     plt.tight_layout()
+    #     import numpy
+    #     numpy.set_printoptions(threshold=numpy.nan)
+    #     with open("code.txt", 'w') as code:
+    #         code.write('sample_points = {combinations}\nfidelities = {fidelities}\nprojs = {'
+    #                    'projs}\nsops = {sops}'.format(
+    #             combinations=repr(combinations),
+    #             fidelities=repr(fidelities),
+    #             projs=repr(projs),
+    #             sops=repr(sops)))
+    #     stop = time.time()
+    #     print(stop - start)
+
+ #
+ # def plot_everything(self, num_processors=6, num_points=3):
+ #        """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
+ #         provided by itertools."""
+ #
+ #        values_to_plot = []
+ #        corr = []
+ #        for i, detuning in enumerate(self.detunings):
+ #            values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1) - 1) * detuning[0]
+ #            values = [-value for value in values[::-1]] + list(values[1:])
+ #            # values = np.linspace(-detuning[0], detuning[0], num_points)
+ #            # print(values)
+ #            values_to_plot.append(values)
+ #            corr.append(i)
+ #        combinations = itertools.product(*values_to_plot)
+ #        new_combinations = []
+ #        for combo in combinations:
+ #            new_combo = []
+ #            for index in corr:
+ #                new_combo.append(combo[index])
+ #            new_combinations.append(new_combo)
+ #        combinations = new_combinations
+ #        pool = multiprocessing.Pool(num_processors)
+ #        lst = [(self.controlset, self.ambient_hamiltonian, combo, self.dt,
+ #                self.control_hamiltonians, self.target_operator, self.probs)
+ #               for combo in combinations]
+ #        projs_fidelities = pool.map(compute_dpn_and_fid, lst)
+ #        pool.close()
+ #        projs = [pf[0] for pf in projs_fidelities]
+ #        fidelities = [pf[1] for pf in projs_fidelities]
+ #
+ #        # projs2 = []
+ #        # for proj in projs:
+ #        #     from numbers import Number
+ #        #     if not isinstance(proj, Number):
+ #        #         projs2.append(proj)
+ #        #
+ #        # projs = projs2
+ #        projs = np.vstack(projs).T
+ #        fidelities = np.vstack(fidelities).T
+ #        plt.figure(1,  figsize=(16, 8))  # the first figure
+ #        plt.subplot(211)  # the first subplot in the first figure
+ #
+ #        tuple_length = len(combinations[0])
+ #        standard_ordering = list(range(tuple_length))
+ #        ordering = standard_ordering
+ #        # Switch first index
+ #
+ #        #ordering[0], ordering[1] = ordering[1], ordering[0]
+ #        print(tuple_length)
+ #
+ #        indices = generate_indices(len(values), ordering)
+ #
+ #        for i, row in enumerate(projs[:-1, :]):
+ #            reordered_row = np.array([row[j] for j in indices])
+ #            plt.plot(range(len(row)), reordered_row)
+ #        plt.plot(range(len(projs[-1, :])), [projs[-1, :][i] for i in indices], label="min", color='k', linewidth=2, zorder=10)
+ #        plt.legend()
+ #        plt.ylabel("Absolute Sum of Off Diagonal Elements")
+ #        plt.semilogy()
+ #
+ #        plt.subplot(212)  # the second subplot in the first figure
+ #        for i, row in enumerate(fidelities[:-1, :]):
+ #            reordered_row = np.array([row[j] for j in indices])
+ #            plt.plot(range(len(row)), -np.log(1 - reordered_row))
+ #        plt.plot(range(len(fidelities[-1, :])), [-np.log(1 - fidelities[-1, :][i]) for i in indices], label="min", color='k', linewidth=2, zorder=10)
+ #        plt.legend()
+ #        plt.ylabel("f")
+ #        samples = np.linspace(plt.ylim()[0], plt.ylim()[1], 11)
+ #        labels = -(np.exp(-samples) - 1)
+ #        plt.xlabel("Sample Index")
+ #        plt.tight_layout()
+ #        plt.yticks(samples, labels)
+ #        plt.tight_layout()
+ #
+
+
+    def plot_everything(self, num_processors=6, num_points=100.0, index=0):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
-
         values_to_plot = []
         corr = []
         for i, detuning in enumerate(self.detunings):
-            values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1) - 1) * detuning[0]
+            values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1) -
+             1) * detuning[0]*1000
             values = [-value for value in values[::-1]] + list(values[1:])
-            # values = np.linspace(-detuning[0], detuning[0], num_points)
-            # print(values)
-            values_to_plot.append(values)
+            #values = np.linspace(-detuning[0], detuning[0], num_points)
+            print(values)
+            if i == index:
+                values_to_plot.append(values)
+            else:
+                values_to_plot.append([0])
             corr.append(i)
         combinations = itertools.product(*values_to_plot)
         new_combinations = []
@@ -237,12 +409,12 @@ class PCA(object):
         #ordering[0], ordering[1] = ordering[1], ordering[0]
         print(tuple_length)
 
-        indices = generate_indices(len(values), ordering)
-
+        #indices = generate_indices(len(values), ordering)
+        indices = list(range(len(values)))
         for i, row in enumerate(projs[:-1, :]):
             reordered_row = np.array([row[j] for j in indices])
-            plt.plot(range(len(row)), reordered_row)
-        plt.plot(range(len(projs[-1, :])), [projs[-1, :][i] for i in indices], label="min", color='k', linewidth=2, zorder=10)
+            plt.plot(values, reordered_row)
+        plt.plot(values, [projs[-1, :][i] for i in indices], label="min", color='k', linewidth=2, zorder=10)
         plt.legend()
         plt.ylabel("Absolute Sum of Off Diagonal Elements")
         plt.semilogy()
@@ -250,8 +422,8 @@ class PCA(object):
         plt.subplot(212)  # the second subplot in the first figure
         for i, row in enumerate(fidelities[:-1, :]):
             reordered_row = np.array([row[j] for j in indices])
-            plt.plot(range(len(row)), -np.log(1 - reordered_row))
-        plt.plot(range(len(fidelities[-1, :])), [-np.log(1 - fidelities[-1, :][i]) for i in indices], label="min", color='k', linewidth=2, zorder=10)
+            plt.plot(values, -np.log(1 - reordered_row))
+        plt.plot(values, [-np.log(1 - fidelities[-1, :][i]) for i in indices], label="min", color='k', linewidth=2, zorder=10)
         plt.legend()
         plt.ylabel("f")
         samples = np.linspace(plt.ylim()[0], plt.ylim()[1], 11)
@@ -260,6 +432,7 @@ class PCA(object):
         plt.tight_layout()
         plt.yticks(samples, labels)
         plt.tight_layout()
+
 
 
 def compute_dpn_and_fid(data):
@@ -311,7 +484,7 @@ def compute_dpn_and_fid(data):
     fidelities = np.array(fidelities).T
     projs = np.array(projs).T
 
-    return projs, fidelities
+    return projs, fidelities, sops + [avg_sop]
 
 # #Deprecated
 #     def plot_control_fidelity(self, cnum):
@@ -445,10 +618,15 @@ def generate_report(filename):
     except AttributeError:
         pass
     image_locs = []
-    pca.plot_everything()
-    image_locs.append(report_dir + "/control_dpn_all.png")
-    plt.savefig(report_dir + "/control_dpn_all.png")
-    plt.clf()
+    import time
+    start = time.time()
+    for index in [0, 1, 2, 3, 4]:
+        pca.plot_everything(index=index)
+        image_locs.append(report_dir + "/control_dpn_all.png")
+        plt.savefig(report_dir + "/control_dpn_all{}.png".format(index))
+        plt.clf()
+    stop = time.time()
+    print(stop - start)
     #
     # for i in range(len(pca.control_hamiltonians) + 1):
     #     pca.plot_control_fidelity(i - 1)
@@ -525,7 +703,7 @@ def subsample(filename, num_iters=5):
             fh.close()
 
 
-def pick_best_controls(filename, num_best, num_points=2, num_processors=36):
+def pick_best_controls(filename, num_best, num_points=4, num_processors=36):
     from copy import deepcopy
     with open(filename, 'rb') as filep:
         pca = dill.load(filep)
@@ -534,9 +712,9 @@ def pick_best_controls(filename, num_best, num_points=2, num_processors=36):
     for i, detuning in enumerate(pca.detunings):
         values = (np.geomspace(1, 2 ** (num_points - 1), num_points) - 1) / (
         2 ** (num_points - 1) - 1) * detuning[0]
-        values = [-value for value in values[::-1]] + list(values[1:])
+        #values = [-value for value in values[::-1]] + list(values[1:])
         # values = np.linspace(-detuning[0], detuning[0], num_points)
-        # print(values)
+        print(values)
         values_to_plot.append(values)
         corr.append(i)
     combinations = itertools.product(*values_to_plot)
@@ -660,11 +838,11 @@ if __name__ == "__main__":
     target_operator = scipy.linalg.sqrtm(X)
     # time = 4 * np.pi
     # num_steps = 400
-    time = 2.7805011887409234
+    time = 1.6741483463572617
     #time = 1
-    num_steps = 6
+    num_steps = 4
     threshold = 1 - .001
-    num_controls = 10
+    num_controls = 4
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
               num_steps, time, threshold, detunings)
 

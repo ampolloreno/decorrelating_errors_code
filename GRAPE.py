@@ -283,10 +283,9 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
                                                dt, target_operator)
     dimension = np.shape(ambient_hamiltonian[0])[0]
     disp = True
-    ftol = (1 - .05)
+    ftol = (1 - threshold)
     options = {"ftol": ftol,
-               "disp": disp,
-               "maxiter": 30}
+               "disp": disp}
 
 
     # num_samples = 10
@@ -295,15 +294,16 @@ def GRAPE(ambient_hamiltonian, control_hamiltonians, target_operator, num_steps,
     # ts = np.arange(num_samples)
     # sigma = 0.5 * fwhm / np.sqrt(2.0 * np.log(2.0))
     # vals = np.exp(-0.5 * (ts - 5) ** 2 / sigma ** 2)
-    epsilon = 1
+    # epsilon = 1
 
-    vals = [0.096969373667194075, 0.2855908556258086, 0.46483897331596474, 0.4648389733159648, 0.28559085562580871, 0.096969373667194186]
+    vals = [0.2353181284999506, 0.70294778456131046, 0.70294778456131046, 0.2353181284999506]
 
     constraint = (min(vals), 1)
-
-    controls = np.reshape(vals, (1, len(vals)))\
-               + (np.random.rand(1, len(vals)) - .5)*epsilon + (np.random.rand(1) - .6) * .1
-    (np.random.rand(1) - .4) * .1
+    #
+    controls = np.reshape(vals, (1, len(vals)))
+               # + (np.random.rand(1, len(vals)) - .5)*epsilon \
+               # + (np.random.rand(1) - .6) * .1
+    # (np.random.rand(1) - .4) * .1
 
     #controls = (2.0 * np.random.rand(1, int(len(control_hamiltonians) * num_steps)) - 1.0)
     # pi_pulse = np.random.randint(2)

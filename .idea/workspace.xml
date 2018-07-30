@@ -4,7 +4,12 @@
     <list default="true" id="735a76bb-a5a5-4167-be56-d62d3baf2b17" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GRAPE.py" beforeDir="false" afterPath="$PROJECT_DIR$/GRAPE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_reports.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pauli_channel_approximation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pauli_channel_approximation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report_pickled_controls228/control_dpn_all.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report_pickled_controls228/report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/report_pickled_controls228/report.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report_pickled_controls261/control_dpn_all.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report_pickled_controls261/report.tex" beforeDir="false" afterPath="$PROJECT_DIR$/report_pickled_controls261/report.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GRAPE.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GRAPE.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GRAPE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="309" column="38" lean-forward="true" selection-start-line="309" selection-start-column="38" selection-end-line="309" selection-end-column="38" />
+            <state relative-caret-position="4350">
+              <caret line="298" column="93" selection-start-line="298" selection-start-column="93" selection-end-line="298" selection-end-column="93" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -27,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pauli_channel_approximation.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pauli_channel_approximation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9975">
-              <caret line="666" column="21" selection-start-line="666" selection-start-column="21" selection-end-line="666" selection-end-column="21" />
+            <state relative-caret-position="23">
+              <caret line="100" column="72" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -47,36 +52,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>average_per</find>
-      <find>comp_avg</find>
-      <find>average_over</find>
-      <find>average_over_noise</find>
-      <find>np.pi</find>
-      <find>np.sqr</find>
-      <find>50</find>
-      <find>minimize</find>
-      <find>.01</find>
-      <find />
-      <find>detunigns</find>
-      <find>hermgaus</find>
-      <find>points</find>
-      <find>1/</find>
-      <find>deg</find>
-      <find>new_controls</find>
-      <find>print</find>
-      <find />
-      <find>bou</find>
-      <find />
-      <find>detuni</find>
-      <find>detunings</find>
-      <find>seed</find>
-      <find>minimi</find>
       <find>bloc</find>
       <find>epsilon</find>
       <find>-1,</find>
       <find>ode</find>
       <find>probs</find>
       <find>threshold</find>
+      <find>plot</find>
+      <find>dpn</find>
+      <find>plot_dpn</find>
+      <find>stack</find>
+      <find>dot</find>
+      <find>vectorized</find>
+      <find>off_diagonal_pr</find>
+      <find>projs_fi</find>
+      <find>return</find>
+      <find>proj</find>
+      <find>error_unitar</find>
+      <find>detunings</find>
+      <find>200</find>
+      <find>grape</find>
+      <find>normal</find>
+      <find>time =</find>
+      <find>.001</find>
+      <find>result =</find>
+      <find>values =</find>
+      <find>num_points=</find>
+      <find>detuning</find>
+      <find>100</find>
+      <find>detunings[</find>
+      <find>detuning[0]</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -98,8 +103,8 @@
         <option value="$USER_HOME$/qos/willow/willow/client/analysis/readout.py" />
         <option value="$USER_HOME$/apps/demos/demos/tests/test_grover.py" />
         <option value="$USER_HOME$/apps/demos/demos/grover.py" />
-        <option value="$PROJECT_DIR$/pauli_channel_approximation.py" />
         <option value="$PROJECT_DIR$/GRAPE.py" />
+        <option value="$PROJECT_DIR$/pauli_channel_approximation.py" />
       </list>
     </option>
   </component>
@@ -112,17 +117,18 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
-    <option name="y" value="27" />
+    <option name="y" value="25" />
     <option name="width" value="927" />
-    <option name="height" value="1053" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -134,7 +140,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -168,7 +173,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="27" width="927" height="1053" extended-state="4" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -178,7 +183,7 @@
       <window_info anchor="bottom" id="Python Console" order="8" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.11404435" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07227616" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22719914" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -383,20 +388,20 @@
     <entry file="file://$USER_HOME$/qos/willow/willow/client/analysis/readout.py" />
     <entry file="file://$USER_HOME$/apps/demos/demos/grover.py" />
     <entry file="file://$USER_HOME$/apps/demos/demos/tests/test_grover.py" />
-    <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9975">
-          <caret line="666" column="21" selection-start-line="666" selection-start-column="21" selection-end-line="666" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GRAPE.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="309" column="38" lean-forward="true" selection-start-line="309" selection-start-column="38" selection-end-line="309" selection-end-column="38" />
+        <state relative-caret-position="4350">
+          <caret line="298" column="93" selection-start-line="298" selection-start-column="93" selection-end-line="298" selection-end-column="93" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pauli_channel_approximation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="100" column="72" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="72" />
         </state>
       </provider>
     </entry>
