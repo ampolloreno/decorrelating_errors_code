@@ -98,8 +98,13 @@ class PCA(object):
                            num_steps, time, threshold, random_detunings)
             controlset.append(result.reshape(-1, len(control_hamiltonians)))
             # controlset.append(np.array([1] * num_steps).reshape(-1, 1))
-        self.controlset = np.array(controlset) + np.random.normal(0, .01,
-                                                                  size=(np.array(controlset).shape))
+        # self.controlset = np.array(controlset) + np.random.normal(0, .001,
+        #                                                           size=(np.array(controlset).shape))
+        controlset = np.array(controlset)
+        nums = np.array([.06, .04, -.04, -.06]) - .0093
+        a = np.array([np.array([[nums[0]/controlset.shape[1]] * controlset.shape[1], [nums[1]/controlset.shape[1]] * controlset.shape[1],
+                                                  [nums[2] / controlset.shape[1]] * controlset.shape[1], [nums[3] / controlset.shape[1]] * controlset.shape[1]]).T]).T
+        self.controlset = controlset + a
 
         self.detunings = detunings
         self.target_operator = target_operator
@@ -356,16 +361,16 @@ class PCA(object):
  #
 
 
-    def plot_everything(self, num_processors=6, num_points=100.0, index=0):
+    def plot_everything(self, num_processors=6, num_points=50.0, index=0):
         """Plots the depolarizing noise and gate fidelity over all detunings, varying over the list
          provided by itertools."""
         values_to_plot = []
         corr = []
         for i, detuning in enumerate(self.detunings):
-            values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1) -
-             1) * detuning[0]*1000
-            values = [-value for value in values[::-1]] + list(values[1:])
-            #values = np.linspace(-detuning[0], detuning[0], num_points)
+            # values = (np.geomspace(1, 2**(num_points - 1), num_points) - 1)/(2**(num_points-1) -
+            #  1) * detuning[0]*1000
+            # values = [-value for value in values[::-1]] + list(values[1:])
+            values = np.linspace(-detuning[0]*100, detuning[0]*100, num_points)
             print(values)
             if i == index:
                 values_to_plot.append(values)
@@ -838,9 +843,9 @@ if __name__ == "__main__":
     target_operator = scipy.linalg.sqrtm(X)
     # time = 4 * np.pi
     # num_steps = 400
-    time = 1.6741483463572617
+    time = 3.3405822619285139
     #time = 1
-    num_steps = 4
+    num_steps = 10
     threshold = 1 - .001
     num_controls = 4
     pca = PCA(num_controls, ambient_hamiltonian, control_hamiltonians, target_operator,
